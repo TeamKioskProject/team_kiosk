@@ -1,0 +1,21 @@
+name: PR Title Auto Label
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  label_by_title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label PR based on title
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: |
+            ${{ contains(github.event.pull_request.title, 'feat:') && 'enhancement' }}
+            ${{ contains(github.event.pull_request.title, 'fix:') && 'bug' }}
+            ${{ contains(github.event.pull_request.title, 'docs:') && 'documentation' }}
+            ${{ contains(github.event.pull_request.title, 'chore:') && 'chore' }}
+            ${{ contains(github.event.pull_request.title, 'test:') && 'test' }}
+            ${{ contains(github.event.pull_request.title, 'refactor:') && 'refactor' }}

@@ -9,3 +9,9 @@ bug:
 
 enhancement:
   - ".github/ISSUE_TEMPLATE/feature_request.md"
+
+firebase:
+  - "lib/firebase/**"
+
+ui/ux:
+  - "lib/ui/**"
