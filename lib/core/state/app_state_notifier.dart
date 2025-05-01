@@ -1,4 +1,5 @@
 import 'package:riverpod/riverpod.dart';
+import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state.dart';
 
 class AppStateNotifier extends StateNotifier<AppState> {
