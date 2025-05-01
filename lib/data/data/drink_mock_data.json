@@ -1,0 +1,26 @@
+[
+  {
+    "menuComponents": "아메리카노",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c77ae44c-30a2-4b09-9438-4a072ce7299e.png",
+    "menuCd": "3030086",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/fdb94c35-0d24-41d4-b3ed-408fd2640bbb.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/f947e9c7-da31-4d3d-a775-0520cd0edaca.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a461bae1-fea4-492c-b700-2692776e5a84.png",
+    "menuNm": "아메리카노",
+    "price": 2840
+  },
+  {
+    "menuComponents": "아이스아메리카노",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ca880124-cf85-4412-a939-4ea32c9ab70c.png",
+    "menuCd": "3030087",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/bdf3b729-be05-4fe3-ab89-9943a48ae2a9.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a8fa617b-bdea-48ec-9b56-c273fb8fb59d.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d99f5ee6-467d-4306-aee9-64918681686f.png",
+    "menuNm": "아이스아메리카노",
+    "price": 1550
+  }
+]

@@ -1,0 +1,655 @@
+[
+  {
+    "menuComponents": "통모짜와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/d8397ed2-c65b-4a82-a7a1-0a131bc49555.png",
+    "menuCd": "1100713",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/fe4f3c50-9363-490d-98fb-5f076ed45929.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/d88eb457-f089-4dec-bb37-5eded5957752.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/f315fa25-eaa5-4905-b9b3-a34a6744db40.png",
+    "menuNm": "통모짜와퍼",
+    "price": 7690
+  },
+  {
+    "menuComponents": "BBQ 통모짜와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/a42667e5-5da9-45d5-b2c7-c8f49ed9ae35.png",
+    "menuCd": "1100714",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/ce49e364-0d49-4376-a798-3b1f4848c051.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/a2eb310a-b099-450d-89fc-175e28dc542f.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/fac85342-6868-44f2-8eb7-c3abf7a8e135.png",
+    "menuNm": "BBQ 통모짜와퍼",
+    "price": 7670
+  },
+  {
+    "menuComponents": "불끈버거 맥시멈",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/02/11/f0d0dafc-c190-4870-8fdb-59a37a79bbcb.png",
+    "menuCd": "1100690",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/02/11/aa139b5d-e5bd-4bb3-b999-a7ec7f83ffcd.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/02/11/f2518e0a-553d-4d17-a8e8-d77a1d46a795.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/02/11/cef024b1-1bc7-4e7c-8f62-6896ff63f8c4.png",
+    "menuNm": "불끈버거 맥시멈",
+    "price": 5810
+  },
+  {
+    "menuComponents": "몬스터와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ffefc938-62f3-4bc0-8a54-bad31db5d63a.png",
+    "menuCd": "1080215",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a1110d1d-3127-4ec2-bcec-82d4e508d86c.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/bada734e-9383-4792-8881-df23b623b4b0.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/caa0e06f-d630-4f1f-9330-e17e14d4122d.png",
+    "menuNm": "몬스터와퍼",
+    "price": 6050
+  },
+  {
+    "menuComponents": "콰트로치즈와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/fe3b84c2-1e1c-47c1-aea2-a8a7f6d5a069.png",
+    "menuCd": "1100197",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/c3bb5198-4c06-4256-8b57-1796f516b90a.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a7613ea9-7975-4874-a25b-f7a0f8a94b47.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a16931a5-f2e5-450a-aa8b-df3c667a430b.png",
+    "menuNm": "콰트로치즈와퍼",
+    "price": 6780
+  },
+  {
+    "menuComponents": "통새우와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b29489df-fafb-43f1-b0e1-21ab7b0c19e3.png",
+    "menuCd": "1080121",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/b3b26016-b426-423d-8e98-f6370404a2e3.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/d725054b-69ac-4d08-a77d-3aac13809634.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d0dea8b5-c386-4320-a0d3-1a4fa11dbf70.png",
+    "menuNm": "통새우와퍼",
+    "price": 7340
+  },
+  {
+    "menuComponents": "불끈버거 맥시멈",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/02/11/f0d0dafc-c190-4870-8fdb-59a37a79bbcb.png",
+    "menuCd": "1100690",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/02/11/aa139b5d-e5bd-4bb3-b999-a7ec7f83ffcd.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/02/11/f2518e0a-553d-4d17-a8e8-d77a1d46a795.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/02/11/cef024b1-1bc7-4e7c-8f62-6896ff63f8c4.png",
+    "menuNm": "불끈버거 맥시멈",
+    "price": 5660
+  },
+  {
+    "menuComponents": "불끈버거 맥시멈 더블",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/02/11/ad8709c3-cbec-41b6-a6f4-16bc058ee991.png",
+    "menuCd": "1100691",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/02/11/a3cc35c8-b4be-4970-9ffb-3f8386c862ac.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/02/11/b2c4fc01-b815-4d99-9028-e7bab98fe94d.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/02/11/b272c4f1-7b6a-4d07-87a3-3692031a0c95.png",
+    "menuNm": "불끈버거 맥시멈 더블",
+    "price": 6100
+  },
+  {
+    "menuComponents": "통모짜와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/d8397ed2-c65b-4a82-a7a1-0a131bc49555.png",
+    "menuCd": "1100713",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/fe4f3c50-9363-490d-98fb-5f076ed45929.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/d88eb457-f089-4dec-bb37-5eded5957752.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/f315fa25-eaa5-4905-b9b3-a34a6744db40.png",
+    "menuNm": "통모짜와퍼",
+    "price": 7020
+  },
+  {
+    "menuComponents": "BBQ 통모짜와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/a42667e5-5da9-45d5-b2c7-c8f49ed9ae35.png",
+    "menuCd": "1100714",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/ce49e364-0d49-4376-a798-3b1f4848c051.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/a2eb310a-b099-450d-89fc-175e28dc542f.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/fac85342-6868-44f2-8eb7-c3abf7a8e135.png",
+    "menuNm": "BBQ 통모짜와퍼",
+    "price": 6100
+  },
+  {
+    "menuComponents": "통모짜 와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/ad8cb20b-72b7-4a49-882d-a761d26ccc51.png",
+    "menuCd": "1100715",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/c473a93c-89a9-425e-a3b8-d5eca89d8b34.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/d6dc0efd-01de-4f1e-9a74-513f6bdcc7b4.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/ab2f8e2a-df31-42ef-a913-295671d4c459.png",
+    "menuNm": "통모짜 와퍼주니어",
+    "price": 4410
+  },
+  {
+    "menuComponents": "BBQ 통모짜 와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/c472b9d3-7bdd-4d48-b7ff-0a28381df9cc.png",
+    "menuCd": "1100716",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/c458890a-3c3f-49f7-91b9-699ebe23a7f4.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/d403e8b7-a3f9-4bce-ba7e-44d327857570.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/b5526c8a-63e5-4712-9e80-b2491b4e59d9.png",
+    "menuNm": "BBQ 통모짜 와퍼주니어",
+    "price": 4220
+  },
+  {
+    "menuComponents": "불맛 더블치즈베이컨버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/f7b86236-e401-418a-aaee-2a1cbf8521f6.png",
+    "menuCd": "1100639",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ff71b92c-5241-435f-8250-3a62c0dcc6af.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/f310d713-216a-4dd7-aa5a-fdeebe4b5fa8.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/bf0c8584-b7c1-4f77-b178-d0d4ed9fad68.png",
+    "menuNm": "불맛 더블치즈베이컨버거",
+    "price": 5040
+  },
+  {
+    "menuComponents": "블랙바비큐콰트로치즈와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/d89d4cb6-3fc5-431e-8609-2e52c4da57a5.png",
+    "menuCd": "1100204",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/f9f80533-ce76-4229-909d-81c15516c658.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/cfa05948-6498-4074-bbe8-6f1890456052.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/c9de5935-f50f-4892-a7d2-390ed277b2dd.png",
+    "menuNm": "블랙바비큐콰트로치즈와퍼",
+    "price": 7110
+  },
+  {
+    "menuComponents": "블랙바비큐와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/d489a960-e00e-4db9-a490-f3dad6895990.png",
+    "menuCd": "1100190",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/df0d1dcd-b61d-4c74-a36c-506821f281e8.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/be866d89-2dfa-4d95-b677-31966e241281.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/dd548a19-8a7d-4805-ae9c-6c41829cd155.png",
+    "menuNm": "블랙바비큐와퍼",
+    "price": 7520
+  },
+  {
+    "menuComponents": "몬스터와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ffefc938-62f3-4bc0-8a54-bad31db5d63a.png",
+    "menuCd": "1080215",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a1110d1d-3127-4ec2-bcec-82d4e508d86c.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/bada734e-9383-4792-8881-df23b623b4b0.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/caa0e06f-d630-4f1f-9330-e17e14d4122d.png",
+    "menuNm": "몬스터와퍼",
+    "price": 7670
+  },
+  {
+    "menuComponents": "베이컨치즈와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/cafd8a5d-fbed-42c6-946d-c2f9cf009446.png",
+    "menuCd": "1080009",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/bda1916f-1a73-41b1-95d5-9e27298b0664.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b78f6959-5788-406b-ada0-ed3277208df0.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/b7635e32-d7ab-487e-900e-7489ac641e94.png",
+    "menuNm": "베이컨치즈와퍼",
+    "price": 6440
+  },
+  {
+    "menuComponents": "불맛 더블치즈버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/f7e6db20-5dc6-4982-b676-9f4b655df5df.png",
+    "menuCd": "1100638",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/e0146cc4-ebfe-40b5-8fb2-ffa96723a36e.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/e9252322-77c7-4319-95de-69e6a486bb8c.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/ace010e7-d0ec-44b1-82e6-fd1c11688a53.png",
+    "menuNm": "불맛 더블치즈버거",
+    "price": 6200
+  },
+  {
+    "menuComponents": "콰트로치즈와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/fe3b84c2-1e1c-47c1-aea2-a8a7f6d5a069.png",
+    "menuCd": "1100197",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/c3bb5198-4c06-4256-8b57-1796f516b90a.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a7613ea9-7975-4874-a25b-f7a0f8a94b47.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a16931a5-f2e5-450a-aa8b-df3c667a430b.png",
+    "menuNm": "콰트로치즈와퍼",
+    "price": 7410
+  },
+  {
+    "menuComponents": "통새우와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b29489df-fafb-43f1-b0e1-21ab7b0c19e3.png",
+    "menuCd": "1080121",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/b3b26016-b426-423d-8e98-f6370404a2e3.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/d725054b-69ac-4d08-a77d-3aac13809634.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d0dea8b5-c386-4320-a0d3-1a4fa11dbf70.png",
+    "menuNm": "통새우와퍼",
+    "price": 7430
+  },
+  {
+    "menuComponents": "치즈와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/d14c3a22-568d-41f8-ba30-02ee39bfe647.png",
+    "menuCd": "1080010",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ca6ae749-2a23-498f-b99f-875fc7ac62a3.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/cf25a404-46fe-48b7-a495-25694b760276.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/e965124f-75f1-48ac-a8f0-dc7aabcfcb35.png",
+    "menuNm": "치즈와퍼",
+    "price": 6670
+  },
+  {
+    "menuComponents": "갈릭불고기와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c84d6cc7-298a-440f-8328-1839031ef46e.png",
+    "menuCd": "1100412",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ba1e5306-20e6-4bda-b130-9fcad0087ca0.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/c8bce9ed-c1ea-44c6-b372-b5c8317b88e4.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d35d7641-9733-4789-b712-b2ce8fb668f9.png",
+    "menuNm": "갈릭불고기와퍼",
+    "price": 7010
+  },
+  {
+    "menuComponents": "불고기와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/fc969a33-3281-4601-91bb-b3aa789afc11.png",
+    "menuCd": "1100385",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a31e5bd5-ceab-4548-976f-5fc168965779.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/fcfaf648-1b11-460e-81d1-6348fdc398df.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/e1887bc7-a390-49a3-b674-725ad53a4068.png",
+    "menuNm": "불고기와퍼",
+    "price": 6970
+  },
+  {
+    "menuComponents": "와퍼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c9811022-3678-4988-9fa4-1d3fc6a69bf5.png",
+    "menuCd": "1080013",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/b654b144-1c6d-410f-adee-639931c9f800.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/e489399a-8899-4868-93c7-0fd52486cfff.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a7834532-183a-4592-b713-aad1a4333ed0.png",
+    "menuNm": "와퍼",
+    "price": 6950
+  },
+  {
+    "menuComponents": "콰트로치즈 와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c46f1544-d3a5-4d68-8692-737c2cbb3da5.png",
+    "menuCd": "1090031",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ac194f07-9503-4296-adba-cae1cea81e28.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/c12a750b-2157-4434-8b0b-97855d7b2b87.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/dce432d1-f28a-40dc-a6fa-aec032db0d45.png",
+    "menuNm": "콰트로치즈 와퍼주니어",
+    "price": 3630
+  },
+  {
+    "menuComponents": "통새우와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2024/12/04/f9899937-0f95-4d89-9a9a-5fef132a7346.png",
+    "menuCd": "1090178",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2024/12/04/ea0e3d30-a916-46cf-9a1a-75097a6b89a4.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2024/12/04/fbe69b65-9401-4f9e-8335-4ccce1fadb6a.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2024/12/04/ad76def5-43bd-4dd8-8824-8d177d7b78a0.png",
+    "menuNm": "통새우와퍼주니어",
+    "price": 4480
+  },
+  {
+    "menuComponents": "치즈와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b1b8de28-8b85-450a-9c58-c40a9a2fad3d.png",
+    "menuCd": "1090013",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/d46e8c75-9f62-47ba-9978-ad5210a437ad.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a348e199-c035-4dff-8b10-df1a462a4c37.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a9cbb451-ad14-47b3-899c-e09826ca7bf4.png",
+    "menuNm": "치즈와퍼주니어",
+    "price": 4340
+  },
+  {
+    "menuComponents": "불고기와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b3cc4d6e-7a84-472a-ae04-061151ba70d1.png",
+    "menuCd": "1100386",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/f70e1959-95e1-4580-88cc-361dde80b21b.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/c41c1a8b-29b5-421e-a43e-dd8e16c388a9.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a76b3a2f-b627-43cb-a1ce-529d4de1ab82.png",
+    "menuNm": "불고기와퍼주니어",
+    "price": 3750
+  },
+  {
+    "menuComponents": "와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2024/12/04/da324f38-2864-4382-ae9a-a97faf5bd265.png",
+    "menuCd": "1090015",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2024/12/04/c1c68ea4-deb3-4bb1-8387-2138bc706e2f.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2024/12/04/dfdc5f53-0cda-4ae7-b3b3-f08bf8c37099.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2024/12/04/e4cbb47a-c877-4970-9bdc-fb167fcbad96.png",
+    "menuNm": "와퍼주니어",
+    "price": 3920
+  },
+  {
+    "menuComponents": "더블비프불고기버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/d8688732-ccfa-41b1-8afa-ff3646d45c2a.png",
+    "menuCd": "1100562",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ff8551b4-c8c1-4cab-8dd7-bca67a3c1c2a.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/ac402e81-275d-4624-854c-5eff04501f21.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/f6ceff06-aad8-4d47-a8fa-033f069bf873.png",
+    "menuNm": "더블비프불고기버거",
+    "price": 6340
+  },
+  {
+    "menuComponents": "비프불고기버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/e8510c49-b02b-4f6f-97e3-e0f5b7ed649c.png",
+    "menuCd": "1100518",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/fba6ff6d-d2e7-4a52-82d4-a7fd4153ca7a.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/f2d13b43-5cac-44e2-9571-6d18b722a217.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d1e1f540-e691-4f50-9a23-2a1c4bccb6c5.png",
+    "menuNm": "비프불고기버거",
+    "price": 6200
+  },
+  {
+    "menuComponents": "치즈버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/d7977b8b-93c0-403f-834b-d9164f06cad6.png",
+    "menuCd": "1050006",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ebf95041-e665-4685-b0e4-b92239b2a351.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b2aec981-811c-469d-812b-48376e216711.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/e2d1e6ae-37d5-4195-b7d6-a82bc628f6bb.png",
+    "menuNm": "치즈버거",
+    "price": 4930
+  },
+  {
+    "menuComponents": "비프&슈림프버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/d07a55ba-f59b-44e2-9d14-9be952349b0c.png",
+    "menuCd": "1100457",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a83e2384-b177-45e3-bff1-1cb9f7b709ce.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/c347d198-6ff3-4a59-b00a-f4bcfdccbfa9.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/bb9db062-78b7-42f0-93d3-2234a0e10150.png",
+    "menuNm": "비프&슈림프버거",
+    "price": 5540
+  },
+  {
+    "menuComponents": "통새우슈림프버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b14f9d55-6932-4b58-8bfe-2a21ed63f376.png",
+    "menuCd": "1100456",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/fdb3e46a-c352-4149-aeaa-5b3019b57e32.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/d3ccf048-aa51-447f-be66-9f7aad4d6ecd.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/c91277a0-92c5-43cb-a65a-ed182217dc7a.png",
+    "menuNm": "통새우슈림프버거",
+    "price": 4770
+  },
+  {
+    "menuComponents": "슈림프버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/dedba0d5-fbbd-4c7e-bb38-344f1c7b4970.png",
+    "menuCd": "1100455",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/b7db83f1-d888-4e87-add3-8760441a9aba.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/f5652ee8-eff5-477c-b8fe-cb1c4d5d1f46.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d5d539f6-2f67-4d24-8300-d6e52d001ad6.png",
+    "menuNm": "슈림프버거",
+    "price": 5660
+  },
+  {
+    "menuComponents": "롱치킨버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ffd822c2-94d2-4bfd-8cdb-30062a8a573f.png",
+    "menuCd": "1115121",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/e3f4ba1b-c60f-42be-aaa8-18d0a7911a3e.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/bad355bb-776b-4c1b-bbd9-4c61bed8cacc.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/ac43078f-08ea-46a9-a00e-7ef1a2d15bb0.png",
+    "menuNm": "롱치킨버거",
+    "price": 5900
+  },
+  {
+    "menuComponents": "바비큐치킨버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/be9eb560-eac3-43a0-a7dd-a8aa7e673689.png",
+    "menuCd": "1115377",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/c0e4bd53-4195-43d1-a0b9-41ca966b0e88.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/e44a91b4-1f05-4de3-8369-0ee561b91f1e.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a3de2649-8857-47b6-9138-2247f6c1097a.png",
+    "menuNm": "바비큐치킨버거",
+    "price": 6190
+  },
+  {
+    "menuComponents": "치킨버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/eea3248f-3d79-4618-a87d-c9e07b61c432.png",
+    "menuCd": "1115242",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/f2ea7073-4d5d-45c8-a587-d18fb59b2ae1.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/ee26fd0d-6ef8-46e7-824b-7d61f6249bee.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/c046cd25-fe47-46f8-9804-b5bf3e7a29d1.png",
+    "menuNm": "치킨버거",
+    "price": 5260
+  },
+  {
+    "menuComponents": "BLT오믈렛킹모닝",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/f233336e-3807-4206-b95a-f53ed079fbe3.png",
+    "menuCd": "1100528",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/b2ec5620-28f4-405f-a191-dbd1df118fa3.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a568b70e-0074-414d-ba07-7a96a6c56bca.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/fd09a279-3bad-4a78-83c8-a36f41b69e33.png",
+    "menuNm": "BLT오믈렛킹모닝",
+    "price": 5740
+  },
+  {
+    "menuComponents": "BLT오믈렛킹모닝 + 아메리카노",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/a7c3cfbf-dfe8-4098-b976-7eabcfc279f4.png",
+    "menuCd": "7700621",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ae1add19-0a0c-41b9-bed4-0e6bdf1b174b.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/bb956147-b522-4f0e-9b57-d078136f68ea.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a6ab6e3c-24c2-4990-9f62-6d386f169dc6.png",
+    "menuNm": "BLT오믈렛킹모닝 콤보",
+    "price": 5910
+  },
+  {
+    "menuComponents": "오믈렛킹모닝 + 아메리카노",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/f7d80b58-298e-4e64-a85c-a21cecc194da.png",
+    "menuCd": "7700619",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a47123d6-349e-49c0-859e-e03ca54c9506.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b256b0b2-e84b-4a31-bd19-852b28954b61.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/de87830c-1d1b-4934-8630-a45b869a5338.png",
+    "menuNm": "오믈렛킹모닝 콤보",
+    "price": 6070
+  },
+  {
+    "menuComponents": "오믈렛킹모닝",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/cd116165-b98c-4f40-8539-c54b2c61a9ab.png",
+    "menuCd": "1100527",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ff4f6698-d5c6-4b77-b527-73bc5dc6b696.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a1f494df-25a7-4869-9667-ab09b3d74222.png",
+    "spicyYn": "0",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/dc21a095-5fe2-4c7b-9bda-61030fa9111c.png",
+    "menuNm": "오믈렛킹모닝",
+    "price": 4780
+  },
+  {
+    "menuComponents": "몬스터 주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/c6b2d9f4-abfa-4b7d-b48b-0a28bd31f294.png",
+    "menuCd": "1100667",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/d60da93e-be6e-4d93-840f-e396320c14ae.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/f7356bc3-b526-4bca-b814-4545f075bdda.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/a25f6d1e-44b8-4560-ac00-fa1377a93e43.png",
+    "menuNm": "몬스터 주니어",
+    "price": 4270
+  },
+  {
+    "menuComponents": "불맛 더블치즈버거 주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/dc68f263-f05e-4329-aec6-f74e0eea74ba.png",
+    "menuCd": "1100651",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/ccef3f03-b9df-4c49-948d-78664b995e8f.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/bb124c13-664b-45fc-91b3-c6178d670a46.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/b4108370-c075-4644-812f-1b25eff7c523.png",
+    "menuNm": "불맛 더블치즈버거 주니어",
+    "price": 3720
+  },
+  {
+    "menuComponents": "더블비프불고기버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/fcd68e23-a1e7-40e2-97ae-a62763774c9e.png",
+    "menuCd": "1100654",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/d8f7591e-91bb-4488-8bb2-3e5900c09549.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/ac8ecadb-dfa3-4106-adc9-66fe2760c3ad.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/c4cfe6d2-9e4d-4d5b-8cc2-5f600eaef01e.png",
+    "menuNm": "더블비프불고기버거",
+    "price": 5130
+  },
+  {
+    "menuComponents": "콰트로치즈와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/b8b69ea0-aa6e-4043-88ee-c675bd2082a5.png",
+    "menuCd": "1100652",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/b5e3ee43-5149-4eca-9a44-c409557d64e9.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/a8ac15d6-6f21-4685-a613-4113ada3049f.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/ed5d7c27-137c-4566-bc38-c3919d9e7275.png",
+    "menuNm": "콰트로치즈와퍼주니어",
+    "price": 4100
+  },
+  {
+    "menuComponents": "통새우와퍼주니어",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/f706dd74-3b9f-4149-8b64-b641bf6da971.png",
+    "menuCd": "1100653",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/e9601027-9c0a-4c6d-9601-4136ed57432c.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/b0703fb1-d2ea-44cc-9826-f5afb5364d8d.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/ef7820b6-27ae-4862-b30d-3ecb756613f8.png",
+    "menuNm": "통새우와퍼주니어",
+    "price": 3680
+  },
+  {
+    "menuComponents": "비프불고기버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/cafab6b7-78f3-41ab-a671-9d355339592a.png",
+    "menuCd": "1100650",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/bf74a892-5b96-49e7-9a2f-1822dc15d057.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/acfdbd4f-4090-4cfa-abe4-9a9234c2c851.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/ad54f7f7-409b-4349-950b-595a996644c6.png",
+    "menuNm": "비프불고기버거",
+    "price": 5730
+  },
+  {
+    "menuComponents": "롱치킨버거",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/20/e604b00d-7001-4e0e-80eb-d172c5a2ea29.png",
+    "menuCd": "1115466",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/20/ff719f37-6352-44dd-9f2d-d988ddd3fd8c.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/20/b0bf9c79-b26a-4133-bc2f-74486fd4752a.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/20/f6f66270-071d-40cc-862d-7346b181c649.png",
+    "menuNm": "롱치킨버거",
+    "price": 5960
+  }
+]
