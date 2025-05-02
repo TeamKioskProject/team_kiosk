@@ -5,13 +5,13 @@ enum KioskMode { burger, cafe }
 
 /// 색상 정의
 class AppColors {
-  // 햄버거 주문용 테마
-  static const burgerPrimary = Color(0xFFFF5722); // Deep Orange
-  static const burgerSecondary = Color(0xFFFF9800); // Orange
-  static const burgerBackground = Color(0xFFFFF3E0); // Light Cream
+// // 햄버거 주문용 테마 (파스텔과 선명함 사이의 중간 톤)
+  static const burgerPrimary = Color(0xFFFF8A65); // Medium Salmon Orange
+  static const burgerSecondary = Color(0xFFFFC97C); // Medium Apricot
+  static const burgerBackground = Color(0xFFFFF2E8); // Soft Warm Cream
   static const burgerSurface = Color(0xFFFFFFFF); // White
-  static const burgerText = Color(0xFF212121); // Dark Grey
-  static const burgerSubText = Color(0xFF757575); // Grey
+  static const burgerText = Color(0xFF4A2F28); // Gentle Dark Brown
+  static const burgerSubText = Color(0xFF7B4F45); // Muted Pink Brown
 
   // 카페(스타벅스 스타일) 테마
   static const cafePrimary = Color(0xFF00704A); // Starbucks Green
