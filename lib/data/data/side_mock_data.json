@@ -1,0 +1,137 @@
+[
+  {
+    "menuComponents": "핫 토마토 모짜볼",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/03/05/b9ba06d9-a295-41d8-8cb3-6489f14f3ef7.png",
+    "menuCd": "2200275",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/03/05/bf876bef-9763-4026-aa54-cebc674d4cc8.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/03/05/f9185545-d9ed-4c5e-900b-567c2ff046e7.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/edd85d8c-aec5-4e4f-92b5-91cd618b270b.png",
+    "menuNm": "핫 토마토 모짜볼",
+    "price": 4880
+  },
+  {
+    "menuComponents": "456크로켓+디아블로소스",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/21/dbb18c33-39cd-4fc6-b273-6967ff0da9ad.png",
+    "menuCd": "2200269",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/21/b0cdf9d2-56e8-4875-aea1-e1f7aab546f0.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/21/a98958e3-9d28-4df7-ae46-2d2a14d6436f.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/21/ebe338fb-26d9-42d2-bf48-6a10eaa41f30.png",
+    "menuNm": "456크로켓+디아블로소스",
+    "price": 4810
+  },
+  {
+    "menuComponents": "456크로켓+스윗칠리소스",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/21/df70d319-75ce-4846-a0fb-8e0b69e5fdf6.png",
+    "menuCd": "2200270",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/21/e88adc52-afe1-47e4-9f61-4b79a94f44f8.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/21/b3c3b3ff-a64f-4cdf-9c62-72925f4dac51.png",
+    "spicyYn": "1",
+    "menuFlagList": [
+      {
+        "menuFlagPk": "01",
+        "menuFlagNm": "NEW"
+      }
+    ],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/21/ded73648-873e-4935-87d7-b858759b2ec6.png",
+    "menuNm": "456크로켓+스윗칠리소스",
+    "price": 3490
+  },
+  {
+    "menuComponents": "바삭킹4조각",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ab34a753-5337-4f98-a3ef-3b82f56a8a6b.png",
+    "menuCd": "2030421",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/d17bab94-eb7b-435a-bdf2-74f92b043875.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b7087273-75b6-4c8d-8883-7d2aa0d1c834.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/ebdd5c2a-3aac-46ac-a7d5-5e7d6d9fdb9a.png",
+    "menuNm": "바삭킹4조각",
+    "price": 2110
+  },
+  {
+    "menuComponents": "바삭킹2조각",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/f3792d8c-339f-47fd-bb5b-f40733991c1f.png",
+    "menuCd": "2030420",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/b593f902-6fcf-41d1-9337-1406bbfb58af.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b40301ca-19f6-4784-a952-367140861739.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/c7ac7e31-cee8-4176-a15e-75016cc671a4.png",
+    "menuNm": "바삭킹2조각",
+    "price": 3970
+  },
+  {
+    "menuComponents": "바삭킹8조각+스위트칠리소스",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/e8d72647-0aad-4fa0-9113-881e50d34e45.png",
+    "menuCd": "2030422",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/c3ed666f-a0a2-4ed9-a926-df9d557fe72a.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/c8cb149c-6e75-4f10-8187-9873617e61cc.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/ef5cb0cd-8385-442b-8067-61cba6bfe5e9.png",
+    "menuNm": "바삭킹8조각+스위트칠리소스",
+    "price": 2560
+  },
+  {
+    "menuComponents": "바삭킹8조각+디아블로소스",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b2cb8dd5-4af2-450a-a34e-d8ae0fefaf06.png",
+    "menuCd": "2030424",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/d5f8c3aa-1e2a-4d39-8969-6f2f5a1a61ac.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/e4e5bd27-71d5-404e-9df1-b89c2f78ca14.png",
+    "spicyYn": "1",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/cf9cf2a4-0cc4-47f2-9dda-6d70001f92b4.png",
+    "menuNm": "바삭킹8조각+디아블로소스",
+    "price": 3240
+  },
+  {
+    "menuComponents": "크리미모짜볼(10조각)",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/a60dc039-541b-4a2c-a258-29c0edcc0dd0.png",
+    "menuCd": "2030344",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/deef9c7c-1d99-4eec-8f80-05b8ebf7988d.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/cec00bd4-9c99-492c-b40f-efda4b98c21b.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d0fdcb78-28c0-4e5e-9ce5-3a747e468f69.png",
+    "menuNm": "크리미모짜볼(10조각)",
+    "price": 4040
+  },
+  {
+    "menuComponents": "크리미모짜볼(5조각)",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b9678d64-c344-41d8-9773-a69a02f3c4b1.png",
+    "menuCd": "2030343",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a81edca9-de35-4bbb-a7ae-6b72347accc6.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b63edcdd-751f-4f4a-b05c-a9f320d61733.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/bd0680b0-a94c-4c9b-808f-ec22569f77a7.png",
+    "menuNm": "크리미모짜볼(5조각)",
+    "price": 4160
+  },
+  {
+    "menuComponents": "21치즈스틱",
+    "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/b9b45861-8b06-4342-a3ef-ed6405f5457a.png",
+    "menuCd": "2030261",
+    "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/a42579b2-254b-426b-abbd-ae22eab8ea06.png",
+    "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a6b54faa-22a8-47a1-a051-644b6eac7373.png",
+    "spicyYn": "0",
+    "menuFlagList": [],
+    "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/ed186cf8-45f1-4e20-8cc3-277c621354ab.png",
+    "menuNm": "21치즈스틱",
+    "price": 3110
+  }
+]

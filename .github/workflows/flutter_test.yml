@@ -3,28 +3,57 @@ name: Flutter Test
 on:
   pull_request:
     branches:
-      - develop
+      - dev
       - main
+  push:
+    # 모든 브랜치 대상
+    branches:
+      - '**'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Check Commit Message
+        id: check_commit
+        run: |
+          echo "🔍 Checking commit messages..."
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            RANGE="origin/${{ github.base_ref }}..HEAD"
+          else
+            RANGE="HEAD~10..HEAD"
+          fi
+
+          COMMITS=$(git log --pretty=format:"%s" $RANGE)
+          echo "$COMMITS"
+
+          if echo "$COMMITS" | grep -Eiq '^(feat|fix|refactor)'; then
+            echo "✅ Match found."
+            echo "run_test=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "❌ No matching commit message."
+            echo "run_test=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install Flutter
+        if: steps.check_commit.outputs.run_test == 'true'
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.29.2' # 👉 네가 사용하는 Flutter 버전에 맞게 수정할 수 있어
+          flutter-version: '3.29.2'
 
       - name: Install Dependencies
+        if: steps.check_commit.outputs.run_test == 'true'
         run: flutter pub get
 
       - name: Analyze Code
+        if: steps.check_commit.outputs.run_test == 'true'
         run: flutter analyze
 
       - name: Run Tests
+        if: steps.check_commit.outputs.run_test == 'true'
         run: flutter test
