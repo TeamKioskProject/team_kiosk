@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(title: "demo", routerConfig: router);
+    return MaterialApp(
+      home: Scaffold(),
+    );
   }
 }
