@@ -4,6 +4,7 @@ import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 
+
 /// KioskTheme 제공
 final kioskThemeProvider = Provider<KioskTheme>((ref) {
   final appState = ref.watch(appStateProvider);

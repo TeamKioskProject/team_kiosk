@@ -34,6 +34,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                     PlaceSelectScreen(theme: theme, textStyles: styles),
           ),
 
+
         ],
       ),
     ],

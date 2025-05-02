@@ -5,6 +5,7 @@ import 'package:team_kiosk/core/constants/box_styles.dart';
 
 @immutable
 class OrderSummaryBox extends StatefulWidget {
+
   final KioskTheme theme;
   final TextStyleSet textStyleSet;
   final String itemName;
@@ -143,7 +144,6 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
                 ),
               ],
             ),
-
           ),
         ],
       ),
