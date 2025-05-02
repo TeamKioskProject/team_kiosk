@@ -6,24 +6,14 @@ class AppScaffold extends ConsumerWidget {
   final String? title;
   final Widget child;
 
-  const AppScaffold({
-    super.key,
-    this.title,
-    required this.child,
-  });
+  const AppScaffold({super.key, this.title, required this.child});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(kioskThemeProvider);
     final styles = ref.watch(textStyleSetProvider);
 
     return Scaffold(
-      body: SafeArea(
-        child: DefaultTextStyle(
-          style: styles.body,
-          child: child,
-        ),
-      ),
+      body: SafeArea(child: DefaultTextStyle(style: styles.body, child: child)),
     );
   }
 }

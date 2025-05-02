@@ -13,7 +13,6 @@ class Kioskbutton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(kioskThemeProvider);
     final styles = ref.watch(textStyleSetProvider);
 
     return SizedBox(
