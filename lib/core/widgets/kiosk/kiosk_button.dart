@@ -23,14 +23,7 @@ class Kioskbutton extends ConsumerWidget {
         invert: true,
         innerDistance: -20,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: Image.asset(
-              'assets/icons/chat_bubble.png',
-              width: 60,
-              height: 40,
-            ),
-          ),
+          Image.asset('assets/icons/chat_bubble.png', width: 60, height: 40),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -39,12 +32,12 @@ class Kioskbutton extends ConsumerWidget {
                 padding: const EdgeInsets.only(
                   left: 30,
                   right: 50,
-                  top: 40,
+                  top: 30,
                   bottom: 20,
                 ),
                 child: Text(
                   text,
-                  style: styles.headline1,
+                  style: styles.headline1.copyWith(fontSize: 25),
                   maxLines: 2,
                   textAlign: TextAlign.start,
                 ),

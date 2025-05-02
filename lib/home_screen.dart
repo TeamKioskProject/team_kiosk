@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_kiosk/core/component/kiosk_button.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/payment/mock_data.dart';
 import 'package:team_kiosk/core/widgets/payment/order_summary_box.dart';
 
