@@ -7,15 +7,31 @@ on:
 jobs:
   label_by_title:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Label PR based on title
-        uses: actions-ecosystem/action-add-labels@v1
+      - name: Add labels based on PR title
+        uses: actions/github-script@v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: |
-            ${{ contains(github.event.pull_request.title, 'feat:') && 'enhancement' }}
-            ${{ contains(github.event.pull_request.title, 'fix:') && 'bug' }}
-            ${{ contains(github.event.pull_request.title, 'docs:') && 'documentation' }}
-            ${{ contains(github.event.pull_request.title, 'chore:') && 'chore' }}
-            ${{ contains(github.event.pull_request.title, 'test:') && 'test' }}
-            ${{ contains(github.event.pull_request.title, 'refactor:') && 'refactor' }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const title = context.payload.pull_request.title.toLowerCase();
+            const labels = [];
+
+            if (title.startsWith('feat:')) labels.push('enhancement');
+            if (title.startsWith('fix:')) labels.push('bug');
+            if (title.startsWith('docs:')) labels.push('documentation');
+            if (title.startsWith('chore:')) labels.push('chore');
+            if (title.startsWith('test:')) labels.push('test');
+            if (title.startsWith('refactor:')) labels.push('refactor');
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels
+              });
+              console.log(`✅ Labels added: ${labels.join(', ')}`);
+            } else {
+              console.log('ℹ️ No labels matched PR title.');
+            }

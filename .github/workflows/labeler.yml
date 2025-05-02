@@ -1,17 +1,59 @@
-frontend:
-  - "lib/**"
+name: PR Title Labeler (Full Labels)
 
-backend:
-  - "server/**"
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
 
-bug:
-  - ".github/ISSUE_TEMPLATE/bug_report.md"
+jobs:
+  label-by-title:
+    runs-on: ubuntu-latest
 
-enhancement:
-  - ".github/ISSUE_TEMPLATE/feature_request.md"
+    steps:
+      - name: Apply labels based on PR title (Korean/English)
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const title = context.payload.pull_request.title.toLowerCase();
+            const labels = [];
 
-firebase:
-  - "lib/firebase/**"
+            const mappings = {
+              'animation': ['animation', '애니메이션'],
+              'bug': ['bug', '버그', '오류'],
+              'build/deploy': ['build', 'deploy', '배포', '빌드'],
+              'chore': ['chore', '잡일', '설정', '패키지'],
+              'dependency': ['dependency', '의존성'],
+              'documentation': ['doc', 'readme', '문서', '주석'],
+              'enhancement': ['enhancement', '기능 추가', '개선', 'feature'],
+              'firebase': ['firebase', '파이어베이스'],
+              'local-storage': ['local-storage', '로컬 저장', 'sharedpreferences', 'hive'],
+              'navigation': ['navigation', '라우팅', 'gorouter'],
+              'performance': ['performance', '성능'],
+              'priority: high': ['priority: high', '긴급', '최우선'],
+              'priority: medium': ['priority: medium', '보통 우선'],
+              'priority: low': ['priority: low', '낮은 우선'],
+              'question': ['question', '질문', '토론'],
+              'refactor': ['refactor', '리팩터링'],
+              'state-management': ['state', '상태 관리', 'provider', 'riverpod'],
+              'test': ['test', '테스트'],
+              'ui/ux': ['ui', 'ux', '디자인', '화면'],
+              'widget': ['widget', '위젯']
+            };
 
-ui/ux:
-  - "lib/ui/**"
+            for (const [label, keywords] of Object.entries(mappings)) {
+              if (keywords.some(keyword => title.includes(keyword))) {
+                labels.push(label);
+              }
+            }
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels
+              });
+              console.log(`✅ Added labels: ${labels.join(', ')}`);
+            } else {
+              console.log('ℹ️ No matching label found.');
+            }
