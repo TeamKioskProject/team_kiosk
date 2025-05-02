@@ -33,6 +33,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 (context, state) =>
                     PlaceSelectScreen(theme: theme, textStyles: styles),
           ),
+
         ],
       ),
     ],

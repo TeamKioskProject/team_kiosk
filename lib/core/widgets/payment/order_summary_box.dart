@@ -143,6 +143,7 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
                 ),
               ],
             ),
+
           ),
         ],
       ),
