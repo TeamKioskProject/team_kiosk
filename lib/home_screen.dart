@@ -12,26 +12,29 @@ class HomeScreen extends ConsumerWidget {
     final theme = ref.watch(kioskThemeProvider);
     final styles = ref.watch(textStyleSetProvider);
 
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.all(30),
-      child: Column(
-        children: [
-          Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
-          Column(
-            children:
-                mockData.map((items) {
-                  return OrderSummaryBox(
-                    theme: theme,
-                    textStyleSet: styles,
-                    itemImage: items["menuImgThumPath"],
-                    itemName: items["menuNm"],
-                    itemPrice: items["price"].toString(),
-                    itemQuantity: 1,
-                  );
-                }).toList(),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          children: [
+            Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
+
+            Column(
+              children:
+                  mockData.map((items) {
+                    return OrderSummaryBox(
+                      theme: theme,
+                      textStyleSet: styles,
+                      itemImage: items["menuImgThumPath"],
+                      itemName: items["menuNm"],
+                      itemPrice: items["price"].toString(),
+                      itemQuantity: 1,
+                    );
+                  }).toList(),
+            ),
+          ],
+        ),
       ),
     );
   }

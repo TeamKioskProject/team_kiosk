@@ -27,6 +27,7 @@ class Kioskbutton extends ConsumerWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
+              width: double.infinity,
               decoration: ButtonStyles.kioskButton(Colors.white),
               child: Padding(
                 padding: const EdgeInsets.only(
