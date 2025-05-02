@@ -1,31 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppTextStyles {
-  /// 일반 모드 (Pretendard, 표준 크기)
-  static const normal = _TextStyleSet(
-    fontFamily: 'Pretendard',
-    headline1: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, height: 1.4, color: Colors.black),
-    headline2: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, height: 1.4, color: Colors.black),
-    body: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, height: 1.5, color: Colors.black87),
-    button: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, height: 1.2, color: Colors.white),
-    accent: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.deepOrange),
-    caption: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.grey, height: 1.4),
-  );
-
-  /// 배리어프리 모드 (크기 + 대비 강화)
-  static const accessible = _TextStyleSet(
-    fontFamily: 'Pretendard',
-    headline1: TextStyle(fontSize: 38, fontWeight: FontWeight.bold, height: 1.4, color: Colors.black),
-    headline2: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, height: 1.4, color: Colors.black),
-    body: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, height: 1.6, color: Colors.black),
-    button: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, height: 1.3, color: Colors.white),
-    accent: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.redAccent),
-    caption: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54, height: 1.5),
-  );
-}
-
-class _TextStyleSet {
-  final String fontFamily;
+/// 텍스트 스타일 묶음
+class TextStyleSet {
   final TextStyle headline1;
   final TextStyle headline2;
   final TextStyle body;
@@ -33,8 +9,7 @@ class _TextStyleSet {
   final TextStyle accent;
   final TextStyle caption;
 
-  const _TextStyleSet({
-    required this.fontFamily,
+  const TextStyleSet({
     required this.headline1,
     required this.headline2,
     required this.body,
@@ -42,4 +17,34 @@ class _TextStyleSet {
     required this.accent,
     required this.caption,
   });
+}
+
+/// 텍스트 스타일 제공 클래스
+class AppTextStyles {
+  static const String _fontFamily = 'Pretendard';
+
+  /// 일반 모드 스타일
+  static final TextStyleSet normal = TextStyleSet(
+    headline1: TextStyle(fontFamily: _fontFamily, fontSize: 32, fontWeight: FontWeight.bold, height: 1.4, color: Colors.black),
+    headline2: TextStyle(fontFamily: _fontFamily, fontSize: 24, fontWeight: FontWeight.w600, height: 1.4, color: Colors.black),
+    body: TextStyle(fontFamily: _fontFamily, fontSize: 18, fontWeight: FontWeight.w500, height: 1.5, color: Colors.black87),
+    button: TextStyle(fontFamily: _fontFamily, fontSize: 20, fontWeight: FontWeight.bold, height: 1.2, color: Colors.white),
+    accent: TextStyle(fontFamily: _fontFamily, fontSize: 20, fontWeight: FontWeight.w700, color: Colors.deepOrange),
+    caption: TextStyle(fontFamily: _fontFamily, fontSize: 16, fontWeight: FontWeight.w400, color: Colors.grey, height: 1.4),
+  );
+
+  /// 배리어프리 모드 스타일
+  static final TextStyleSet accessible = TextStyleSet(
+    headline1: TextStyle(fontFamily: _fontFamily, fontSize: 38, fontWeight: FontWeight.bold, height: 1.4, color: Colors.black),
+    headline2: TextStyle(fontFamily: _fontFamily, fontSize: 28, fontWeight: FontWeight.w600, height: 1.4, color: Colors.black),
+    body: TextStyle(fontFamily: _fontFamily, fontSize: 22, fontWeight: FontWeight.w600, height: 1.6, color: Colors.black),
+    button: TextStyle(fontFamily: _fontFamily, fontSize: 24, fontWeight: FontWeight.bold, height: 1.3, color: Colors.white),
+    accent: TextStyle(fontFamily: _fontFamily, fontSize: 24, fontWeight: FontWeight.w700, color: Colors.redAccent),
+    caption: TextStyle(fontFamily: _fontFamily, fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54, height: 1.5),
+  );
+
+  /// 접근성 모드 여부에 따라 스타일 반환
+  static TextStyleSet of(bool isAccessible) {
+    return isAccessible ? accessible : normal;
+  }
 }

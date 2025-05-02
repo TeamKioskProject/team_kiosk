@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 전체 Git 히스토리 접근 가능
 
       - name: Check Commit Message
         id: check_commit
