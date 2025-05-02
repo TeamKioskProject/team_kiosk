@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-enum KioskMode {
-  burger,
-  cafe,
-}
+/// 테마 모드 enum
+enum KioskMode { burger, cafe }
 
+/// 색상 정의
 class AppColors {
-  // 햄버거 주문용 테마
-  static const burgerPrimary = Color(0xFFFF5722); // Deep Orange
-  static const burgerSecondary = Color(0xFFFF9800); // Orange
-  static const burgerBackground = Color(0xFFFFF3E0); // Light Cream
+// // 햄버거 주문용 테마 (파스텔과 선명함 사이의 중간 톤)
+  static const burgerPrimary = Color(0xFFFF8A65); // Medium Salmon Orange
+  static const burgerSecondary = Color(0xFFFFC97C); // Medium Apricot
+  static const burgerBackground = Color(0xFFFFF2E8); // Soft Warm Cream
   static const burgerSurface = Color(0xFFFFFFFF); // White
-  static const burgerText = Color(0xFF212121); // Dark Grey
-  static const burgerSubText = Color(0xFF757575); // Grey
+  static const burgerText = Color(0xFF4A2F28); // Gentle Dark Brown
+  static const burgerSubText = Color(0xFF7B4F45); // Muted Pink Brown
 
   // 카페(스타벅스 스타일) 테마
   static const cafePrimary = Color(0xFF00704A); // Starbucks Green
@@ -23,6 +22,7 @@ class AppColors {
   static const cafeAccent = Color(0xFFA4C3B2); // Soft Mint
 }
 
+/// 키오스크 테마
 class KioskTheme {
   final Color primary;
   final Color secondary;
@@ -31,19 +31,11 @@ class KioskTheme {
   final Color text;
   final Color subText;
 
-  const KioskTheme({
-    required this.primary,
-    required this.secondary,
-    required this.background,
-    required this.surface,
-    required this.text,
-    required this.subText,
-  });
-
+  /// enum 기반 팩토리 생성자
   factory KioskTheme.fromMode(KioskMode mode) {
     switch (mode) {
       case KioskMode.burger:
-        return const KioskTheme(
+        return const KioskTheme._(
           primary: AppColors.burgerPrimary,
           secondary: AppColors.burgerSecondary,
           background: AppColors.burgerBackground,
@@ -52,7 +44,7 @@ class KioskTheme {
           subText: AppColors.burgerSubText,
         );
       case KioskMode.cafe:
-        return const KioskTheme(
+        return const KioskTheme._(
           primary: AppColors.cafePrimary,
           secondary: AppColors.cafeSecondary,
           background: AppColors.cafeBackground,
@@ -62,4 +54,13 @@ class KioskTheme {
         );
     }
   }
+
+  const KioskTheme._({
+    required this.primary,
+    required this.secondary,
+    required this.background,
+    required this.surface,
+    required this.text,
+    required this.subText,
+  });
 }
