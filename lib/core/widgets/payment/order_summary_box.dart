@@ -40,18 +40,6 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: ButtonStyles.kioskButton(Colors.white),
-      // decoration: BoxDecoration(
-      //   color: Colors.white,
-      //   borderRadius: BorderRadius.circular(16),
-      //   boxShadow: const [
-      //     BoxShadow(
-      //       color: Color(0x1A000000), // 000000 with 10% opacity
-      //       offset: Offset(0, 2), // X: 0, Y: 2
-      //       blurRadius: 4, // Blur: 4
-      //       spreadRadius: 0, // Spread: 0
-      //     ),
-      //   ],
-      // ),
       child: Column(
         spacing: 0,
         mainAxisAlignment: MainAxisAlignment.start,
