@@ -15,4 +15,14 @@ abstract class ButtonStyles {
       ],
     );
   }
+
+  static ButtonStyle categoryButton(Color color) {
+    return ElevatedButton.styleFrom(
+      backgroundColor: color,
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 10,
+      shadowColor: Colors.black.withAlpha(30),
+    );
+  }
 }
