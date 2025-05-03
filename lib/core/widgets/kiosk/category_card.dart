@@ -13,7 +13,7 @@ class CategoryCard extends ConsumerWidget {
   final IconData icon;
   final VoidCallback onTap;
 
-  CategoryCard({
+  const CategoryCard({
     super.key,
     required this.icon,
     required this.category,

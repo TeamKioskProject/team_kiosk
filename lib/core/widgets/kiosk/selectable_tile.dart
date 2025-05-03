@@ -11,7 +11,7 @@ class SelectableTile extends ConsumerWidget {
   final KioskTheme theme;
   final VoidCallback onTap;
 
-  SelectableTile({
+  const SelectableTile({
     super.key,
     required this.theme,
     required this.onTap,
