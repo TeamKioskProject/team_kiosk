@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
+import 'package:team_kiosk/core/widgets/payment/installment_group.dart';
 import 'package:team_kiosk/core/widgets/payment/mock_data.dart';
 import 'package:team_kiosk/core/widgets/payment/order_summary_box.dart';
+import 'package:team_kiosk/core/widgets/payment/signature_card.dart';
+import 'package:team_kiosk/core/widgets/payment/total_amount.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -19,12 +22,6 @@ class HomeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            Kioskbutton(
-              text: '오늘은 몇 가지 주문을 연습해볼까요?',
-              theme: theme,
-              textStyleSet: styles,
-            ),
-            const SizedBox(height: 24),
             Column(
               children:
                   mockData.map((items) {
