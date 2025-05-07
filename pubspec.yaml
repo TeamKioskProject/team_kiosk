@@ -75,7 +75,6 @@ flutter:
     - assets/fonts/
     - assets/icons/
     - assets/images/
-    - assets/lottie/
   fonts:
     - family: Pretendard
       fonts:
@@ -97,7 +96,6 @@ flutter:
           weight: 600
         - asset: assets/fonts/Pretendard-Thin.ttf
           weight: 100
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
