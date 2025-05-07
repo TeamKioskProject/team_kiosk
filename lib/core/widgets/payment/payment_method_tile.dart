@@ -7,6 +7,7 @@ class PaymentMethodTile extends StatelessWidget {
   final KioskTheme theme;
   final String paymentName;
   final TextStyleSet textStyleSet;
+
   const PaymentMethodTile({
     super.key,
     required this.paymentName,
@@ -16,16 +17,18 @@ class PaymentMethodTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final IconData icon = paymentName == '카드 결제'
+        ? Icons.credit_card
+        : Icons.smartphone;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: ButtonStyles.kioskButton(Colors.white),
       child: Column(
-        spacing: 20,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (paymentName == '카드 결제')
-            Icon(Icons.credit_card, size: 48, color: theme.primary),
-          if (paymentName != '카드 결제')
-            Icon(Icons.smartphone, size: 48, color: theme.primary),
+          Icon(icon, size: 48, color: theme.primary),
+          const SizedBox(height: 20),
           Text(paymentName, style: textStyleSet.headline2),
         ],
       ),

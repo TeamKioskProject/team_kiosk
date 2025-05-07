@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
 
+@immutable
 class DialogCancelButton extends StatelessWidget {
   final KioskTheme theme;
   final TextStyleSet textStyleSet;
   final String text;
-  IconData? icon;
-  Color? iconColor;
-  final void Function() onTapEvent;
+  final IconData? icon;
+  final Color? iconColor;
+  final VoidCallback onTapEvent;
 
-  DialogCancelButton({
+  const DialogCancelButton({
     super.key,
     required this.text,
     this.icon,
@@ -32,31 +32,31 @@ class DialogCancelButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.grey[300],
           borderRadius: BorderRadius.circular(16),
-
         ),
         child: InkWell(
           onTap: onTapEvent,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
-            child:
-                icon == null
-                    ? Text(
-                      text,
-                      style: textStyleSet.headline2,
-                      textAlign: TextAlign.center,
-                    )
-                    : Row(
-                      spacing: 10,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(icon, color: iconColor ?? Colors.white),
-                        Text(
-                          text,
-                          style: textStyleSet.headline2,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+            child: icon == null
+                ? Center(
+              child: Text(
+                text,
+                style: textStyleSet.headline2,
+                textAlign: TextAlign.center,
+              ),
+            )
+                : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, color: iconColor ?? Colors.white),
+                const SizedBox(width: 10),
+                Text(
+                  text,
+                  style: textStyleSet.headline2,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),
