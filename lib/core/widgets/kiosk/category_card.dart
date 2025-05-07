@@ -41,3 +41,4 @@ class CategoryCard extends ConsumerWidget {
     );
   }
 }
+

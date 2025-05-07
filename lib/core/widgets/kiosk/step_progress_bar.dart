@@ -16,6 +16,7 @@ class StepProgressBar extends ConsumerWidget {
   final KioskTheme theme;
 
   const StepProgressBar(
+    this.theme,
     this.title,
     this.icon,
     this.title2,
@@ -23,8 +24,7 @@ class StepProgressBar extends ConsumerWidget {
     this.title3,
     this.icon3,
     this.title4,
-    this.icon4,
-    this.theme, {
+    this.icon4, {
     super.key,
   });
 
