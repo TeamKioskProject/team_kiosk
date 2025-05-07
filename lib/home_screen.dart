@@ -4,8 +4,6 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/payment/mock_data.dart';
 import 'package:team_kiosk/core/widgets/payment/order_summary_box.dart';
-import 'package:team_kiosk/core/widgets/payment/signature_card.dart';
-import 'package:team_kiosk/core/widgets/payment/total_amount.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -21,8 +19,8 @@ class HomeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme,textStyleSet: styles,),
-            const SizedBox(height: 20),
+            Kioskbutton(text: '오늘은 몇가지 주문을 해볼까요?', theme: theme, textStyleSet: styles),
+            const SizedBox(height: 24),
             Column(
               children:
                   mockData.map((items) {
@@ -39,8 +37,21 @@ class HomeScreen extends ConsumerWidget {
                     );
                   }).toList(),
             ),
-            TotalAmount(theme: theme, textStyleSet: styles, amount: '25800'),
-            SignatureCard(theme: theme, styles: styles),
+
+
+            Column(
+              children:
+                  mockData.map((items) {
+                    return OrderSummaryBox(
+                      theme: theme,
+                      textStyleSet: styles,
+                      itemImage: items["menuImgThumPath"],
+                      itemName: items["menuNm"],
+                      itemPrice: items["price"].toString(),
+                      itemQuantity: 1,
+                    );
+                  }).toList(),
+            ),
           ],
         ),
       ),
