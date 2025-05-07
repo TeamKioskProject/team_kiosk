@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/payment/mock_data.dart';
@@ -19,25 +20,24 @@ class HomeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            Kioskbutton(
-              text: '오늘은 몇 가지 주문을 연습해볼까요?',
-              theme: theme,
-            ),
+            Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
             const SizedBox(height: 24),
             Column(
-              children: mockData.map((items) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: OrderSummaryBox(
-                    theme: theme,
-                    textStyleSet: styles,
-                    itemImage: items["menuImgThumPath"],
-                    itemName: items["menuNm"],
-                    itemPrice: items["price"].toString(),
-                    itemQuantity: 1,
-                  ),
-                );
-              }).toList(),
+              children:
+                  mockData.map((items) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: OrderSummaryBox(
+                        theme: theme,
+                        textStyleSet: styles,
+                        itemImage: items["menuImgThumPath"],
+                        itemName: items["menuNm"],
+                        itemPrice: items["price"].toString(),
+                        itemQuantity: 1,
+                      ),
+                    );
+                  }).toList(),
+            ),
             Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
 
             Column(
