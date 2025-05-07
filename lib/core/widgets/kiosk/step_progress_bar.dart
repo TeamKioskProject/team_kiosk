@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
 
-class StepProgressBar extends ConsumerWidget {
+@immutable
+class StepProgressBar extends StatelessWidget {
   final String title;
   final IconData icon;
   final String title2;
@@ -13,9 +13,9 @@ class StepProgressBar extends ConsumerWidget {
   final String title4;
   final IconData icon4;
   final KioskTheme theme;
+  final TextStyleSet textStyleSet;
 
   const StepProgressBar(
-    this.theme,
     this.title,
     this.icon,
     this.title2,
@@ -23,24 +23,25 @@ class StepProgressBar extends ConsumerWidget {
     this.title3,
     this.icon3,
     this.title4,
-    this.icon4, {
+    this.icon4,
+    this.theme,
+    this.textStyleSet, {
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final styles = ref.watch(textStyleSetProvider);
+  Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TabBar(
         labelColor: theme.primary,
-        labelStyle: styles.button,
+        labelStyle: textStyleSet.button,
         indicatorColor: theme.primary,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorWeight: 4,
         indicatorPadding: const EdgeInsets.symmetric(horizontal: 7),
-        unselectedLabelStyle: styles.button.copyWith(color: Colors.grey),
+        unselectedLabelStyle: textStyleSet.button.copyWith(color: Colors.grey),
         tabs: [
           Column(children: [Icon(icon), Tab(text: title)]),
           Column(children: [Icon(icon2), Tab(text: title2)]),
