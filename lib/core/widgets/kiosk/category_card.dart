@@ -21,6 +21,7 @@ class CategoryCard extends StatelessWidget {
     required this.theme,
     required this.text,
     required this.textStyleSet,
+    required this.onTap,
   });
 
   @override

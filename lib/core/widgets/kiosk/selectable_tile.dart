@@ -15,10 +15,11 @@ class SelectableTile extends StatelessWidget {
   const SelectableTile({
     super.key,
     required this.theme,
-    required this.onTap,
+    required this.icon,
     required this.image,
     required this.title,
     required this.textStyleSet,
+    required this.onTap,
   });
 
   @override
