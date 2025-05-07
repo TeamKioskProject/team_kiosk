@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
 
+@immutable
 class OrderSummaryBox extends StatefulWidget {
   final KioskTheme theme;
   final TextStyleSet textStyleSet;
@@ -13,7 +12,8 @@ class OrderSummaryBox extends StatefulWidget {
   final String itemImage;
   final int itemQuantity;
 
-  OrderSummaryBox({
+  const OrderSummaryBox({
+    super.key,
     required this.theme,
     required this.textStyleSet,
     required this.itemName,
@@ -27,7 +27,7 @@ class OrderSummaryBox extends StatefulWidget {
 }
 
 class _OrderSummaryBoxState extends State<OrderSummaryBox> {
-  num count = 0;
+  late int count;
 
   @override
   void initState() {
@@ -41,41 +41,36 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
       padding: const EdgeInsets.all(16),
       decoration: ButtonStyles.kioskButton(Colors.white),
       child: Column(
-        spacing: 0,
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Align(
             alignment: Alignment.topRight,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                // TODO: 아이템 제거 기능 추가
+              },
               icon: const Icon(Icons.restore_from_trash),
             ),
           ),
+          const SizedBox(height: 8),
           Row(
-            spacing: 10,
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                // color: widget.theme.secondary,
                 width: 80,
-                // height: 80,
-                child: Image.network(widget.itemImage, ),
+                child: Image.network(widget.itemImage),
               ),
+              const SizedBox(width: 10),
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.itemName, style: widget.textStyleSet.headline2),
-                  Text(
-                    '${widget.itemPrice}원',
-                    style: widget.textStyleSet.caption,
-                  ),
+                  Text('${widget.itemPrice}원', style: widget.textStyleSet.caption),
                 ],
               ),
             ],
           ),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -84,44 +79,40 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
                 child: Text('수량', style: widget.textStyleSet.body),
               ),
               Row(
-                spacing: 20,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   GestureDetector(
                     onTap: () {
                       if (count > 0) {
                         setState(() {
-                          count = count - 1;
+                          count--;
                         });
                       }
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(2),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color:
-                            count <= 1
-                                ? Colors.grey[400]
-                                : widget.theme.primary,
+                        color: count <= 1 ? Colors.grey[400] : widget.theme.primary,
                       ),
-                      child: const Icon(Icons.remove, color: Colors.white, size: 16,),
+                      child: const Icon(Icons.remove, color: Colors.white, size: 16),
                     ),
                   ),
+                  const SizedBox(width: 16),
                   Text(count.toString(), style: widget.textStyleSet.body),
+                  const SizedBox(width: 16),
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        count = count + 1;
+                        count++;
                       });
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(2),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: widget.theme.primary,
                       ),
-                      child: const Icon(Icons.add, color: Colors.white, size: 16,),
+                      child: const Icon(Icons.add, color: Colors.white, size: 16),
                     ),
                   ),
                 ],

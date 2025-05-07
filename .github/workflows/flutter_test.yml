@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 전체 git 기록을 가져와서 HEAD~10 범위도 접근 가능
+          fetch-depth: 0  # 전체 Git 히스토리 접근 가능
 
       - name: Check Commit Message
         id: check_commit
@@ -51,10 +51,16 @@ jobs:
         if: steps.check_commit.outputs.run_test == 'true'
         run: flutter pub get
 
+      - name: Generate code with build_runner
+        if: steps.check_commit.outputs.run_test == 'true'
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
       - name: Analyze Code
         if: steps.check_commit.outputs.run_test == 'true'
         run: flutter analyze
 
-      - name: Run Tests
+      - name: Run Golden Tests
         if: steps.check_commit.outputs.run_test == 'true'
-        run: flutter test
+
+        run: flutter test test/golden/manual_widget_test.dart --update-goldens
+
