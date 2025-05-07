@@ -1,20 +1,24 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
 
-class Kioskbutton extends ConsumerWidget {
+@immutable
+class Kioskbutton extends StatelessWidget {
   final String text;
   final KioskTheme theme;
+  final TextStyleSet textStyleSet;
 
-  const Kioskbutton({super.key, required this.text, required this.theme});
+  const Kioskbutton({
+    super.key,
+    required this.text,
+    required this.theme,
+    required this.textStyleSet,
+  });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final styles = ref.watch(textStyleSetProvider);
-
+  Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
       child: ColumnSuper(
@@ -37,7 +41,7 @@ class Kioskbutton extends ConsumerWidget {
                 ),
                 child: Text(
                   text,
-                  style: styles.headline1.copyWith(fontSize: 25),
+                  style: textStyleSet.headline1.copyWith(fontSize: 25),
                   maxLines: 2,
                   textAlign: TextAlign.start,
                 ),
