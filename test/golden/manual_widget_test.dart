@@ -1,4 +1,4 @@
-import 'dart:ui' as ui;
+import 'dart:developer' as dev;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,7 +20,7 @@ void main() {
       theme: theme,
       text: '확인',
       textStyleSet: AppTextStyles.normal,
-      onTapEvent: () => print('DialogActionButton pressed!'),
+      onTapEvent: () => dev.log('DialogActionButton pressed!'),
     ),
     'PaymentMethodTile': PaymentMethodTile(
       theme: theme,
@@ -31,7 +31,7 @@ void main() {
       theme: theme,
       text: '취소',
       textStyleSet: AppTextStyles.normal,
-      onTapEvent: () => print('DialogCancelButton pressed!'),
+      onTapEvent: () => dev.log('DialogCancelButton pressed!'),
     ),
     'SelectableTile': ProviderScope(
       child: SelectableTile(
@@ -39,7 +39,7 @@ void main() {
         title: '커피',
         icon: Icons.local_cafe,
         theme: theme,
-        onTap: () => print('SelectableTile tapped!'),
+        onTap: () => dev.log('SelectableTile tapped!'),
       ),
     ),
     'Kioskbutton': ProviderScope(
@@ -53,7 +53,7 @@ void main() {
         theme: theme,
         text: '카페',
         category: Category.cafe,
-        onTap: () => print('CategoryCard tapped!'),
+        onTap: () => dev.log('CategoryCard tapped!'),
         icon: Icons.handyman_sharp,
       ),
     ),
@@ -76,10 +76,9 @@ void main() {
         final fontLoader = FontLoader('Pretendard')..addFont(pretendard);
         await fontLoader.load();
 
-        // Set the window size
-        final binding = tester.binding;
-        binding.window.physicalSizeTestValue = size;
-        binding.window.devicePixelRatioTestValue = 1.0;
+        // Set the view size
+        tester.view.physicalSize = size;
+        tester.view.devicePixelRatio = 1.0;
 
         await tester.pumpWidget(MaterialApp(
           theme: ThemeData(
@@ -94,8 +93,9 @@ void main() {
           matchesGoldenFile("goldens/$screenName.png"),
         );
 
-        // Reset the window size
-        binding.window.clearPhysicalSizeTestValue();
+        // Reset the view size
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
       });
     }
   }
