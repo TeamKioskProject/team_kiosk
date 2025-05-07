@@ -24,7 +24,6 @@ class SelectableTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final styles = ref.watch(textStyleSetProvider);
-
     return GestureDetector(
       onTap: onTap,
       child: Container(

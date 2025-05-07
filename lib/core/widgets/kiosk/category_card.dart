@@ -13,6 +13,7 @@ class CategoryCard extends ConsumerWidget {
   final IconData icon;
   final VoidCallback onTap;
 
+
   const CategoryCard({
     super.key,
     required this.icon,
@@ -41,3 +42,4 @@ class CategoryCard extends ConsumerWidget {
     );
   }
 }
+

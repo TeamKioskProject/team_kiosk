@@ -61,4 +61,6 @@ jobs:
 
       - name: Run Golden Tests
         if: steps.check_commit.outputs.run_test == 'true'
+
         run: flutter test test/golden/manual_widget_test.dart --update-goldens
+
