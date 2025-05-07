@@ -22,11 +22,7 @@ class HomeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            Kioskbutton(
-              text: '오늘은 몇 가지 주문을 연습해볼까요?',
-              theme: theme,
-              textStyleSet: styles,
-            ),
+            Kioskbutton(text: '오늘은 몇가지 주문을 해볼까요?', theme: theme, textStyleSet: styles),
             const SizedBox(height: 24),
             Column(
               children:
@@ -44,11 +40,7 @@ class HomeScreen extends ConsumerWidget {
                     );
                   }).toList(),
             ),
-            Kioskbutton(
-              text: '오늘은 몇 가지 주문을 연습해볼까요?',
-              theme: theme,
-              textStyleSet: styles,
-            ),
+            
 
             Column(
               children:
