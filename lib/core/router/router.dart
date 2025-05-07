@@ -11,6 +11,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state, child) {
           return AppScaffold(title: 'Kiosk Demo', child: child);
         },
+
         routes: [
           GoRoute(
             path: '/',
