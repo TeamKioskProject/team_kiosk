@@ -41,7 +41,6 @@ class HomeScreen extends ConsumerWidget {
                 },
               ),
             ),
-            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CategoryCard(
