@@ -40,7 +40,7 @@ class InstallmentGroup extends StatelessWidget {
                   border: Border.all(color: theme.primary),
                   color:  select ? theme.primary : Colors.white
                 ),
-                child: Text("$text", style: textStyleSet.button.copyWith(color:select ? Colors.white : theme.primary),),
+                child: Text(text, style: textStyleSet.button.copyWith(color:select ? Colors.white : theme.primary),),
               );
             },
           ),
