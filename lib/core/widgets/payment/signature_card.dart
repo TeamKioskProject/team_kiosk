@@ -11,7 +11,7 @@ class SignatureCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<SfSignaturePadState> _signaturePadKey = GlobalKey();
+    GlobalKey<SfSignaturePadState> signaturePadKey = GlobalKey();
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: ButtonStyles.kioskButton(Colors.white),
@@ -26,19 +26,19 @@ class SignatureCard extends StatelessWidget {
               border: Border.all(color: theme.subText),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: SfSignaturePad(key: _signaturePadKey),
+            child: SfSignaturePad(key: signaturePadKey),
           ),
           Align(
             alignment: Alignment.centerRight,
             child: IconButton(
               onPressed: () {
-                _signaturePadKey.currentState?.clear();
+                signaturePadKey.currentState?.clear();
               },
               icon: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [Icon(Icons.lock_reset_outlined), Text('다시하기', style: styles.caption,)],
+                children: [const Icon(Icons.lock_reset_outlined), Text('다시하기', style: styles.caption,)],
               ),
             ),
           ),
