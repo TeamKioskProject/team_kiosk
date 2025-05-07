@@ -46,7 +46,6 @@ class HomeScreen extends ConsumerWidget {
               theme: theme,
               textStyleSet: styles,
             ),
-
             Column(
               children:
                   mockData.map((items) {
