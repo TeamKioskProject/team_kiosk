@@ -37,26 +37,27 @@ class DialogCancelButton extends StatelessWidget {
           onTap: onTapEvent,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
-            child: icon == null
-                ? Center(
-              child: Text(
-                text,
-                style: textStyleSet.headline2,
-                textAlign: TextAlign.center,
-              ),
-            )
-                : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(icon, color: iconColor ?? Colors.white),
-                const SizedBox(width: 10),
-                Text(
-                  text,
-                  style: textStyleSet.headline2,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+            child:
+                icon == null
+                    ? Center(
+                      child: Text(
+                        text,
+                        style: textStyleSet.headline2,
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                    : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(icon, color: iconColor ?? Colors.white),
+                        const SizedBox(width: 10),
+                        Text(
+                          text,
+                          style: textStyleSet.headline2,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
           ),
         ),
       ),

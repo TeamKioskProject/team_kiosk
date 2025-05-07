@@ -38,86 +38,111 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
       decoration: ButtonStyles.kioskButton(Colors.white),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Stack(
         children: [
-          Align(
-            alignment: Alignment.topRight,
+          Positioned(
+            right: 0,
+            top: 0,
             child: IconButton(
               onPressed: () {
                 // TODO: 아이템 제거 기능 추가
               },
-              icon: const Icon(Icons.restore_from_trash),
+              icon: const Icon(Icons.restore_from_trash, size: 24),
             ),
           ),
-          const SizedBox(height: 8),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 80,
-                child: Image.network(widget.itemImage),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(widget.itemName, style: widget.textStyleSet.headline2),
-                  Text('${widget.itemPrice}원', style: widget.textStyleSet.caption),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 12.0),
-                child: Text('수량', style: widget.textStyleSet.body),
-              ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      if (count > 0) {
-                        setState(() {
-                          count--;
-                        });
-                      }
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: count <= 1 ? Colors.grey[400] : widget.theme.primary,
-                      ),
-                      child: const Icon(Icons.remove, color: Colors.white, size: 16),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: 16,
+              top: 10,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(width: 80, child: Image.network(widget.itemImage)),
+                    const SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.itemName,
+                          style: widget.textStyleSet.headline2,
+                        ),
+                        Text(
+                          '${widget.itemPrice}원',
+                          style: widget.textStyleSet.caption,
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 16),
-                  Text(count.toString(), style: widget.textStyleSet.body),
-                  const SizedBox(width: 16),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        count++;
-                      });
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: widget.theme.primary,
-                      ),
-                      child: const Icon(Icons.add, color: Colors.white, size: 16),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: Text('수량', style: widget.textStyleSet.body),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (count > 0) {
+                              setState(() {
+                                count--;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  count <= 1
+                                      ? Colors.grey[400]
+                                      : widget.theme.primary,
+                            ),
+                            child: const Icon(
+                              Icons.remove,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(count.toString(), style: widget.textStyleSet.body),
+                        const SizedBox(width: 16),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              count++;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: widget.theme.primary,
+                            ),
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
