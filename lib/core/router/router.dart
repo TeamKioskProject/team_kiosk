@@ -18,6 +18,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             builder: (context, state) => const HomeScreen(), // ✅ const 적용
           ),
         ],
+
       ),
     ],
   );

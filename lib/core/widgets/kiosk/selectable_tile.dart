@@ -19,7 +19,6 @@ class SelectableTile extends StatelessWidget {
     required this.image,
     required this.title,
     required this.textStyleSet,
-    required this.icon,
   });
 
   @override
