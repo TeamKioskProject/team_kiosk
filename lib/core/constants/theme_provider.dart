@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
-import 'package:team_kiosk/core/state/app_state_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
+import 'package:team_kiosk/core/state/app_state_notifier.dart';
 
 /// KioskTheme 제공
 final kioskThemeProvider = Provider<KioskTheme>((ref) {
