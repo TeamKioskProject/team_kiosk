@@ -13,7 +13,7 @@ class CategoryCard extends ConsumerWidget {
   final IconData icon;
   final VoidCallback onTap;
 
-  CategoryCard({
+  const CategoryCard({
     super.key,
     required this.icon,
     required this.category,
@@ -25,22 +25,19 @@ class CategoryCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final styles = ref.watch(textStyleSetProvider);
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: onTap,
-          style: ButtonStyles.categoryButton(theme.primary),
-          child: FittedBox(
-            child: Row(
-              children: [
-                Icon(icon, color: Colors.white, size: 30),
-                const SizedBox(width: 5),
-                Text(text, style: styles.button),
-              ],
-            ),
-          ),
+
+    return ElevatedButton(
+      onPressed: onTap,
+      style: ButtonStyles.categoryButton(theme.primary),
+      child: FittedBox(
+        child: Row(
+          children: [
+            Icon(icon, color: Colors.white, size: 30),
+            const SizedBox(width: 5),
+            Text(text, style: styles.button),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

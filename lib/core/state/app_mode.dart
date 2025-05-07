@@ -11,7 +11,5 @@ KioskMode kioskModeFromAppMode(AppMode mode) {
       return KioskMode.burger;
     case AppMode.cafe:
       return KioskMode.cafe;
-    default:
-      throw ArgumentError('AppMode $mode cannot be converted to KioskMode');
   }
 }
