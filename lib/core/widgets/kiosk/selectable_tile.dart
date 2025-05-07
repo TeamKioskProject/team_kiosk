@@ -4,6 +4,7 @@ import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 
+@immutable
 class SelectableTile extends ConsumerWidget {
   final String image;
   final String title;
@@ -27,36 +28,34 @@ class SelectableTile extends ConsumerWidget {
       onTap: onTap,
       child: Container(
         decoration: ButtonStyles.kioskButton(Colors.white),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: [
-              Image.asset(image, width: double.infinity, fit: BoxFit.cover),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Row(
-                      children: [
-                        Icon(icon, color: theme.primary, size: 28),
-                        const SizedBox(width: 3),
-                        Flexible(
-                          child: Text(
-                            title,
-                            style: styles.headline2,
-                            overflow: TextOverflow.visible,
-                            maxLines: 2,
-                          ),
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Image.asset(image, width: double.infinity, fit: BoxFit.cover),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      Icon(icon, color: theme.primary, size: 28),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: styles.headline2,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const Icon(Icons.arrow_forward_ios),
-                ],
-              ),
-            ],
-          ),
+                ),
+                const Icon(Icons.arrow_forward_ios, size: 18),
+              ],
+            ),
+          ],
         ),
       ),
     );
