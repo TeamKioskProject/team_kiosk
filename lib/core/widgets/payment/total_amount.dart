@@ -10,6 +10,7 @@ class TotalAmount extends StatelessWidget {
   final String amount;
 
   const TotalAmount({
+    super.key,
     required this.theme,
     required this.textStyleSet,
     required this.amount,
