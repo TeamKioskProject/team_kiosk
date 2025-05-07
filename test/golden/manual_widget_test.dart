@@ -56,6 +56,9 @@ void main() {
         icon: Icons.handyman_sharp,
       ),
     ),
+    'SignatureCard': SignatureCard(styles: AppTextStyles.normal, theme: theme),
+    'TotalAmount' : TotalAmount(theme: theme, textStyleSet: AppTextStyles.normal, amount: '25800'),
+    'InstallmentGroup' : InstallmentGroup(theme: theme, textStyleSet: AppTextStyles.normal)
   };
 
   final screenSizes = [
