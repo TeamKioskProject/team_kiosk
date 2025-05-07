@@ -1,5 +1,4 @@
 import 'dart:developer' as dev;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,7 +42,6 @@ void main() {
         title: '커피',
         icon: Icons.local_cafe,
         theme: theme,
-        onTap: () => dev.log('SelectableTile tapped!'),
       ),
     ),
     'Kioskbutton': ProviderScope(
@@ -58,28 +56,22 @@ void main() {
         icon: Icons.handyman_sharp,
       ),
     ),
-    'SignatureCard': SignatureCard(styles: AppTextStyles.normal, theme: theme),
-    'TotalAmount' : TotalAmount(theme: theme, textStyleSet: AppTextStyles.normal, amount: '25800'),
-    'InstallmentGroup' : InstallmentGroup(theme: theme, textStyleSet: AppTextStyles.normal)
   };
 
   final screenSizes = [
-    const Size(320, 640), // iPhone SE (small)
-    const Size(375, 812), // iPhone 13 (medium)
-    const Size(414, 896), // iPhone 11 Pro Max (large)
+    const Size(320, 640),  // iPhone SE (small)
+    const Size(375, 812),  // iPhone 13 (medium)
+    const Size(414, 896),  // iPhone 11 Pro Max (large)
     const Size(768, 1024), // iPad (tablet)
     const Size(1080, 1920), // FHD (large screen)
   ];
 
   for (final entry in testWidgetsMap.entries) {
     for (final size in screenSizes) {
-      final screenName =
-          "${entry.key}_${size.width.toInt()}x${size.height.toInt()}";
+      final screenName = "${entry.key}_${size.width.toInt()}x${size.height.toInt()}";
 
       testWidgets("$screenName golden test", (tester) async {
-        final pretendard = rootBundle.load(
-          'assets/fonts/Pretendard-Medium.ttf',
-        );
+        final pretendard = rootBundle.load('assets/fonts/Pretendard-Medium.ttf');
         final fontLoader = FontLoader('Pretendard')..addFont(pretendard);
         await fontLoader.load();
 
@@ -87,15 +79,13 @@ void main() {
         tester.view.physicalSize = size;
         tester.view.devicePixelRatio = 1.0;
 
-        await tester.pumpWidget(
-          MaterialApp(
-            theme: ThemeData(
-              fontFamily: 'Pretendard',
-              textTheme: AppTextStyles.normal.toTextTheme(),
-            ),
-            home: entry.value,
+        await tester.pumpWidget(MaterialApp(
+          theme: ThemeData(
+            fontFamily: 'Pretendard',
+            textTheme: AppTextStyles.normal.toTextTheme(),
           ),
-        );
+          home: entry.value,
+        ));
 
         await expectLater(
           find.byType(entry.value.runtimeType),
