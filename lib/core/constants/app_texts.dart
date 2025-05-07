@@ -17,9 +17,21 @@ class TextStyleSet {
     required this.accent,
     required this.caption,
   });
+
+  /// TextTheme으로 변환
+  TextTheme toTextTheme() {
+    return TextTheme(
+      headlineLarge: headline1,
+      headlineMedium: headline2,
+      bodyLarge: body,
+      labelLarge: button,
+      titleMedium: accent,
+      bodySmall: caption,
+    );
+  }
 }
 
-/// 텍스트 스타일 제공 클래스
+/// Pretendard 폰트 설정
 class AppTextStyles {
   static const String _fontFamily = 'Pretendard';
 
