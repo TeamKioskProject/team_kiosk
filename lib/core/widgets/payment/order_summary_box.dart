@@ -33,9 +33,12 @@ class OrderSummaryBox extends StatefulWidget {
 }
 
 class _OrderSummaryBoxState extends State<OrderSummaryBox> {
+  late int count;
+
   @override
   void initState() {
     super.initState();
+    count = widget.itemQuantity;
   }
 
   @override
