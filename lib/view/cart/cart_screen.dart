@@ -20,7 +20,7 @@ class CartScreen extends ConsumerWidget {
     final cartNotifier = ref.read(cartNotifierProvider.notifier);
 
     return Scaffold(
-      appBar: KioskAppBar(title: '장바구니', theme: theme),
+      appBar: KioskAppBar(title: '장바구니', theme: theme, textStyleSet: textStyles,),
       backgroundColor: theme.background,
       body: SafeArea(
         child: Column(
@@ -48,9 +48,10 @@ class CartScreen extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Semantics(
-                      label: theme == KioskTheme.fromMode(KioskMode.burger)
-                          ? "버거 장바구니 비어 있음"
-                          : "커피 장바구니 비어 있음",
+                      label:
+                          theme == KioskTheme.fromMode(KioskMode.burger)
+                              ? "버거 장바구니 비어 있음"
+                              : "커피 장바구니 비어 있음",
                       child: Lottie.asset(
                         theme == KioskTheme.fromMode(KioskMode.burger)
                             ? "assets/lottie/hambuger_lottie.json"
@@ -69,42 +70,43 @@ class CartScreen extends ConsumerWidget {
             if (cartState.cartItems.isNotEmpty)
               Expanded(
                 child: ListView(
-                  children: cartState.cartItems.map((items) {
-                    return Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Semantics(
-                        label:
-                        '${items.name}, 가격 ${items.price}원, 수량 ${items.quantity}개',
-                        child: OrderSummaryBox(
-                          theme: theme,
-                          textStyleSet: textStyles,
-                          itemName: items.name,
-                          itemPrice: items.price.toString(),
-                          itemImage: items.imagePath,
-                          itemQuantity: items.quantity,
-                          itemId: items.id,
-                          onAddTap: (id) {
-                            cartNotifier.incrementQuantity(id);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('${items.name}의 수량이 증가했습니다.'),
-                                duration: const Duration(seconds: 1),
-                              ),
-                            );
-                          },
-                          onMinusTap: (id) {
-                            cartNotifier.decrementQuantity(id);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('${items.name}의 수량이 감소했습니다.'),
-                                duration: const Duration(seconds: 1),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                  children:
+                      cartState.cartItems.map((items) {
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Semantics(
+                            label:
+                                '${items.name}, 가격 ${items.price}원, 수량 ${items.quantity}개',
+                            child: OrderSummaryBox(
+                              theme: theme,
+                              textStyleSet: textStyles,
+                              itemName: items.name,
+                              itemPrice: items.price.toString(),
+                              itemImage: items.imagePath,
+                              itemQuantity: items.quantity,
+                              itemId: items.id,
+                              onAddTap: (id) {
+                                cartNotifier.incrementQuantity(id);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('${items.name}의 수량이 증가했습니다.'),
+                                    duration: const Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              onMinusTap: (id) {
+                                cartNotifier.decrementQuantity(id);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('${items.name}의 수량이 감소했습니다.'),
+                                    duration: const Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        );
+                      }).toList(),
                 ),
               ),
 
@@ -130,6 +132,7 @@ class CartScreen extends ConsumerWidget {
                         ),
                       );
                     },
+                    textStyleSet: textStyles,
                   ),
                 ),
               ),

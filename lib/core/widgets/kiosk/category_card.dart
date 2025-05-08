@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
+
 
 enum Category { burger, cafe }
 
@@ -14,20 +16,8 @@ class CategoryCard extends ConsumerWidget {
   final TextStyleSet textStyleSet;
   final VoidCallback onTap;
 
-  const CategoryCard({
-    super.key,
-    required this.icon,
-    required this.category,
-    required this.theme,
-    required this.text,
-    required this.textStyleSet,
-    required this.onTap,
-  });
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final styles = ref.watch(textStyleSetProvider);
-
     return ElevatedButton(
       onPressed: onTap,
       style: ButtonStyles.categoryButton(theme.primary),
@@ -42,4 +32,13 @@ class CategoryCard extends ConsumerWidget {
       ),
     );
   }
+
+  const CategoryCard({
+    required this.category,
+    required this.theme,
+    required this.text,
+    required this.icon,
+    required this.textStyleSet,
+    required this.onTap,
+  });
 }
