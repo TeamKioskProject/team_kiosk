@@ -6,6 +6,7 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/view/home_screen.dart';
 import 'package:team_kiosk/view/kiosk_start_page/kiosk_start_page.dart';
+import 'package:team_kiosk/view/main_select/menu_select_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -32,14 +33,14 @@ final routerProvider = Provider<GoRouter>((ref) {
               final categoryName =
                   state.uri.queryParameters['category'] ?? 'burger';
               final category = kiosk.Category.values.firstWhere(
-                (e) => e.name == categoryName,
+                    (e) => e.name == categoryName,
                 orElse: () => kiosk.Category.burger,
               );
 
               final mode =
-                  category == kiosk.Category.burger
-                      ? KioskMode.burger
-                      : KioskMode.cafe;
+              category == kiosk.Category.burger
+                  ? KioskMode.burger
+                  : KioskMode.cafe;
               final theme = KioskTheme.fromMode(mode);
 
               return PlaceSelectScreen(category: category, theme: theme);
@@ -51,17 +52,36 @@ final routerProvider = Provider<GoRouter>((ref) {
               final categoryName =
                   state.uri.queryParameters['category'] ?? 'burger';
               final category = kiosk.Category.values.firstWhere(
-                (e) => e.name == categoryName,
+                    (e) => e.name == categoryName,
                 orElse: () => kiosk.Category.burger,
               );
 
               final mode =
-                  category == kiosk.Category.burger
-                      ? KioskMode.burger
-                      : KioskMode.cafe;
+              category == kiosk.Category.burger
+                  ? KioskMode.burger
+                  : KioskMode.cafe;
               final theme = KioskTheme.fromMode(mode);
 
               return KioskStartPage(category: category, theme: theme);
+            },
+          ),
+          GoRoute(
+            path: '/menu-select-screen',
+            builder: (context, state) {
+              final categoryName =
+                  state.uri.queryParameters['category'] ?? 'burger';
+              final category = kiosk.Category.values.firstWhere(
+                    (e) => e.name == categoryName,
+                orElse: () => kiosk.Category.burger,
+              );
+
+              final mode =
+              category == kiosk.Category.burger
+                  ? KioskMode.burger
+                  : KioskMode.cafe;
+              final theme = KioskTheme.fromMode(mode);
+
+              return MenuSelectScreen(category: category, theme: theme);
             },
           ),
         ],

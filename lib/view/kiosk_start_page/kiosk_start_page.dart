@@ -72,7 +72,6 @@ class KioskStartPage extends ConsumerWidget {
                           ? '햄버거 주문 연습 하기'
                           : '카페 주문 연습 하기',
                   onTap: () {
-                    print('선택된 카테고리: ${category.name}');
                     context.push("/place-select?category=${category.name}");
                   },
                 ),

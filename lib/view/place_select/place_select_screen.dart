@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
@@ -39,9 +40,9 @@ class PlaceSelectScreen extends ConsumerWidget {
             children: [
               Kioskbutton(
                 text:
-                    isBurger == kiosk.Category.burger
-                        ? '햄버거를 어디서 드시겠어요?'
-                        : '커피를 어디서 드시겠어요?',
+                isBurger == kiosk.Category.burger
+                    ? '햄버거를 어디서 드시겠어요?'
+                    : '커피를 어디서 드시겠어요?',
                 theme: theme,
                 category: category,
               ),
@@ -51,7 +52,9 @@ class PlaceSelectScreen extends ConsumerWidget {
                 icon: Icons.restaurant,
                 image: 'assets/images/inside.png',
                 title: '매장에서 먹을래요',
-                onTap: () {},
+                onTap: () {
+                  context.push("/menu-select-screen?category=${category.name}");
+                },
               ),
               const SizedBox(height: 20),
               SelectableTile(
@@ -59,7 +62,9 @@ class PlaceSelectScreen extends ConsumerWidget {
                 icon: Icons.shopping_bag,
                 image: 'assets/images/take.png',
                 title: '가져갈래요',
-                onTap: () {},
+                onTap: () {
+                  context.push("/menu-select-screen?category=${category.name}");
+                },
               ),
             ],
           ),
