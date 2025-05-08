@@ -59,8 +59,30 @@ jobs:
         if: steps.check_commit.outputs.run_test == 'true'
         run: flutter analyze
 
-      - name: Run Golden Tests
+      - name: Find Changed Widgets
         if: steps.check_commit.outputs.run_test == 'true'
+        run: bash scripts/find_changed_widgets.sh
 
+      - name: Run Changed Widget Tests
+        if: steps.check_commit.outputs.run_test == 'true'
+        run: |
+          echo "⚙️ Running tests for changed widgets..."
+          while read -r widget; do
+            echo "🧪 Testing $widget..."
+            flutter test --name="$widget" || exit 1
+          done < .tmp/changed_widgets.txt
+
+      - name: Generate Golden Files
+        if: steps.check_commit.outputs.run_test == 'true'
         run: flutter test test/golden/manual_widget_test.dart --update-goldens
 
+      - name: Run Golden Tests
+        if: steps.check_commit.outputs.run_test == 'true'
+        run: flutter test test/golden/manual_widget_test.dart
+
+      - name: Upload Golden Files
+        if: steps.check_commit.outputs.run_test == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: golden-files
+          path: goldens/

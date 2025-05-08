@@ -45,6 +45,7 @@ dependencies:
   group_button: ^5.3.4
   syncfusion_flutter_signaturepad: ^29.1.41
   flutter_tts: ^4.2.2
+  mocktail_image_network: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   freezed: ^3.0.6
   json_serializable: ^6.9.5
+  mockito: ^5.4.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
