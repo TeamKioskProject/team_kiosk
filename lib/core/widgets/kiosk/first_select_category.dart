@@ -10,14 +10,14 @@ import 'package:team_kiosk/core/state/app_state_notifier.dart';
 enum Category { burger, cafe }
 
 @immutable
-class CategoryCard extends ConsumerWidget {
+class FirstSelectCategory extends ConsumerWidget {
   final Category category;
   final KioskTheme theme;
   final String text;
   final IconData icon;
   final VoidCallback onTap;
 
-  const CategoryCard({
+  const FirstSelectCategory({
     super.key,
     required this.icon,
     required this.category,
@@ -40,7 +40,7 @@ class CategoryCard extends ConsumerWidget {
             appState.changeMode(AppMode.cafe);
             break;
         }
-        context.push('/place-select');
+        context.push('/kiosk-start-page');
       },
       style: ButtonStyles.categoryButton(theme.primary),
       child: Row(
