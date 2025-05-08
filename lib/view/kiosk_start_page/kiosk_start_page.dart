@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
-import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/kiosk/setting_button.dart';
 
 class KioskStartPage extends ConsumerWidget {
+  final Category category;
   final KioskTheme theme;
 
-  const KioskStartPage({super.key, required this.theme});
+  const KioskStartPage({
+    super.key,
+    required this.category,
+    required this.theme,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appState = ref.watch(appStateProvider.notifier);
-    final theme = ref.watch(kioskThemeProvider);
+    final isBurger = category;
+
     return Scaffold(
       appBar: KioskAppBar(
         title: '키오스크 연습',
@@ -38,19 +41,36 @@ class KioskStartPage extends ConsumerWidget {
               Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
               const SizedBox(height: 22),
               Image.asset(
-                'assets/images/hamburger.png',
+                isBurger == Category.burger
+                    ? 'assets/images/hamburger.png'
+                    : 'assets/images/coffee_ill.png',
                 width: 192,
                 height: 192,
               ),
               const SizedBox(height: 22),
-              CategoryCard(
-                icon: Icons.fastfood,
-                category: Category.burger,
-                theme: KioskTheme.fromMode(KioskMode.burger),
-                text: '햄버거 주문 연습 하기',
-                onTap: () {
-                  context.push("/place-select");
-                },
+              Semantics(
+                label:
+                    isBurger == Category.burger
+                        ? '햄버거 주문 연습 시작 버튼'
+                        : '카페 주문 연습 시작 버튼',
+                hint: '누르면 주문 연습이 시작됩니다',
+                button: true,
+                excludeSemantics: true,
+                child: CategoryCard(
+                  icon:
+                      isBurger == Category.burger
+                          ? Icons.fastfood
+                          : Icons.local_cafe,
+                  category: category,
+                  theme: theme,
+                  text:
+                      isBurger == Category.burger
+                          ? '햄버거 주문 연습 하기'
+                          : '카페 주문 연습 하기',
+                  onTap: () {
+                    context.push("/place-select");
+                  },
+                ),
               ),
               const SizedBox(height: 20),
               const Text('※ 실제 주문이 발생하지 않는 연습용 앱입니다'),

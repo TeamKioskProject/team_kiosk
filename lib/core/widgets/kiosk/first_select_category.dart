@@ -40,7 +40,7 @@ class FirstSelectCategory extends ConsumerWidget {
             appState.changeMode(AppMode.cafe);
             break;
         }
-        context.push('/kiosk-start-page');
+        context.push('/kiosk-start-page?category=${category.name}');
       },
       style: ButtonStyles.categoryButton(theme.primary),
       child: Row(
