@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/kiosk/selectable_tile.dart';
 
 class PlaceSelectScreen extends ConsumerWidget {
-  final KioskTheme theme;
-  final kiosk.Category category;
-
-  const PlaceSelectScreen({
-    super.key,
-    required this.theme,
-    required this.category,
-  });
+  const PlaceSelectScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isBurger = category;
+    final theme = ref.read(kioskThemeProvider);
+    final style = ref.read(textStyleSetProvider);
     return Scaffold(
       appBar: KioskAppBar(
         title: '주문하기',
@@ -40,11 +34,14 @@ class PlaceSelectScreen extends ConsumerWidget {
             children: [
               Kioskbutton(
                 text:
-                isBurger == kiosk.Category.burger
-                    ? '햄버거를 어디서 드시겠어요?'
-                    : '커피를 어디서 드시겠어요?',
+                    theme == kiosk.Category.burger
+                        ? '햄버거를 어디서 드시겠어요?'
+                        : '커피를 어디서 드시겠어요?',
                 theme: theme,
-                category: category,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? kiosk.Category.burger
+                        : kiosk.Category.cafe,
               ),
               const SizedBox(height: 20),
               SelectableTile(
@@ -52,9 +49,7 @@ class PlaceSelectScreen extends ConsumerWidget {
                 icon: Icons.restaurant,
                 image: 'assets/images/inside.png',
                 title: '매장에서 먹을래요',
-                onTap: () {
-                  context.push("/menu-select-screen?category=${category.name}");
-                },
+                onTap: () {},
               ),
               const SizedBox(height: 20),
               SelectableTile(
@@ -62,9 +57,7 @@ class PlaceSelectScreen extends ConsumerWidget {
                 icon: Icons.shopping_bag,
                 image: 'assets/images/take.png',
                 title: '가져갈래요',
-                onTap: () {
-                  context.push("/menu-select-screen?category=${category.name}");
-                },
+                onTap: () {},
               ),
             ],
           ),
