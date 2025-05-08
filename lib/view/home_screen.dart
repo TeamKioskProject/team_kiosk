@@ -24,7 +24,7 @@ class HomeScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Kioskbutton(
-                text: "오늘은 어떤 주문을 연습해볼까요?",
+                text: "오늘은 어떤 주문을 연습해볼까?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
               ),
             ),
