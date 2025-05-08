@@ -6,11 +6,11 @@ import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 
 @immutable
-class Kioskbutton extends ConsumerWidget {
+class KioskButton extends ConsumerWidget {
   final String text;
   final KioskTheme theme;
 
-  const Kioskbutton({super.key, required this.text, required this.theme});
+  const KioskButton({super.key, required this.text, required this.theme});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

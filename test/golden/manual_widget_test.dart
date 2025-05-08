@@ -44,7 +44,7 @@ void main() {
       ),
     ),
     'Kioskbutton': ProviderScope(
-      child: Kioskbutton(text: '주문하기', theme: theme),
+      child: KioskButton(text: '주문하기', theme: theme),
     ),
     'CategoryCard': ProviderScope(
       child: CategoryCard(
