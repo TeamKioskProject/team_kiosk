@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
-import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
+import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/kiosk/setting_button.dart';
 
 class KioskStartPage extends ConsumerWidget {
-  final Category category;
+  final kiosk.Category category;
   final KioskTheme theme;
 
   const KioskStartPage({
@@ -38,10 +38,14 @@ class KioskStartPage extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
+              Kioskbutton(
+                text: '오늘은 몇 가지 주문을 연습해볼까요?',
+                theme: theme,
+                category: category,
+              ),
               const SizedBox(height: 22),
               Image.asset(
-                isBurger == Category.burger
+                isBurger == kiosk.Category.burger
                     ? 'assets/images/hamburger.png'
                     : 'assets/images/coffee_ill.png',
                 width: 192,
@@ -50,25 +54,26 @@ class KioskStartPage extends ConsumerWidget {
               const SizedBox(height: 22),
               Semantics(
                 label:
-                    isBurger == Category.burger
+                    isBurger == kiosk.Category.burger
                         ? '햄버거 주문 연습 시작 버튼'
                         : '카페 주문 연습 시작 버튼',
                 hint: '누르면 주문 연습이 시작됩니다',
                 button: true,
                 excludeSemantics: true,
-                child: CategoryCard(
+                child: kiosk.CategoryCard(
                   icon:
-                      isBurger == Category.burger
+                      isBurger == kiosk.Category.burger
                           ? Icons.fastfood
                           : Icons.local_cafe,
                   category: category,
                   theme: theme,
                   text:
-                      isBurger == Category.burger
+                      isBurger == kiosk.Category.burger
                           ? '햄버거 주문 연습 하기'
                           : '카페 주문 연습 하기',
                   onTap: () {
-                    context.push("/place-select");
+                    print('선택된 카테고리: ${category.name}');
+                    context.push("/place-select?category=${category.name}");
                   },
                 ),
               ),

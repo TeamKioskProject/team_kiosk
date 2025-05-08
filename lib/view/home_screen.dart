@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
+import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/first_select_category.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 
@@ -26,6 +27,7 @@ class HomeScreen extends ConsumerWidget {
               child: Kioskbutton(
                 text: "오늘은 어떤 주문을 연습해볼까요?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
+                category: kiosk.Category.burger,
               ),
             ),
             Padding(
