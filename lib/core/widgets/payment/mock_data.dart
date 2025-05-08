@@ -14,7 +14,7 @@ final List<Map<String,dynamic>> mockData = [
     ],
     "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/03/05/f315fa25-eaa5-4905-b9b3-a34a6744db40.png",
     "menuNm": "통모짜와퍼",
-    "price": 7690
+    "price": 7690,
   },
   {
     "menuComponents": "BBQ 통모짜와퍼",
