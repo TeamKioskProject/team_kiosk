@@ -4,6 +4,7 @@ import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
+import 'package:team_kiosk/core/widgets/kiosk/selectable_tile.dart';
 
 class PlaceSelectScreen extends ConsumerWidget {
   final KioskTheme theme;
@@ -34,6 +35,7 @@ class PlaceSelectScreen extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Kioskbutton(
                 text:
@@ -43,7 +45,22 @@ class PlaceSelectScreen extends ConsumerWidget {
                 theme: theme,
                 category: category,
               ),
-              const SizedBox(height: 22),
+              const SizedBox(height: 20),
+              SelectableTile(
+                theme: theme,
+                icon: Icons.restaurant,
+                image: 'assets/images/inside.png',
+                title: '매장에서 먹을래요',
+                onTap: () {},
+              ),
+              const SizedBox(height: 20),
+              SelectableTile(
+                theme: theme,
+                icon: Icons.shopping_bag,
+                image: 'assets/images/take.png',
+                title: '가져갈래요',
+                onTap: () {},
+              ),
             ],
           ),
         ),
