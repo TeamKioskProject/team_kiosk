@@ -44,15 +44,10 @@ void main() {
         icon: Icons.local_cafe,
         theme: theme,
         onTap: () => dev.log('SelectableTile tapped!'),
-        textStyleSet: AppTextStyles.normal,
       ),
     ),
     'Kioskbutton': ProviderScope(
-      child: Kioskbutton(
-        text: '주문하기',
-        theme: theme,
-        textStyleSet: AppTextStyles.normal,
-      ),
+      child: Kioskbutton(text: '주문하기', theme: theme),
     ),
     'CategoryCard': ProviderScope(
       child: CategoryCard(
@@ -61,7 +56,6 @@ void main() {
         category: Category.cafe,
         onTap: () => dev.log('CategoryCard tapped!'),
         icon: Icons.handyman_sharp,
-        textStyleSet: AppTextStyles.normal,
       ),
     ),
     'SignatureCard': SignatureCard(styles: AppTextStyles.normal, theme: theme),
