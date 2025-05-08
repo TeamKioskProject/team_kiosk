@@ -12,6 +12,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(kioskThemeProvider);
     final styles = ref.watch(textStyleSetProvider);
+    //final state = ref.read(appStateProvider);
 
     return SingleChildScrollView(
       child: Container(
@@ -19,11 +20,7 @@ class HomeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            Kioskbutton(
-              text: '오늘은 몇 가지 주문을 연습해볼까요?',
-              theme: theme,
-              textStyleSet: styles,
-            ),
+            Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
             const SizedBox(height: 24),
             Column(
               children:
@@ -41,11 +38,7 @@ class HomeScreen extends ConsumerWidget {
                     );
                   }).toList(),
             ),
-            Kioskbutton(
-              text: '오늘은 몇 가지 주문을 연습해볼까요?',
-              theme: theme,
-              textStyleSet: styles,
-            ),
+            Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
 
             Column(
               children:
