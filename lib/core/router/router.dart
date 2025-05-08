@@ -4,21 +4,33 @@ import 'package:team_kiosk/app_scaffold.dart';
 import 'package:team_kiosk/home_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  return GoRouter(
+  // 모드에 따른 테마와 텍스트 스타일 선택
+  final theme = ref.watch(kioskThemeProvider);
+  final styles = ref.watch(textStyleSetProvider);
+
+  // 라우터 객체 생성
+  final router = GoRouter(
     initialLocation: '/',
     routes: [
+      GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+      GoRoute(path: '/cart', builder: (context, state) => const CartScreen()),
       ShellRoute(
         builder: (context, state, child) {
-          return AppScaffold(title: 'Kiosk Demo', child: child);
+          return Scaffold(
+            backgroundColor: theme.background,
+            body: SafeArea(child: child),
+          );
         },
-
         routes: [
           GoRoute(
-            path: '/',
-            builder: (context, state) => const HomeScreen(), // ✅ const 적용
+            path: '/place-select',
+            builder:
+                (context, state) =>
+                    PlaceSelectScreen(theme: theme, textStyles: styles),
           ),
         ],
       ),
     ],
   );
+  return router;
 });

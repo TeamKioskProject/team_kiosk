@@ -3,7 +3,7 @@ import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
 
 @immutable
-class KioskAppBar extends StatelessWidget implements PreferredSizeWidget {
+class KioskAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
   final bool centerTitle;
   final KioskTheme theme;

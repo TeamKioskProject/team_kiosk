@@ -10,7 +10,10 @@ class OrderSummaryBox extends StatefulWidget {
   final String itemName;
   final String itemPrice;
   final String itemImage;
+  final String itemId;
   final int itemQuantity;
+  final void Function(String id) onAddTap;
+  final void Function(String id) onMinusTap;
 
   const OrderSummaryBox({
     super.key,
@@ -18,8 +21,11 @@ class OrderSummaryBox extends StatefulWidget {
     required this.textStyleSet,
     required this.itemName,
     required this.itemPrice,
+    required this.itemId,
     required this.itemImage,
     required this.itemQuantity,
+    required this.onAddTap,
+    required this.onMinusTap,
   });
 
   @override
@@ -93,18 +99,14 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            if (count > 0) {
-                              setState(() {
-                                count--;
-                              });
-                            }
+                            widget.onMinusTap(widget.itemId);
                           },
                           child: Container(
                             padding: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color:
-                                  count <= 1
+                                  widget.itemQuantity <= 1
                                       ? Colors.grey[400]
                                       : widget.theme.primary,
                             ),
@@ -116,13 +118,11 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        Text(count.toString(), style: widget.textStyleSet.body),
+                        Text(widget.itemQuantity.toString(), style: widget.textStyleSet.body),
                         const SizedBox(width: 16),
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              count++;
-                            });
+                            widget.onAddTap(widget.itemId);
                           },
                           child: Container(
                             padding: const EdgeInsets.all(6),

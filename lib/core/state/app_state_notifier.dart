@@ -1,9 +1,10 @@
 import 'package:riverpod/riverpod.dart';
-import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state.dart';
+import 'package:team_kiosk/core/state/app_mode.dart';
 
-class AppStateNotifier extends StateNotifier<AppState> {
-  AppStateNotifier() : super(AppState.initial());
+class AppStateNotifier extends Notifier<AppState> {
+  @override
+  AppState build() => AppState.initial();
 
   void toggleBarrierFree() {
     state = state.copyWith(isBarrierFree: !state.isBarrierFree);
@@ -17,3 +18,5 @@ class AppStateNotifier extends StateNotifier<AppState> {
     state = state.copyWith(mode: newMode);
   }
 }
+
+final appStateProvider = NotifierProvider<AppStateNotifier, AppState>(AppStateNotifier.new);

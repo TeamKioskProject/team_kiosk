@@ -11,10 +11,7 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/kiosk/selectable_tile.dart';
 import 'package:team_kiosk/core/widgets/payment/dialog_action_button.dart';
 import 'package:team_kiosk/core/widgets/payment/dialog_cancel_button.dart';
-import 'package:team_kiosk/core/widgets/payment/installment_group.dart';
 import 'package:team_kiosk/core/widgets/payment/payment_method_tile.dart';
-import 'package:team_kiosk/core/widgets/payment/signature_card.dart';
-import 'package:team_kiosk/core/widgets/payment/total_amount.dart';
 
 void main() {
   final theme = KioskTheme.fromMode(KioskMode.cafe);

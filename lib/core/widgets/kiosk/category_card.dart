@@ -6,7 +6,7 @@ import 'package:team_kiosk/core/constants/box_styles.dart';
 enum Category { burger, cafe }
 
 @immutable
-class CategoryCard extends StatelessWidget {
+class CategoryCard extends ConsumerWidget {
   final Category category;
   final KioskTheme theme;
   final String text;
@@ -25,7 +25,9 @@ class CategoryCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final styles = ref.watch(textStyleSetProvider);
+
     return ElevatedButton(
       onPressed: onTap,
       style: ButtonStyles.categoryButton(theme.primary),
