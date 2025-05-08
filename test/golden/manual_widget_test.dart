@@ -39,6 +39,7 @@ void main() {
     ),
     'SelectableTile': ProviderScope(
       child: SelectableTile(
+        onTap: () => dev.log('DialogCancelButton pressed!'),
         image: 'assets/images/hamburger.png',
         title: '커피',
         icon: Icons.local_cafe,
