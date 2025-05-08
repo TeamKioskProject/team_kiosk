@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
 
 @immutable
-class StepProgressBar extends ConsumerWidget {
+class StepProgressBar extends StatelessWidget {
   final String title;
   final IconData icon;
   final String title2;
@@ -14,9 +13,9 @@ class StepProgressBar extends ConsumerWidget {
   final String title4;
   final IconData icon4;
   final KioskTheme theme;
+  final TextStyleSet textStyleSet;
 
   const StepProgressBar(
-    this.theme,
     this.title,
     this.icon,
     this.title2,
@@ -24,7 +23,9 @@ class StepProgressBar extends ConsumerWidget {
     this.title3,
     this.icon3,
     this.title4,
-    this.icon4, {
+    this.icon4,
+    this.theme,
+    this.textStyleSet, {
     super.key,
   });
 
