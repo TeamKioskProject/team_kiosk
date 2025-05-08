@@ -4,8 +4,7 @@ import 'package:team_kiosk/core/state/app_state.dart';
 
 class AppStateNotifier extends Notifier<AppState> {
   @override
-  AppState build() =>
-      const AppState(isBarrierFree: false, mode: AppMode.burger);
+  AppState build() => AppState.initial();
 
   void toggleBarrierFree() {
     state = state.copyWith(isBarrierFree: !state.isBarrierFree);
@@ -19,3 +18,7 @@ class AppStateNotifier extends Notifier<AppState> {
     state = state.copyWith(mode: newMode);
   }
 }
+
+final appStateProvider = NotifierProvider<AppStateNotifier, AppState>(
+  AppStateNotifier.new,
+);

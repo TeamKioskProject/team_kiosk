@@ -12,7 +12,6 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(kioskThemeProvider);
     final styles = ref.watch(textStyleSetProvider);
-    //final state = ref.read(appStateProvider);
 
     return SingleChildScrollView(
       child: Container(
