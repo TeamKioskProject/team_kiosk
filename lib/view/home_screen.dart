@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
-import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
@@ -27,7 +26,6 @@ class HomeScreen extends ConsumerWidget {
               child: Kioskbutton(
                 text: "오늘은 어떤 주문을 연습해볼까요?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
-                textStyleSet: AppTextStyles.normal,
               ),
             ),
             Padding(
@@ -37,16 +35,13 @@ class HomeScreen extends ConsumerWidget {
                 category: Category.burger,
                 theme: KioskTheme.fromMode(KioskMode.burger),
                 text: '햄버거 주문 연습 하기',
-                textStyleSet: AppTextStyles.normal,
                 onTap: () {
                   appState.changeMode(AppMode.burger);
                   context.push("/place-select");
                 },
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CategoryCard(
@@ -54,7 +49,6 @@ class HomeScreen extends ConsumerWidget {
                 category: Category.cafe,
                 theme: KioskTheme.fromMode(KioskMode.cafe),
                 text: '카페 주문 연습 하기',
-                textStyleSet: AppTextStyles.normal,
                 onTap: () {
                   appState.changeMode(AppMode.cafe);
                   context.push("/place-select");
