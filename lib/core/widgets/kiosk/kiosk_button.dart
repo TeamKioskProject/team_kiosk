@@ -6,6 +6,7 @@ import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 
+
 @immutable
 class Kioskbutton extends ConsumerWidget {
   final String text;
@@ -21,7 +22,6 @@ class Kioskbutton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final styles = ref.watch(textStyleSetProvider);
     return SizedBox(
       height: 200,
       child: ColumnSuper(
