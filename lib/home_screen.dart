@@ -39,7 +39,6 @@ class HomeScreen extends ConsumerWidget {
                   }).toList(),
             ),
             Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
-
             Column(
               children:
                   mockData.map((items) {
