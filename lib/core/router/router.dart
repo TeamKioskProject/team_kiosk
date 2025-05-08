@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/view/cart/cart_screen.dart';
 import 'package:team_kiosk/view/home_screen.dart';
+import 'package:team_kiosk/view/payment/payment_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -17,6 +18,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       GoRoute(path: '/cart', builder: (context, state) => const CartScreen()),
+      GoRoute(path: '/payment',builder: (context, state) => const PaymentScreen()),
       ShellRoute(
         builder: (context, state, child) {
           return Scaffold(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
@@ -125,12 +126,7 @@ class CartScreen extends ConsumerWidget {
                     theme: theme,
                     text: '결제하러가기',
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('결제 화면으로 이동합니다.'),
-                          duration: Duration(seconds: 1),
-                        ),
-                      );
+                      context.push("/payment");
                     },
                     textStyleSet: textStyles,
                   ),
