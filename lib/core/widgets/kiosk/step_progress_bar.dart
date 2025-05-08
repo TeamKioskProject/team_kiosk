@@ -30,19 +30,18 @@ class StepProgressBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final styles = ref.watch(textStyleSetProvider);
+  Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TabBar(
         labelColor: theme.primary,
-        labelStyle: styles.button,
+        labelStyle: textStyleSet.button,
         indicatorColor: theme.primary,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorWeight: 4,
         indicatorPadding: const EdgeInsets.symmetric(horizontal: 7),
-        unselectedLabelStyle: styles.button.copyWith(color: Colors.grey),
+        unselectedLabelStyle: textStyleSet.button.copyWith(color: Colors.grey),
         tabs: [
           Column(children: [Icon(icon), Tab(text: title)]),
           Column(children: [Icon(icon2), Tab(text: title2)]),
