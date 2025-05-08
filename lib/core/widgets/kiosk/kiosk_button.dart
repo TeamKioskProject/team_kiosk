@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
-
+import 'package:team_kiosk/core/constants/theme_provider.dart';
 
 @immutable
 class Kioskbutton extends ConsumerWidget {
@@ -21,35 +21,38 @@ class Kioskbutton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ColumnSuper(
-      outerDistance: 30,
-      alignment: Alignment.topLeft,
-      invert: true,
-      innerDistance: -20,
-      children: [
-        Image.asset('assets/icons/chat_bubble.png', width: 60, height: 40),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            width: double.infinity,
-            decoration: ButtonStyles.kioskButton(Colors.white),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 30,
-                right: 50,
-                top: 30,
-                bottom: 20,
-              ),
-              child: Text(
-                text,
-                style: textStyleSet.headline1.copyWith(fontSize: 25),
-                maxLines: 2,
-                textAlign: TextAlign.start,
+    final styles = ref.watch(textStyleSetProvider);
+    return SizedBox(
+      height: 200,
+      child: ColumnSuper(
+        alignment: Alignment.topLeft,
+        invert: true,
+        innerDistance: -20,
+        children: [
+          Image.asset('assets/icons/chat_bubble.png', width: 60, height: 40),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: double.infinity,
+              decoration: ButtonStyles.kioskButton(Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  right: 50,
+                  top: 30,
+                  bottom: 20,
+                ),
+                child: Text(
+                  text,
+                  style: textStyleSet.headline1.copyWith(fontSize: 25),
+                  maxLines: 2,
+                  textAlign: TextAlign.start,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
