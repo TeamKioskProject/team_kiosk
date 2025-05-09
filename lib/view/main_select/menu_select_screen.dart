@@ -59,16 +59,16 @@ class MenuSelectScreen extends ConsumerWidget {
                     (burgerList) => SingleChildScrollView(
                       child: SafeArea(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(15.0),
                           child: GridView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: burgerList.length,
+                            itemCount: 8,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  mainAxisSpacing: 12,
-                                  crossAxisSpacing: 12,
+                                  mainAxisSpacing: 18,
+                                  crossAxisSpacing: 18,
                                   childAspectRatio: 3 / 4,
                                 ),
                             itemBuilder: (context, index) {

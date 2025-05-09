@@ -13,7 +13,6 @@ class BurgerRepositoryImpl implements BurgerRepository {
   Future<List<Burger>> getBurgers() async {
     final dtoList = await _dataSource.getBurgerData();
     final burgerList = dtoList.map((e) => e.toBurger()).toList();
-    print(burgerList.first.imageUrl);
     return burgerList;
   }
 }

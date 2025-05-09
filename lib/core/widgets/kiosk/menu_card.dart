@@ -74,7 +74,7 @@ class MenuCard extends ConsumerWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const SizedBox(width: 5),
+                      const SizedBox(width: 18),
                       Expanded(
                         child: AutoSizeText(
                           '단품/세트',
