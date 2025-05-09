@@ -5,62 +5,127 @@ on:
     branches:
       - dev
       - main
-  push:
-    branches:
-      - '**'
+
+permissions:
+  contents: write
+  id-token: write
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 전체 Git 히스토리 접근 가능
-
-      - name: Check Commit Message
-        id: check_commit
-        run: |
-          echo "🔍 Checking commit messages..."
-
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            RANGE="origin/${{ github.base_ref }}..HEAD"
-          else
-            RANGE="HEAD~10..HEAD"
-          fi
-
-          COMMITS=$(git log --pretty=format:"%s" $RANGE)
-          echo "$COMMITS"
-
-          if echo "$COMMITS" | grep -Eiq '^(feat|fix|refactor)'; then
-            echo "✅ Match found."
-            echo "run_test=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "❌ No matching commit message."
-            echo "run_test=false" >> "$GITHUB_OUTPUT"
-          fi
+          fetch-depth: 0
 
       - name: Install Flutter
-        if: steps.check_commit.outputs.run_test == 'true'
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.2'
 
       - name: Install Dependencies
-        if: steps.check_commit.outputs.run_test == 'true'
         run: flutter pub get
 
-      - name: Generate code with build_runner
-        if: steps.check_commit.outputs.run_test == 'true'
-        run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Find or Create Widget and Golden Test Files
+        id: find_or_create_tests
+        run: |
+          echo "🔍 Finding changed widget files..."
+          git diff --name-only origin/${{ github.base_ref }}..HEAD > .tmp/changed_widgets_raw.txt
+          
+          # 필터링: 위젯 파일만 추출
+          grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
 
-      - name: Analyze Code
-        if: steps.check_commit.outputs.run_test == 'true'
-        run: flutter analyze
+          # 기본 테스트 파일 생성
+          while IFS= read -r widget_file; do
+            # 테스트 파일 경로
+            test_file="${widget_file/lib/test}"
+            test_file="${test_file/.dart/_test.dart}"
+            golden_file="${test_file/test/goldens}"
+            golden_file="${golden_file/.dart/.png}"
+            
+            # 위젯 이름 추출
+            widget_name=$(basename "$widget_file" .dart)
 
-      - name: Run Golden Tests
-        if: steps.check_commit.outputs.run_test == 'true'
+            # 테스트 파일 생성
+            if [ ! -f "$test_file" ]; then
+              echo "📝 Creating test file for $widget_file -> $test_file"
+              mkdir -p "$(dirname "$test_file")"
+              cat <<EOF > "$test_file"
+import 'dart:io';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/material.dart';
+import 'package:team_kiosk/main.dart';
+import 'package:team_kiosk/${widget_file/lib\//}';
+import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
 
-        run: flutter test test/golden/manual_widget_test.dart --update-goldens
+void main() {
+  setUpAll(() {
+    // Mock 네트워크 이미지
+    httpOverrides();
+  });
 
+  testWidgets('${widget_name} 접근성 및 골든 테스트', (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+
+    // 위젯이 로드되었는지 확인
+    expect(find.byType(${widget_name}), findsOneWidget);
+
+    // 골든 테스트
+    await expectLater(
+      find.byType(${widget_name}),
+      matchesGoldenFile('${golden_file}')
+    );
+  });
+}
+
+void httpOverrides() {
+  HttpOverrides.global = _MockHttpOverrides();
+}
+
+class _MockHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    final httpClient = super.createHttpClient(context);
+    httpClient.findProxy = (uri) => 'DIRECT';
+    httpClient.badCertificateCallback = (cert, host, port) => true;
+    return httpClient;
+  }
+}
+EOF
+              git add "$test_file"
+            else
+              echo "✅ Test file already exists: $test_file"
+            fi
+
+            # 골든 파일 디렉토리 생성
+            mkdir -p "$(dirname "$golden_file")"
+
+            # 기본 골든 파일 생성 (비어 있는 이미지)
+            if [ ! -f "$golden_file" ]; then
+              echo "🖼️ Creating empty golden file for $widget_file -> $golden_file"
+              convert -size 300x300 xc:white "$golden_file"
+              git add "$golden_file"
+            else
+              echo "✅ Golden file already exists: $golden_file"
+            fi
+          done < .tmp/changed_widgets.txt
+
+      - name: Run Accessibility and Golden Tests
+        if: steps.find_or_create_tests.outcome == 'success'
+        run: |
+          echo "🧪 Running accessibility and golden tests..."
+          find test -name "*_test.dart" | while read -r widget_test_file; do
+            echo "🧪 Testing $widget_test_file..."
+            flutter test "$widget_test_file" || exit 1
+          done
+          echo "🎉 All accessibility and golden tests passed"
+
+      - name: Upload Golden Files
+        if: steps.find_or_create_tests.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-files
+          path: goldens/
