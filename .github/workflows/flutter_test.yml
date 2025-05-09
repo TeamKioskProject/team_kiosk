@@ -41,24 +41,36 @@ jobs:
       - name: Find or Create Widget and Golden Test Files
         id: find_or_create_tests
         run: |
-          echo "🔍 Finding changed widget files..."
+          echo "🔍 Creating temporary directory..."
           mkdir -p .tmp
-          
-          # 기본 브랜치가 비어있는 경우를 대비한 안전한 git diff
-          git fetch origin
+
+          echo "🔍 Fetching latest changes..."
+          git fetch origin +refs/heads/*:refs/remotes/origin/* --prune
+
           BASE_REF=${{ github.base_ref || 'main' }}
-          
-          # 변경된 파일이 없는 경우 빈 파일 생성
+
+          # 기본 브랜치가 존재하는지 확인
+          if ! git rev-parse --verify origin/$BASE_REF >/dev/null 2>&1; then
+            echo "⚠️ Base branch $BASE_REF does not exist. Skipping test generation."
+            exit 0
+          fi
+
+          echo "🔍 Finding changed widget files..."
+          # 기본 브랜치와의 차이점 찾기
           git diff --name-only origin/$BASE_REF..HEAD > .tmp/changed_widgets_raw.txt || true
           
-          
-          
-          # 위젯 파일 필터링
+          # 필터링: 위젯 파일만 추출
           grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
 
-          # 테스트 파일 생성 루프
+          # 변경된 위젯 파일이 없는 경우 스크립트 종료
+          if [ ! -s .tmp/changed_widgets.txt ]; then
+            echo "⚠️ No widget files changed. Skipping test generation."
+            exit 0
+          fi
+
+          # 기본 테스트 파일 생성
           while IFS= read -r widget_file; do
-            # 테스트 파일 경로 설정
+            # 테스트 파일 경로
             test_file="${widget_file/lib/test}"
             test_file="${test_file/.dart/_test.dart}"
             golden_dir="${test_file/test/goldens}"
