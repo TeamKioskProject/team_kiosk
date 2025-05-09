@@ -129,7 +129,6 @@ class CartScreen extends ConsumerWidget {
                     onTap: () {
                       context.push("/payment");
                     },
-                    textStyleSet: textStyles,
                   ),
                 ),
               ),
