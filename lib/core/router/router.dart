@@ -4,7 +4,7 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/view/cart/cart_screen.dart';
 import 'package:team_kiosk/view/home_screen.dart';
 import 'package:team_kiosk/view/kiosk_start_page/kiosk_start_page.dart';
-import 'package:team_kiosk/view/menu_select/menu_select_screen.dart';
+import 'package:team_kiosk/view/main_select/menu_select_screen.dart';
 import 'package:team_kiosk/view/payment/payment_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
 

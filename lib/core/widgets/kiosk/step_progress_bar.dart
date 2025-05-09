@@ -36,17 +36,20 @@ class StepProgressBar extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TabBar(
         labelColor: theme.primary,
-        labelStyle: styles.button,
+        labelStyle: styles.button.copyWith(fontSize: 18),
         indicatorColor: theme.primary,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorWeight: 4,
         indicatorPadding: const EdgeInsets.symmetric(horizontal: 7),
-        unselectedLabelStyle: styles.button.copyWith(color: Colors.grey),
+        unselectedLabelStyle: styles.button.copyWith(
+          color: Colors.grey,
+          fontSize: 18,
+        ),
         tabs: [
-          Column(children: [Icon(icon), Tab(text: title)]),
-          Column(children: [Icon(icon2), Tab(text: title2)]),
-          Column(children: [Icon(icon3), Tab(text: title3)]),
-          Column(children: [Icon(icon4), Tab(text: title4)]),
+          Tab(icon: Icon(icon), text: title),
+          Tab(icon: Icon(icon2), text: title2),
+          Tab(icon: Icon(icon3), text: title3),
+          Tab(icon: Icon(icon4), text: title4),
         ],
       ),
     );
