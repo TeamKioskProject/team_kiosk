@@ -76,7 +76,7 @@ class MenuSelectScreen extends ConsumerWidget {
                               return MenuCard(
                                 image: burger.imageUrl,
                                 title: burger.name,
-                                price: burger.basePrice,
+                                price: burger.price,
                                 theme: theme,
                                 onTap: () {
                                   // TODO: 선택 동작 처리

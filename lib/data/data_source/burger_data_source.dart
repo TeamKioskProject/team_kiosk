@@ -1,5 +1,5 @@
-import 'package:team_kiosk/domain/hamburger/hamburger_menu_model.dart';
+import 'package:team_kiosk/data/dto/burger_dto.dart';
 
-abstract interface class BurgerDataSource{
-  Future<List<HamburgerMenuModel>> getBurgerData();
+abstract interface class BurgerDataSource {
+  Future<List<BurgerDto>> getBurgerData();
 }

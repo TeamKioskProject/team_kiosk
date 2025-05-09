@@ -1,5 +1,5 @@
-import 'package:team_kiosk/domain/hamburger/hamburger_menu_model.dart';
+import 'package:team_kiosk/data/model/burger.dart';
 
 abstract interface class BurgerRepository {
-  Future<List<HamburgerMenuModel>> getBurgers();
+  Future<List<Burger>> getBurgers();
 }

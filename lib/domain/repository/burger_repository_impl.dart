@@ -1,6 +1,7 @@
 import 'package:team_kiosk/data/data_source/burger_data_source.dart';
+import 'package:team_kiosk/data/mapper/buger_mapper.dart';
+import 'package:team_kiosk/data/model/burger.dart';
 import 'package:team_kiosk/data/repository/burger_repository.dart';
-import 'package:team_kiosk/domain/hamburger/hamburger_menu_model.dart';
 
 class BurgerRepositoryImpl implements BurgerRepository {
   final BurgerDataSource _dataSource;
@@ -9,8 +10,10 @@ class BurgerRepositoryImpl implements BurgerRepository {
     : _dataSource = dataSource;
 
   @override
-  Future<List<HamburgerMenuModel>> getBurgers() async {
-    final burgerList = await _dataSource.getBurgerData();
+  Future<List<Burger>> getBurgers() async {
+    final dtoList = await _dataSource.getBurgerData();
+    final burgerList = dtoList.map((e) => e.toBurger()).toList();
+    print(burgerList.first.imageUrl);
     return burgerList;
   }
 }
