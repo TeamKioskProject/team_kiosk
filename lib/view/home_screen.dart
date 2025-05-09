@@ -43,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                 text: '햄버거 주문 연습 하기',
                 onTap: () {
                   appState.changeMode(AppMode.burger);
-                  context.push("/cart");
+                  context.push("/kiosk-start-page");
                 },
               ),
             ),
@@ -59,7 +59,7 @@ class HomeScreen extends ConsumerWidget {
                 text: '카페 주문 연습 하기',
                 onTap: () {
                   appState.changeMode(AppMode.cafe);
-                  context.push("/cart");
+                  context.push("/kiosk-start-page");
                 },
               ),
             ),
