@@ -18,7 +18,6 @@ class KioskStartPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: KioskAppBar(
-        textStyleSet: style,
         title: '키오스크 연습',
         theme: theme,
         action: [
@@ -37,7 +36,10 @@ class KioskStartPage extends ConsumerWidget {
               Kioskbutton(
                 text: '오늘은 몇 가지 주문을 연습해볼까요?',
                 theme: theme,
-                textStyleSet: style,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? kiosk.Category.burger
+                        : kiosk.Category.cafe,
               ),
               const SizedBox(height: 22),
               Image.asset(
@@ -57,7 +59,6 @@ class KioskStartPage extends ConsumerWidget {
                 button: true,
                 excludeSemantics: true,
                 child: kiosk.CategoryCard(
-                  textStyleSet: style,
                   icon:
                       theme == KioskTheme.fromMode(KioskMode.burger)
                           ? Icons.fastfood

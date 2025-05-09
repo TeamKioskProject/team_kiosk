@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
+import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.watch(appStateProvider.notifier);
+    final theme = ref.watch(kioskThemeProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -27,7 +29,9 @@ class HomeScreen extends ConsumerWidget {
               child: Kioskbutton(
                 text: "오늘은 어떤 주문을 연습해볼까요?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
-                textStyleSet: AppTextStyles.normal,
+                category:  theme == KioskTheme.fromMode(KioskMode.cafe)
+                    ? Category.cafe
+                    : Category.burger,
               ),
             ),
             Padding(
@@ -37,7 +41,6 @@ class HomeScreen extends ConsumerWidget {
                 category: Category.burger,
                 theme: KioskTheme.fromMode(KioskMode.burger),
                 text: '햄버거 주문 연습 하기',
-                textStyleSet: AppTextStyles.normal,
                 onTap: () {
                   appState.changeMode(AppMode.burger);
                   context.push("/cart");
@@ -54,7 +57,6 @@ class HomeScreen extends ConsumerWidget {
                 category: Category.cafe,
                 theme: KioskTheme.fromMode(KioskMode.cafe),
                 text: '카페 주문 연습 하기',
-                textStyleSet: AppTextStyles.normal,
                 onTap: () {
                   appState.changeMode(AppMode.cafe);
                   context.push("/cart");

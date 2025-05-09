@@ -21,7 +21,7 @@ class CartScreen extends ConsumerWidget {
     final cartNotifier = ref.read(cartNotifierProvider.notifier);
 
     return Scaffold(
-      appBar: KioskAppBar(title: '장바구니', theme: theme, textStyleSet: textStyles,),
+      appBar: KioskAppBar(title: '장바구니', theme: theme),
       backgroundColor: theme.background,
       body: SafeArea(
         child: Column(
@@ -121,7 +121,6 @@ class CartScreen extends ConsumerWidget {
                   color: Colors.white,
                   padding: const EdgeInsets.all(16),
                   child: CategoryCard(
-                    textStyleSet: textStyles,
                     icon: Icons.credit_card,
                     category: Category.burger,
                     theme: theme,

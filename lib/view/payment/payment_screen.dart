@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
@@ -18,17 +19,20 @@ class PaymentScreen extends ConsumerWidget {
     final cartState = ref.watch(cartNotifierProvider);
     final cartNotifier = ref.read(cartNotifierProvider.notifier);
     return Scaffold(
-      appBar: KioskAppBar(
-        title: '결제하기',
-        theme: theme,
-        textStyleSet: textStyles,
-      ),
+      appBar: KioskAppBar(title: '결제하기', theme: theme),
       backgroundColor: theme.background,
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Kioskbutton(text: '결제 방법을 선택해주세요', theme: theme, textStyleSet: textStyles),
+            child: Kioskbutton(
+              text: '결제 방법을 선택해주세요',
+              theme: theme,
+              category:
+                  theme == KioskTheme.fromMode(KioskMode.cafe)
+                      ? Category.cafe
+                      : Category.burger,
+            ),
           ),
           const SizedBox(width: 20),
           Padding(
@@ -79,7 +83,7 @@ class PaymentScreen extends ConsumerWidget {
                 onTap: () {
                   // context.push("/payment");
                 },
-                textStyleSet: textStyles,
+
               ),
             ),
           ),

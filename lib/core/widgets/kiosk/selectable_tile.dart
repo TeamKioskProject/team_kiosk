@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
-import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
+import 'package:team_kiosk/core/constants/theme_provider.dart';
 
 @immutable
-class SelectableTile extends StatelessWidget {
+class SelectableTile extends ConsumerWidget {
   final String image;
   final String title;
   final IconData icon;
   final KioskTheme theme;
-  final TextStyleSet textStyleSet;
   final VoidCallback onTap;
 
   const SelectableTile({
@@ -18,12 +18,12 @@ class SelectableTile extends StatelessWidget {
     required this.icon,
     required this.image,
     required this.title,
-    required this.textStyleSet,
-    required this.onTap
+    required this.onTap,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final styles = ref.watch(textStyleSetProvider);
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -44,7 +44,7 @@ class SelectableTile extends StatelessWidget {
                       Expanded(
                         child: Text(
                           title,
-                          style: textStyleSet.headline2,
+                          style: styles.headline2,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
