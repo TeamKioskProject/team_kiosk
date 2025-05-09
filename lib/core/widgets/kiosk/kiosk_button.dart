@@ -7,12 +7,12 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 
 @immutable
-class Kioskbutton extends ConsumerWidget {
+class KioskButton extends ConsumerWidget {
   final String text;
   final KioskTheme theme;
   final kiosk.Category category;
 
-  const Kioskbutton({
+  const KioskButton({
     super.key,
     required this.text,
     required this.theme,

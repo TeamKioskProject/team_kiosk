@@ -32,7 +32,7 @@ class PlaceSelectScreen extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Kioskbutton(
+              KioskButton(
                 text:
                     theme == kiosk.Category.burger
                         ? '햄버거를 어디서 드시겠어요?'

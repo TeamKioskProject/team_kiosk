@@ -26,7 +26,7 @@ class PaymentScreen extends ConsumerWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Kioskbutton(
+            child: KioskButton(
               text: '결제 방법을 선택해주세요',
               theme: theme,
               category:
