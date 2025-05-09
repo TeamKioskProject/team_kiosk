@@ -33,7 +33,7 @@ class KioskStartPage extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Kioskbutton(
+              KioskButton(
                 text: '오늘은 몇 가지 주문을 연습해볼까요?',
                 theme: theme,
                 category:

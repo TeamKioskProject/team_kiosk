@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
@@ -26,9 +25,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/place-select-screen',
-        builder:
-            (context, state) =>
-                PlaceSelectScreen(theme: theme, textStyles: styles),
+        builder: (context, state) => const PlaceSelectScreen(),
       ),
       GoRoute(
         path: '/kiosk-start-page',
