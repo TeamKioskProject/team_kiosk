@@ -56,17 +56,21 @@ jobs:
           fi
 
           echo "🔍 Finding changed widget files..."
-          # 기본 브랜치와의 차이점 찾기
+          
+          # 변경된 파일 목록 가져오기 (실패 무시)
           git diff --name-only origin/$BASE_REF..HEAD > .tmp/changed_widgets_raw.txt || true
           
-          # 필터링: 위젯 파일만 추출
-          grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
+          # 변경된 위젯 파일 필터링
+          grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt || true
 
           # 변경된 위젯 파일이 없는 경우 스크립트 종료
           if [ ! -s .tmp/changed_widgets.txt ]; then
             echo "⚠️ No widget files changed. Skipping test generation."
             exit 0
           fi
+
+          echo "✅ Changed widget files found:"
+          cat .tmp/changed_widgets.txt
 
           # 기본 테스트 파일 생성
           while IFS= read -r widget_file; do
@@ -82,7 +86,7 @@ jobs:
             if [ ! -f "$test_file" ]; then
               echo "📝 Creating test file for $widget_file -> $test_file"
               mkdir -p "$(dirname "$test_file")"
-              cat <<EOF > "$test_file"
+              cat > "$test_file" <<EOF
                 import 'dart:io';
                 import 'package:flutter_test/flutter_test.dart';
                 import 'package:flutter/material.dart';
