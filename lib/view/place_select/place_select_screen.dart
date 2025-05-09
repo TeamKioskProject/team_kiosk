@@ -34,7 +34,7 @@ class PlaceSelectScreen extends ConsumerWidget {
             children: [
               KioskButton(
                 text:
-                    theme == kiosk.Category.burger
+                    theme == KioskTheme.fromMode(KioskMode.burger)
                         ? '햄버거를 어디서 드시겠어요?'
                         : '커피를 어디서 드시겠어요?',
                 theme: theme,
