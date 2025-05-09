@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:team_kiosk/app_scaffold.dart';
-import 'package:team_kiosk/home_screen.dart';
+import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/view/cart/cart_screen.dart';
+import 'package:team_kiosk/view/home_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   // 모드에 따른 테마와 텍스트 스타일 선택
@@ -14,22 +15,6 @@ final routerProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       GoRoute(path: '/cart', builder: (context, state) => const CartScreen()),
-      ShellRoute(
-        builder: (context, state, child) {
-          return Scaffold(
-            backgroundColor: theme.background,
-            body: SafeArea(child: child),
-          );
-        },
-        routes: [
-          GoRoute(
-            path: '/place-select',
-            builder:
-                (context, state) =>
-                    PlaceSelectScreen(theme: theme, textStyles: styles),
-          ),
-        ],
-      ),
     ],
   );
   return router;
