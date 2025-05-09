@@ -38,6 +38,7 @@ class PlaceSelectScreen extends ConsumerWidget {
                         : '커피를 어디서 드시겠어요?',
                 theme: theme,
               ),
+              const SizedBox(height: 20),
               SelectableTile(
                 theme: theme,
                 icon: Icons.restaurant,
