@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
+import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/first_select_category.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 
@@ -13,7 +15,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.watch(appStateProvider.notifier);
-
+    final theme = ref.read(kioskThemeProvider);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -26,6 +28,10 @@ class HomeScreen extends ConsumerWidget {
               child: Kioskbutton(
                 text: "오늘은 어떤 주문을 연습해볼까요?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? kiosk.Category.burger
+                        : kiosk.Category.cafe,
               ),
             ),
             Padding(

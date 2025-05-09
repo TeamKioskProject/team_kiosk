@@ -26,11 +26,10 @@ class Kioskbutton extends ConsumerWidget {
     String imagePath;
     switch (category) {
       case kiosk.Category.burger:
-        imagePath = 'assets/icons/chat_bubble.png'; // Image for burger category
+        imagePath = 'assets/icons/chat_bubble.png';
         break;
       case kiosk.Category.cafe:
-        imagePath =
-            'assets/icons/chat_bubble_cafe.png'; // Image for cafe category
+        imagePath = 'assets/icons/chat_bubble_cafe.png';
         break; // Default image if needed
     }
     return ColumnSuper(

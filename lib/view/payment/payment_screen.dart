@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
@@ -24,7 +26,14 @@ class PaymentScreen extends ConsumerWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Kioskbutton(text: '결제 방법을 선택해주세요', theme: theme),
+            child: Kioskbutton(
+              text: '결제 방법을 선택해주세요',
+              theme: theme,
+              category:
+                  theme == KioskTheme.fromMode(KioskMode.burger)
+                      ? kiosk.Category.burger
+                      : kiosk.Category.cafe,
+            ),
           ),
           const SizedBox(width: 20),
           Padding(

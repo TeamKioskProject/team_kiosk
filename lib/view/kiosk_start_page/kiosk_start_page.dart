@@ -33,7 +33,14 @@ class KioskStartPage extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Kioskbutton(text: '오늘은 몇 가지 주문을 연습해볼까요?', theme: theme),
+              Kioskbutton(
+                text: '오늘은 몇 가지 주문을 연습해볼까요?',
+                theme: theme,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? kiosk.Category.burger
+                        : kiosk.Category.cafe,
+              ),
               const SizedBox(height: 22),
               Image.asset(
                 theme == KioskTheme.fromMode(KioskMode.burger)

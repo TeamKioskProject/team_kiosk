@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
@@ -37,6 +38,10 @@ class PlaceSelectScreen extends ConsumerWidget {
                         ? '햄버거를 어디서 드시겠어요?'
                         : '커피를 어디서 드시겠어요?',
                 theme: theme,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? kiosk.Category.burger
+                        : kiosk.Category.cafe,
               ),
               const SizedBox(height: 20),
               SelectableTile(
