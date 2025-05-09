@@ -17,34 +17,39 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+      # 1. 체크아웃
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # 2. Flutter 설치
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.29.2"
 
+      # 3. 패키지 설치
       - name: Install Dependencies
         run: flutter pub get
 
+      # 4. ImageMagick 설치 (골든 파일 생성에 필요)
       - name: Install ImageMagick (Required for Golden File Creation)
         run: sudo apt-get install -y imagemagick
 
+      # 5. 위젯 테스트 파일 및 골든 파일 생성
       - name: Find or Create Widget and Golden Test Files
         id: find_or_create_tests
         run: |
           echo "🔍 Finding changed widget files..."
           git diff --name-only origin/${{ github.base_ref || 'main' }}..HEAD > .tmp/changed_widgets_raw.txt
           
-          # 필터링: 위젯 파일만 추출
+          # 위젯 파일 필터링
           grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
 
-          # 기본 테스트 파일 생성
+          # 테스트 파일 생성 루프
           while IFS= read -r widget_file; do
-            # 테스트 파일 경로
+            # 테스트 파일 경로 설정
             test_file="${widget_file/lib/test}"
             test_file="${test_file/.dart/_test.dart}"
             golden_dir="${test_file/test/goldens}"
@@ -72,7 +77,7 @@ void main() {
   testWidgets('${widget_name} 접근성 및 멀티 해상도 골든 테스트', (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
     
-    // 위젯이 로드되었는지 확인
+    // 위젯 로드 테스트
     expect(find.byType(${widget_name}), findsOneWidget);
     
     // 스크린 리더 접근성 테스트
@@ -146,6 +151,7 @@ EOF
             done
           done < .tmp/changed_widgets.txt
 
+      # 6. 테스트 실행
       - name: Run Accessibility and Golden Tests
         if: steps.find_or_create_tests.outcome == 'success'
         run: |
@@ -156,6 +162,7 @@ EOF
           done
           echo "🎉 All accessibility and multi-resolution golden tests passed"
           
+      # 7. 골든 파일 업로드
       - name: Upload Golden Files
         if: steps.find_or_create_tests.outcome == 'success'
         uses: actions/upload-artifact@v4
