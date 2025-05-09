@@ -43,7 +43,18 @@ jobs:
         run: |
           echo "🔍 Finding changed widget files..."
           mkdir -p .tmp
-          git diff --name-only origin/${{ github.base_ref || 'main' }}..HEAD > .tmp/changed_widgets_raw.txt
+          
+          echo "🔍 Finding changed widget files..."
+          
+          # 기본 브랜치가 비어있는 경우를 대비한 안전한 git diff
+          git fetch origin
+          BASE_REF=${{ github.base_ref || 'main' }}
+          
+          if ! git diff --name-only origin/$BASE_REF..HEAD > .tmp/changed_widgets_raw.txt; then
+            echo "⚠️ No changes found. Skipping test generation."
+            exit 0
+          fi
+          
           
           # 위젯 파일 필터링
           grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
