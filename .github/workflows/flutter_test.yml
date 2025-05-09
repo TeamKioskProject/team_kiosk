@@ -159,7 +159,7 @@ jobs:
                     return httpClient;
                   }
                 }
-                EOF
+              EOF
               git add "$test_file"
             else
               echo "✅ Test file already exists: $test_file"
