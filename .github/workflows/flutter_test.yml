@@ -42,6 +42,7 @@ jobs:
         id: find_or_create_tests
         run: |
           echo "🔍 Finding changed widget files..."
+          mkdir -p .tmp
           git diff --name-only origin/${{ github.base_ref || 'main' }}..HEAD > .tmp/changed_widgets_raw.txt
           
           # 위젯 파일 필터링
