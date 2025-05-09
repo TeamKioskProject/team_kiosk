@@ -79,6 +79,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/lottie/
+    - lib/data/data/burger_mock_data.json
   fonts:
     - family: Pretendard
       fonts:

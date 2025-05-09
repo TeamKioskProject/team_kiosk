@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:team_kiosk/data/data_source/burger_data_source.dart';
 import 'package:team_kiosk/domain/hamburger/hamburger_menu_model.dart';
 
@@ -10,14 +10,16 @@ class BurgerDataSourceImpl implements BurgerDataSource {
   @override
   Future<List<HamburgerMenuModel>> getBurgerData() async {
     try {
-      final File file = File(path);
-      final jsonFile = await file.readAsString();
-      List<dynamic> json = jsonDecode(jsonFile);
+      final jsonString = await rootBundle.loadString(path);
+      final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
+
+      final List<dynamic> jsonList = jsonResponse['burgers'];
       final burgerList =
-          json.map((e) => HamburgerMenuModel.fromJson(e)).toList();
+          jsonList.map((e) => HamburgerMenuModel.fromJson(e)).toList();
+
       return burgerList;
     } catch (e) {
-      throw Exception('haru.json 로드 실패 $e');
+      throw Exception('burger.json 로드 실패: $e');
     }
   }
 }
