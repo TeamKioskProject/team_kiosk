@@ -121,6 +121,7 @@ class CartScreen extends ConsumerWidget {
                   color: Colors.white,
                   padding: const EdgeInsets.all(16),
                   child: CategoryCard(
+                    textStyleSet: textStyles,
                     icon: Icons.credit_card,
                     category: Category.burger,
                     theme: theme,
