@@ -44,16 +44,13 @@ jobs:
           echo "🔍 Finding changed widget files..."
           mkdir -p .tmp
           
-          echo "🔍 Finding changed widget files..."
-          
           # 기본 브랜치가 비어있는 경우를 대비한 안전한 git diff
           git fetch origin
           BASE_REF=${{ github.base_ref || 'main' }}
           
-          if ! git diff --name-only origin/$BASE_REF..HEAD > .tmp/changed_widgets_raw.txt; then
-            echo "⚠️ No changes found. Skipping test generation."
-            exit 0
-          fi
+          # 변경된 파일이 없는 경우 빈 파일 생성
+          git diff --name-only origin/$BASE_REF..HEAD > .tmp/changed_widgets_raw.txt || true
+          
           
           
           # 위젯 파일 필터링
