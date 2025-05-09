@@ -48,7 +48,10 @@ class InstallmentScreen extends ConsumerWidget {
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text("5만원 미만은 무서명 입니다", style: textStyles.headline2),
+                  child: Text(
+                    "5만원 미만은 무서명 입니다",
+                    style: textStyles.headline2,
+                  ),
                 ),
               ),
             ),
@@ -69,7 +72,19 @@ class InstallmentScreen extends ConsumerWidget {
                 ),
                 const SizedBox(width: 24),
                 Expanded(
-                  child: DialogActionButton(text: '결제하기', onTapEvent: () {}, theme: theme, textStyleSet: textStyles),
+                  child: DialogActionButton(
+                    text: '결제하기',
+                    onTapEvent: () async {
+                      await Future.delayed(
+                        const Duration(milliseconds: 500),
+                        () {
+                          context.go('/payment-success');
+                        },
+                      );
+                    },
+                    theme: theme,
+                    textStyleSet: textStyles,
+                  ),
                 ),
               ],
             ),

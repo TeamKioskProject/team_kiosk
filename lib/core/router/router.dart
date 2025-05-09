@@ -8,6 +8,7 @@ import 'package:team_kiosk/view/installment_select/installment_screen.dart';
 import 'package:team_kiosk/view/kiosk_start_page/kiosk_start_page.dart';
 import 'package:team_kiosk/view/main_select/menu_select_screen.dart';
 import 'package:team_kiosk/view/payment/payment_screen.dart';
+import 'package:team_kiosk/view/payment/payment_success_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
 
 final router = GoRouter(
@@ -30,6 +31,10 @@ final router = GoRouter(
     GoRoute(
       path: '/installment',
       builder: (context, state) => const InstallmentScreen(),
+    ),
+    GoRoute(
+      path: '/payment-success',
+      builder: (context, state) => const PaymentSuccessScreen(),
     ),
   ],
 );
