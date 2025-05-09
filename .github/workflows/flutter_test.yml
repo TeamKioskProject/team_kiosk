@@ -17,27 +17,22 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      # 1. 체크아웃
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2. Flutter 설치
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.29.2"
 
-      # 3. 패키지 설치
       - name: Install Dependencies
         run: flutter pub get
 
-      # 4. ImageMagick 설치 (골든 파일 생성에 필요)
       - name: Install ImageMagick (Required for Golden File Creation)
         run: sudo apt-get install -y imagemagick
 
-      # 5. 위젯 테스트 파일 및 골든 파일 생성
       - name: Find or Create Widget and Golden Test Files
         id: find_or_create_tests
         run: |
@@ -86,9 +81,7 @@ jobs:
             if [ ! -f "$test_file" ]; then
               echo "📝 Creating test file for $widget_file -> $test_file"
               mkdir -p "$(dirname "$test_file")"
-              cat <<EOF > "$test_file"
-              import 'dart:io';import 'package:flutter_test/flutter_test.dart';import 'package:flutter/material.dart';import 'package:team_kiosk/main.dart';import 'package:team_kiosk/${widget_file#lib/}';void main() { setUpAll(() { httpOverrides(); }); testWidgets('${widget_name} 접근성 및 멀티 해상도 골든 테스트', (WidgetTester tester) async { await tester.pumpWidget(MyApp()); expect(find.byType(${widget_name}), findsOneWidget); final semantics = tester.getSemantics(find.byType(${widget_name})); expect(semantics, isNotNull, reason: '스크린 리더에서 접근할 수 없는 위젯입니다.'); semantics.visitChildren((child) { final hasLabel = child.label != null && child.label.isNotEmpty; expect(hasLabel, isTrue, reason: '모든 중요한 요소는 스크린 리더를 위한 레이블이 있어야 합니다.'); return true; }); final resolutions = [ Size(300, 600), Size(375, 812), Size(768, 1024), Size(1024, 1366), ]; for (final resolution in resolutions) { tester.binding.window.physicalSizeTestValue = resolution; tester.binding.window.devicePixelRatioTestValue = 2.0; await tester.pumpAndSettle(); final goldenFile = '${golden_dir}/${widget_name}_${resolution.width.toInt()}x${resolution.height.toInt()}.png'; await expectLater(find.byType(${widget_name}), matchesGoldenFile(goldenFile)); } tester.binding.window.clearPhysicalSizeTestValue(); }); } void httpOverrides() { HttpOverrides.global = _MockHttpOverrides(); } class _MockHttpOverrides extends HttpOverrides { @override HttpClient createHttpClient(SecurityContext? context) { final httpClient = super.createHttpClient(context); httpClient.findProxy = (uri) => 'DIRECT'; httpClient.badCertificateCallback = (cert, host, port) => true; return httpClient; } }
-              EOF
+              echo "import 'dart:io';import 'package:flutter_test/flutter_test.dart';import 'package:flutter/material.dart';import 'package:team_kiosk/main.dart';import 'package:team_kiosk/${widget_file#lib/}';void main() { setUpAll(() { httpOverrides(); }); testWidgets('${widget_name} 접근성 및 멀티 해상도 골든 테스트', (WidgetTester tester) async { await tester.pumpWidget(MyApp()); expect(find.byType(${widget_name}), findsOneWidget); final semantics = tester.getSemantics(find.byType(${widget_name})); expect(semantics, isNotNull, reason: '스크린 리더에서 접근할 수 없는 위젯입니다.'); semantics.visitChildren((child) { final hasLabel = child.label != null && child.label.isNotEmpty; expect(hasLabel, isTrue, reason: '모든 중요한 요소는 스크린 리더를 위한 레이블이 있어야 합니다.'); return true; }); final resolutions = [ Size(300, 600), Size(375, 812), Size(768, 1024), Size(1024, 1366), ]; for (final resolution in resolutions) { tester.binding.window.physicalSizeTestValue = resolution; tester.binding.window.devicePixelRatioTestValue = 2.0; await tester.pumpAndSettle(); final goldenFile = '${golden_dir}/${widget_name}_${resolution.width.toInt()}x${resolution.height.toInt()}.png'; await expectLater(find.byType(${widget_name}), matchesGoldenFile(goldenFile)); } tester.binding.window.clearPhysicalSizeTestValue(); }); } void httpOverrides() { HttpOverrides.global = _MockHttpOverrides(); } class _MockHttpOverrides extends HttpOverrides { @override HttpClient createHttpClient(SecurityContext? context) { final httpClient = super.createHttpClient(context); httpClient.findProxy = (uri) => 'DIRECT'; httpClient.badCertificateCallback = (cert, host, port) => true; return httpClient; } }" > "$test_file"
               git add "$test_file"
             else
               echo "✅ Test file already exists: $test_file"
@@ -110,7 +103,6 @@ jobs:
             done
           done < .tmp/changed_widgets.txt
 
-      # 6. 테스트 실행
       - name: Run Accessibility and Golden Tests
         if: steps.find_or_create_tests.outcome == 'success'
         run: |
@@ -121,7 +113,6 @@ jobs:
           done
           echo "🎉 All accessibility and multi-resolution golden tests passed"
           
-      # 7. 골든 파일 업로드
       - name: Upload Golden Files
         if: steps.find_or_create_tests.outcome == 'success'
         uses: actions/upload-artifact@v4
