@@ -30,6 +30,9 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
+      - name: Install ImageMagick (Required for Golden File Creation)
+        run: sudo apt-get install -y imagemagick
+
       - name: Find or Create Widget and Golden Test Files
         id: find_or_create_tests
         run: |
@@ -152,7 +155,7 @@ EOF
             flutter test "$widget_test_file" || exit 1
           done
           echo "🎉 All accessibility and multi-resolution golden tests passed"
-
+          
       - name: Upload Golden Files
         if: steps.find_or_create_tests.outcome == 'success'
         uses: actions/upload-artifact@v4
