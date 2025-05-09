@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - '**'
+  push:
+    branches:
+      - '**'
 
 permissions:
   contents: write
@@ -22,7 +25,7 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "stable"
+          flutter-version: "3.29.2"
 
       - name: Install Dependencies
         run: flutter pub get
@@ -31,7 +34,7 @@ jobs:
         id: find_or_create_tests
         run: |
           echo "🔍 Finding changed widget files..."
-          git diff --name-only origin/${{ github.base_ref }}..HEAD > .tmp/changed_widgets_raw.txt
+          git diff --name-only origin/${{ github.base_ref || 'main' }}..HEAD > .tmp/changed_widgets_raw.txt
           
           # 필터링: 위젯 파일만 추출
           grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
@@ -70,6 +73,17 @@ jobs:
   
   // 위젯이 로드되었는지 확인
   expect(find.byType(${widget_name}), findsOneWidget);
+  
+  // 스크린 리더 접근성 테스트
+  final semantics = tester.getSemantics(find.byType(${widget_name}));
+expect(semantics, isNotNull, reason: '스크린 리더에서 접근할 수 없는 위젯입니다.');
+  
+  // 모든 중요한 요소가 레이블을 가지고 있는지 확인
+  semantics.visitChildren((child) {
+  final hasLabel = child.label != null && child.label.isNotEmpty;
+expect(hasLabel, isTrue, reason: '모든 중요한 요소는 스크린 리더를 위한 레이블이 있어야 합니다.');
+  return true;
+});
   
   // 여러 해상도에서 테스트
   final resolutions = [
