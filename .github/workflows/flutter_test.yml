@@ -81,11 +81,13 @@ jobs:
             if [ ! -f "$test_file" ]; then
               echo "📝 Creating test file for $widget_file -> $test_file"
               mkdir -p "$(dirname "$test_file")"
+              # Widget 파일의 경로에서 lib/ 제거
+              import_path="${widget_file#lib/}"
               echo "import 'dart:io';
               import 'package:flutter_test/flutter_test.dart';
               import 'package:flutter/material.dart';
               import 'package:team_kiosk/main.dart';
-              import 'package:team_kiosk/${widget_file#lib/}';
+              import 'package:team_kiosk/$import_path';
               void main() { setUpAll(() { httpOverrides(); }); 
               testWidgets('${widget_name} 접근성 및 멀티 해상도 골든 테스트', (WidgetTester tester) async {
                 await tester.pumpWidget(MyApp()); 
