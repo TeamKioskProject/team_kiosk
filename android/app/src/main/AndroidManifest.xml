@@ -39,8 +39,11 @@
     <queries>
         <intent>
             <action android:name="android.intent.action.TTS_SERVICE" />
-            <action android:name="android.intent.action.PROCESS_TEXT"/>
+
             <data android:mimeType="text/plain"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
         </intent>
     </queries>
 </manifest>

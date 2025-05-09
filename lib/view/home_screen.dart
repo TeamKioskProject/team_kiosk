@@ -29,11 +29,13 @@ class HomeScreen extends ConsumerWidget {
               child: Kioskbutton(
                 text: "오늘은 어떤 주문을 연습해볼까요?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
-                category:  theme == KioskTheme.fromMode(KioskMode.cafe)
-                    ? Category.cafe
-                    : Category.burger,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.cafe)
+                        ? Category.cafe
+                        : Category.burger,
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CategoryCard(
@@ -47,9 +49,23 @@ class HomeScreen extends ConsumerWidget {
                 },
               ),
             ),
-            const SizedBox(
-              height: 30,
+
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CategoryCard(
+                icon: Icons.fastfood,
+                category: Category.burger,
+                theme: KioskTheme.fromMode(KioskMode.burger),
+                text: '햄버거 주문 결제 연습 하기',
+                onTap: () {
+                  appState.changeMode(AppMode.burger);
+                  context.push("/cart");
+                },
+              ),
             ),
+
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CategoryCard(
@@ -60,6 +76,21 @@ class HomeScreen extends ConsumerWidget {
                 onTap: () {
                   appState.changeMode(AppMode.cafe);
                   context.push("/kiosk-start-page");
+                },
+              ),
+            ),
+
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CategoryCard(
+                icon: Icons.local_cafe,
+                category: Category.cafe,
+                theme: KioskTheme.fromMode(KioskMode.cafe),
+                text: '카페 주문 결제 연습 하기',
+                onTap: () {
+                  appState.changeMode(AppMode.cafe);
+                  context.push("/cart");
                 },
               ),
             ),
