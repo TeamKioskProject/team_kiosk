@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
+import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 
 class MenuSelectScreen extends ConsumerWidget {
@@ -47,12 +48,38 @@ class MenuSelectScreen extends ConsumerWidget {
             ),
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            Center(child: Text('Step 1')),
-            Center(child: Text('Step 2')),
-            Center(child: Text('Step 3')),
-            Center(child: Text('Step 4')),
+            SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 6,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 34,
+                          crossAxisSpacing: 36,
+                        ),
+                    itemBuilder: (context, index) {
+                      return MenuCard(
+                        image: 'assets/images/hamburger.png',
+                        title: '햄버거',
+                        price: 5000,
+                        theme: theme,
+                        onTap: () {},
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+            const Center(child: Text('Step 2')),
+            const Center(child: Text('Step 3')),
+            const Center(child: Text('Step 4')),
           ],
         ),
       ),
