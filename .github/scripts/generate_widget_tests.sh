@@ -49,7 +49,9 @@ while IFS= read -r widget_file; do
   if [ ! -f "$test_file" ]; then
     echo "📝 Creating test file for $widget_file -> $test_file"
     mkdir -p "$(dirname "$test_file")"
-    cat > "$test_file" <<EOF
+
+    # Here Document에서 변수를 안전하게 치환
+    cat <<EOF > "$test_file"
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
@@ -65,10 +67,10 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     // 위젯 로드 테스트
-    expect(find.byType(${widget_name}), findsOneWidget);
+    expect(find.byType($widget_name), findsOneWidget);
     
     // 스크린 리더 접근성 테스트
-    final semantics = tester.getSemantics(find.byType(${widget_name}));
+    final semantics = tester.getSemantics(find.byType($widget_name));
     expect(semantics, isNotNull, reason: '스크린 리더에서 접근할 수 없는 위젯입니다.');
     semantics.visitChildren((child) {
       final hasLabel = child.label != null && child.label.isNotEmpty;
@@ -91,7 +93,7 @@ void main() {
 
       final goldenFile = '${golden_dir}/${widget_name}_${resolution.width.toInt()}x${resolution.height.toInt()}.png';
       await expectLater(
-        find.byType(${widget_name}),
+        find.byType($widget_name),
         matchesGoldenFile(goldenFile)
       );
     }
