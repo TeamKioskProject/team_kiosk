@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+
 
 @immutable
 class SelectableTile extends ConsumerWidget {
@@ -11,6 +13,7 @@ class SelectableTile extends ConsumerWidget {
   final IconData icon;
   final KioskTheme theme;
   final VoidCallback onTap;
+  final TextStyleSet textStyleSet;
 
   const SelectableTile({
     super.key,
@@ -18,7 +21,8 @@ class SelectableTile extends ConsumerWidget {
     required this.icon,
     required this.image,
     required this.title,
-    required this.onTap,
+    required this.textStyleSet,
+    required this.onTap
   });
 
   @override

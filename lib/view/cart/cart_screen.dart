@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
@@ -24,7 +23,7 @@ class CartScreen extends ConsumerWidget {
     final cartNotifier = ref.read(cartNotifierProvider.notifier);
 
     return Scaffold(
-      appBar: KioskAppBar(title: '장바구니', theme: theme),
+      appBar: KioskAppBar(title: '장바구니', theme: theme, textStyleSet: textStyles,),
       backgroundColor: theme.background,
       body: SafeArea(
         child: Column(

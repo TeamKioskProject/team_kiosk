@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 
 @immutable
@@ -17,12 +18,13 @@ class KioskAppBar extends ConsumerWidget implements PreferredSizeWidget {
     this.centerTitle = false,
     this.action,
     this.leading,
-    required this.theme,
+    required this.theme, required TextStyleSet textStyleSet,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final styles = ref.watch(textStyleSetProvider);
+
     return AppBar(
       backgroundColor: Colors.white,
       title: Text(
