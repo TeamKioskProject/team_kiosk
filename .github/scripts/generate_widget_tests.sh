@@ -50,8 +50,9 @@ while IFS= read -r widget_file; do
     echo "📝 Creating test file for $widget_file -> $test_file"
     mkdir -p "$(dirname "$test_file")"
 
-    # Here Document에서 변수를 안전하게 치환
-    cat <<EOF > "$test_file"
+    # 임시 파일을 사용하여 안전하게 치환
+    tmp_file=$(mktemp)
+    cat > "$tmp_file" <<TEMPLATE
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
@@ -85,19 +86,16 @@ void main() {
       Size(768, 1024),
       Size(1024, 1366),
     ];
-
     for (final resolution in resolutions) {
       tester.binding.window.physicalSizeTestValue = resolution;
       tester.binding.window.devicePixelRatioTestValue = 2.0;
       await tester.pumpAndSettle();
-
       final goldenFile = '${golden_dir}/${widget_name}_${resolution.width.toInt()}x${resolution.height.toInt()}.png';
       await expectLater(
         find.byType($widget_name),
         matchesGoldenFile(goldenFile)
       );
     }
-
     // 해상도 초기화
     tester.binding.window.clearPhysicalSizeTestValue();
   });
@@ -116,8 +114,10 @@ class _MockHttpOverrides extends HttpOverrides {
     return httpClient;
   }
 }
-EOF
-    
+TEMPLATE
+
+    # 파일로 이동
+    mv "$tmp_file" "$test_file"
     git add "$test_file"
   else
     echo "✅ Test file already exists: $test_file"
