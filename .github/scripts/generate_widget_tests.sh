@@ -50,13 +50,15 @@ while IFS= read -r widget_file; do
     echo "📝 Creating test file for $widget_file -> $test_file"
     mkdir -p "$(dirname "$test_file")"
 
-    # 임시 파일을 사용하여 안전하게 치환
-    tmp_file=$(mktemp)
-    cat > "$tmp_file" <<TEMPLATE
+    # Here Document에서 직접 변수 치환
+    export widget_name="$widget_name"
+    export import_path="$import_path"
+    export golden_dir="$golden_dir"
+    
+    cat <<'EOF' | envsubst > "$test_file"
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:team_kiosk/main.dart';
 import 'package:team_kiosk/$import_path';
 
 void main() {
@@ -114,10 +116,8 @@ class _MockHttpOverrides extends HttpOverrides {
     return httpClient;
   }
 }
-TEMPLATE
-
-    # 파일로 이동
-    mv "$tmp_file" "$test_file"
+EOF
+    
     git add "$test_file"
   else
     echo "✅ Test file already exists: $test_file"
