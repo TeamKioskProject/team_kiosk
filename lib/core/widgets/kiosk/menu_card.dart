@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
@@ -25,27 +26,68 @@ class MenuCard extends ConsumerWidget {
     final styles = ref.watch(textStyleSetProvider);
     return Container(
       width: double.infinity,
+      // 전체 높이 고정
       decoration: ButtonStyles.kioskButton(Colors.white),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(24),
-              child: Image.asset(
-                'assets/images/hamburger.png',
-                fit: BoxFit.cover,
+            // 이미지가 2/3 차지
+            Expanded(
+              flex: 2,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
               ),
             ),
-            Text(title, style: styles.headline2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('₩ ${price.toString()}', style: styles.accent),
-                Text('단품/세트', style: styles.caption),
-              ],
+            const SizedBox(height: 3),
+            // 텍스트 영역이 1/3 차지
+            Expanded(
+              flex: 1,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: AutoSizeText(
+                      title,
+                      style: styles.headline2,
+                      maxLines: 2,
+                      minFontSize: 12,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: AutoSizeText(
+                          '₩ ${price.toString()}',
+                          style: styles.accent,
+                          maxLines: 1,
+                          minFontSize: 6,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: AutoSizeText(
+                          '단품/세트',
+                          style: styles.caption,
+                          maxLines: 1,
+                          minFontSize: 6,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

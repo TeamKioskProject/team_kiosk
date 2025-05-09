@@ -33,7 +33,7 @@ class StepProgressBar extends ConsumerWidget {
     final styles = ref.watch(textStyleSetProvider);
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.only(top: 8),
       child: TabBar(
         labelColor: theme.primary,
         labelStyle: styles.button.copyWith(fontSize: 18),

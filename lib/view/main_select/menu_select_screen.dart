@@ -48,39 +48,43 @@ class MenuSelectScreen extends ConsumerWidget {
             ),
           ),
         ),
-        body: TabBarView(
-          children: [
-            SingleChildScrollView(
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 6,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 34,
-                          crossAxisSpacing: 36,
-                        ),
-                    itemBuilder: (context, index) {
-                      return MenuCard(
-                        image: 'assets/images/hamburger.png',
-                        title: '햄버거',
-                        price: 5000,
-                        theme: theme,
-                        onTap: () {},
-                      );
-                    },
+        body: Container(
+          color: theme.background,
+          child: TabBarView(
+            children: [
+              SingleChildScrollView(
+                child: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 6,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
+                            childAspectRatio: 3 / 4, // width / height 비율
+                          ),
+                      itemBuilder: (context, index) {
+                        return MenuCard(
+                          image: 'assets/images/hamburger.png',
+                          title: '햄버거',
+                          price: 5000,
+                          theme: theme,
+                          onTap: () {},
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            const Center(child: Text('Step 2')),
-            const Center(child: Text('Step 3')),
-            const Center(child: Text('Step 4')),
-          ],
+              const Center(child: Text('Step 2')),
+              const Center(child: Text('Step 3')),
+              const Center(child: Text('Step 4')),
+            ],
+          ),
         ),
       ),
     );
