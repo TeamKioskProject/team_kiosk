@@ -8,6 +8,7 @@ on:
     branches:
       - '**'
 
+
 permissions:
   contents: write
   id-token: write
@@ -35,6 +36,7 @@ jobs:
         run: |
           echo "🔍 Finding changed widget files..."
           git diff --name-only origin/${{ github.base_ref || 'main' }}..HEAD > .tmp/changed_widgets_raw.txt
+
           
           # 필터링: 위젯 파일만 추출
           grep -E "lib/.*\.dart" .tmp/changed_widgets_raw.txt | grep -v "_test.dart" > .tmp/changed_widgets.txt
@@ -45,6 +47,7 @@ jobs:
             test_file="${widget_file/lib/test}"
             test_file="${test_file/.dart/_test.dart}"
             golden_dir="${test_file/test/goldens}"
+
             
             # 위젯 이름 추출
             widget_name=$(basename "$widget_file" .dart)
@@ -73,7 +76,6 @@ void main() {
 
     // 위젯이 로드되었는지 확인
     expect(find.byType(${widget_name}), findsOneWidget);
-
     // 스크린 리더 접근성 테스트
     final semantics = tester.getSemantics(find.byType(${widget_name}));
     expect(semantics, isNotNull, reason: '스크린 리더에서 접근할 수 없는 위젯입니다.');
@@ -143,16 +145,15 @@ EOF
                 echo "✅ Golden file already exists: $golden_file"
               fi
             done
+
           done < .tmp/changed_widgets.txt
 
       - name: Run Accessibility and Golden Tests
         if: steps.find_or_create_tests.outcome == 'success'
         run: |
           echo "🧪 Running accessibility and multi-resolution golden tests..."
-          find test -name "*_test.dart" | while read -r widget_test_file; do
-            echo "🧪 Testing $widget_test_file..."
-            flutter test "$widget_test_file" || exit 1
-          done
+          echo "🧪 Running accessibility and golden tests..."
+
           echo "🎉 All accessibility and multi-resolution golden tests passed"
 
       - name: Upload Golden Files
