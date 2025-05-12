@@ -15,10 +15,10 @@ enum CafeType {
 }
 
 enum CategoryType {
-  burger,
-  burgerDrink,
-  burgerDessert,
-  burgerSide,
+  buger,
+  bugerDrink,
+  bugerDessert,
+  bugerSide,
   cafeDrink,
   cafeDessert,
 }
