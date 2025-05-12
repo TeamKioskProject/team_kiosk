@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/state/app_mode.dart';
+import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 import 'package:team_kiosk/data/model/burger.dart';
 import 'package:team_kiosk/view/main_select/burger_provider/burger_provider.dart';
+import 'package:team_kiosk/view/main_select/cafe_provider/cafe_provider.dart';
 
 class MenuSelectScreen extends ConsumerWidget {
   const MenuSelectScreen({super.key});
@@ -16,12 +19,15 @@ class MenuSelectScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.read(kioskThemeProvider);
     final style = ref.read(textStyleSetProvider);
+    final appState = ref.watch(appStateProvider);
     final burgerListAsync = ref.watch(burgerListProvider);
     final dessertAsync = ref.watch(dessertListProvider);
     final drinkAsync = ref.watch(drinkListProvider);
     final sideAsync = ref.watch(sideListProvider);
+    final cafeDessertAsync = ref.watch(cafeDessertListProvider);
+    final cafeDrinkAsync = ref.watch(cafeDrinkListProvider);
     return DefaultTabController(
-      length: 4,
+      length: appState.mode == AppMode.burger ? 4 : 2,
       child: Scaffold(
         appBar: KioskAppBar(
           title: '메뉴 선택',
@@ -35,59 +41,101 @@ class MenuSelectScreen extends ConsumerWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(80),
             child: StepProgressBar(
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거' : '커피',
-              theme == KioskTheme.fromMode(KioskMode.burger)
+              appState.mode == AppMode.burger ? '햄버거' : '디저트',
+              appState.mode == AppMode.burger
                   ? Icons.lunch_dining
-                  : Icons.coffee,
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '디저트' : '디저트',
-              theme == KioskTheme.fromMode(KioskMode.burger)
-                  ? Icons.icecream_rounded
                   : Icons.icecream_rounded,
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '음료수' : '음료수',
-              theme == KioskTheme.fromMode(KioskMode.burger)
-                  ? Icons.sports_bar
-                  : Icons.coffee,
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '사이드' : '사이드',
-              theme == KioskTheme.fromMode(KioskMode.burger)
-                  ? Icons.cookie
-                  : Icons.coffee,
-              theme,
+              '디저트',
+              Icons.icecream_rounded,
+              title3: appState.mode == AppMode.burger ? '음료수' : null,
+              icon3: appState.mode == AppMode.burger ? Icons.sports_bar : null,
+              title4: appState.mode == AppMode.burger ? '사이드' : null,
+              icon4: appState.mode == AppMode.burger ? Icons.cookie : null,
+              theme: theme,
             ),
           ),
         ),
         body: Container(
           color: theme.background,
           child: TabBarView(
-            children: [
-              // Step 1 - 햄버거
-              burgerListAsync.when(
-                data: (burgerList) => _buildMenuGrid(burgerList, theme),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                error: (error, stack) => Center(child: Text('오류 발생: $error')),
-              ),
-
-              // Step 2 - 디저트
-              dessertAsync.when(
-                data: (dessertList) => _buildMenuGrid(dessertList, theme),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                error: (error, stack) => Center(child: Text('오류 발생: $error')),
-              ),
-
-              // Step 3 - 음료
-              drinkAsync.when(
-                data: (drinkList) => _buildMenuGrid(drinkList, theme),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                error: (error, stack) => Center(child: Text('오류 발생: $error')),
-              ),
-              // Step 4 - 사이드
-              sideAsync.when(
-                data: (sideAsync) => _buildMenuGrid(sideAsync, theme),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                error: (error, stack) => Center(child: Text('오류 발생: $error')),
-              ),
-            ],
+            children:
+                appState.mode == AppMode.burger
+                    ? [
+                      // Step 1 - 햄버거
+                      burgerListAsync.when(
+                        data: (burgerList) => _buildMenuGrid(burgerList, theme),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        error:
+                            (error, stack) =>
+                                Center(child: Text('오류 발생: $error')),
+                      ),
+                      // Step 2 - 디저트
+                      dessertAsync.when(
+                        data:
+                            (dessertList) => _buildMenuGrid(dessertList, theme),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        error:
+                            (error, stack) =>
+                                Center(child: Text('오류 발생: $error')),
+                      ),
+                      // Step 3 - 음료
+                      drinkAsync.when(
+                        data: (drinkList) => _buildMenuGrid(drinkList, theme),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        error:
+                            (error, stack) =>
+                                Center(child: Text('오류 발생: $error')),
+                      ),
+                      // Step 4 - 사이드
+                      sideAsync.when(
+                        data: (sideList) => _buildMenuGrid(sideList, theme),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        error:
+                            (error, stack) =>
+                                Center(child: Text('오류 발생: $error')),
+                      ),
+                    ]
+                    : [
+                      // Step 1 - 디저트
+                      cafeDessertAsync.when(
+                        data:
+                            (cafeDessertList) =>
+                                _buildMenuGrid(cafeDessertList, theme),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        error:
+                            (error, stack) =>
+                                Center(child: Text('오류 발생: $error')),
+                      ),
+                      // Step 2 - 음료
+                      cafeDrinkAsync.when(
+                        data: (drinkList) => _buildMenuGrid(drinkList, theme),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        error:
+                            (error, stack) =>
+                                Center(child: Text('오류 발생: $error')),
+                      ),
+                    ],
           ),
         ),
+
         bottomNavigationBar: MenuBottomBar(theme: theme),
       ),
     );
