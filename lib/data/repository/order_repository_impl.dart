@@ -28,7 +28,7 @@ class OrderRepositoryImpl implements OrderRepository {
             .toList();
       case CategoryType.burgerDessert:
         final List<BurgerTypeDto> orderDtoItemList = await dataSource
-            .getBurgerData(type: BurgerType.burgerDrink);
+            .getBurgerData(type: BurgerType.burgerDessert);
         return orderDtoItemList
             .map((items) => items.toOrderItemBurger(type: type))
             .toList();
