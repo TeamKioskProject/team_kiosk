@@ -99,7 +99,8 @@ class MenuSelectScreen extends ConsumerWidget {
           child: GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: items.length,
+            itemCount: items.length > 8 ? 8 : items.length,
+            // 최대 8개까지 출력
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 18,
