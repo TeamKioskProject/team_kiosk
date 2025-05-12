@@ -15,25 +15,27 @@ class OrderItemDataSourceImpl implements OrderItemDataSource {
           'lib/data/data/burger_mock_data.json',
         );
         final List data = jsonDecode(response)['burgers'] as List;
-
         return data.map((items) => BurgerTypeDto.fromJson(items)).toList();
+
       case BurgerType.burgerDrink:
         final response = await rootBundle.loadString(
           'lib/data/data/drink_mock_data.json',
         );
-        final List data = jsonDecode(response) as List;
+        final List data = jsonDecode(response)['drink'] as List;
         return data.map((items) => BurgerTypeDto.fromJson(items)).toList();
+
       case BurgerType.burgerDessert:
         final response = await rootBundle.loadString(
           'lib/data/data/dessert_mock_data.json',
         );
-        final List data = jsonDecode(response) as List;
+        final List data = jsonDecode(response)['dessert'] as List;
         return data.map((items) => BurgerTypeDto.fromJson(items)).toList();
+
       case BurgerType.burgerSide:
         final response = await rootBundle.loadString(
           'lib/data/data/side_mock_data.json',
         );
-        final List data = jsonDecode(response) as List;
+        final List data = jsonDecode(response)['side'] as List;
         return data.map((items) => BurgerTypeDto.fromJson(items)).toList();
     }
   }

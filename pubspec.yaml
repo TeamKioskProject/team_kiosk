@@ -83,6 +83,8 @@ flutter:
     - lib/data/data/dessert_mock_data.json
     - lib/data/data/drink_mock_data.json
     - lib/data/data/side_mock_data.json
+    - lib/data/data/starbucks_desserts.json
+    - lib/data/data/starbucks_drinks_trimmed.json
   fonts:
     - family: Pretendard
       fonts:
