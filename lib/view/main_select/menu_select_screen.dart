@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
+import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 import 'package:team_kiosk/data/model/burger.dart';
@@ -20,7 +21,7 @@ class MenuSelectScreen extends ConsumerWidget {
     final drinkAsync = ref.watch(drinkListProvider);
     final sideAsync = ref.watch(sideListProvider);
     return DefaultTabController(
-      length: 4,
+      length: appState.mode == AppMode.burger ? 4 : 2,
       child: Scaffold(
         appBar: KioskAppBar(
           title: '메뉴 선택',
@@ -34,9 +35,17 @@ class MenuSelectScreen extends ConsumerWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(80),
             child: StepProgressBar(
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거' : '커피',
-              theme == KioskTheme.fromMode(KioskMode.burger)
+              appState.mode == AppMode.burger ? '햄버거' : '디저트',
+              appState.mode == AppMode.burger
                   ? Icons.lunch_dining
+                  : Icons.icecream_rounded,
+              '디저트',
+              Icons.icecream_rounded,
+              title3: appState.mode == AppMode.burger ? '음료수' : null,
+              icon3: appState.mode == AppMode.burger ? Icons.sports_bar : null,
+              title4: appState.mode == AppMode.burger ? '사이드' : null,
+              icon4: appState.mode == AppMode.burger ? Icons.cookie : null,
+              theme: theme,
                   : Icons.coffee,
               theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거' : '커피',
               theme == KioskTheme.fromMode(KioskMode.burger)
@@ -87,6 +96,7 @@ class MenuSelectScreen extends ConsumerWidget {
             ],
           ),
         ),
+        bottomNavigationBar: MenuBottomBar(theme: theme),
       ),
     );
   }
