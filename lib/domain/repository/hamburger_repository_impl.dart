@@ -19,21 +19,21 @@ class HamburgerRepositoryImpl implements HamburgerRepository {
   @override
   Future<List<Burger>> getDesserts() async {
     final dtoList = await _dataSource.getDessertData();
-    final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
-    return burgerList;
+    final dessertList = dtoList.map((e) => e.toHamBurger()).toList();
+    return dessertList;
   }
 
   @override
   Future<List<Burger>> getDrinks() async {
     final dtoList = await _dataSource.getDrinkData();
-    final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
-    return burgerList;
+    final drinkList = dtoList.map((e) => e.toHamBurger()).toList();
+    return drinkList;
   }
 
   @override
   Future<List<Burger>> getSides() async {
     final dtoList = await _dataSource.getSideData();
-    final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
-    return burgerList;
+    final sideList = dtoList.map((e) => e.toHamBurger()).toList();
+    return sideList;
   }
 }

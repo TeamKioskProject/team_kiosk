@@ -6,6 +6,7 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
+import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
@@ -130,6 +131,7 @@ class MenuSelectScreen extends ConsumerWidget {
             ),
           ),
         ),
+        bottomNavigationBar: MenuBottomBar(theme: theme),
       ),
     );
   }

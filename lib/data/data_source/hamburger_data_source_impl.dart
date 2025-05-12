@@ -7,6 +7,8 @@ import 'package:team_kiosk/data/dto/hamburger_dto.dart';
 class HamburgerDataSourceImpl implements HamburgerDataSource {
   static const String burgerPath = 'lib/data/data/burger_mock_data.json';
   static const String dessertPath = 'lib/data/data/dessert_mock_data.json';
+  static const String drinkPath = 'lib/data/data/drink_mock_data.json';
+  static const String sidePath = 'lib/data/data/side_mock_data.json';
 
   @override
   Future<List<HamburgerDto>> getBurgerData() async {
@@ -40,8 +42,32 @@ class HamburgerDataSourceImpl implements HamburgerDataSource {
   }
 
   @override
-  Future<List<HamburgerDto>> getDrinkData() {
-    // TODO: implement getDrinkData
-    throw UnimplementedError();
+  Future<List<HamburgerDto>> getDrinkData() async {
+    try {
+      final jsonString = await rootBundle.loadString(drinkPath);
+      final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
+
+      final List<dynamic> jsonList = jsonResponse['drink'];
+      final drinkList = jsonList.map((e) => HamburgerDto.fromJson(e)).toList();
+
+      return drinkList;
+    } catch (e) {
+      throw Exception('drink.json 로드 실패: $e');
+    }
+  }
+
+  @override
+  Future<List<HamburgerDto>> getSideData() async {
+    try {
+      final jsonString = await rootBundle.loadString(sidePath);
+      final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
+
+      final List<dynamic> jsonList = jsonResponse['side'];
+      final sideList = jsonList.map((e) => HamburgerDto.fromJson(e)).toList();
+
+      return sideList;
+    } catch (e) {
+      throw Exception('side.json 로드 실패: $e');
+    }
   }
 }
