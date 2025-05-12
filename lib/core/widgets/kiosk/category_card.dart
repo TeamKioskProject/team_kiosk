@@ -5,6 +5,7 @@ import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
+import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
 enum Category { burger, cafe }
 
@@ -35,9 +36,11 @@ class CategoryCard extends ConsumerWidget {
         switch (category) {
           case Category.burger:
             appState.changeMode(AppMode.burger);
+            ref.read(menuSelectNotifierProvider.notifier).resetState();
             break;
           case Category.cafe:
             appState.changeMode(AppMode.cafe);
+            ref.read(menuSelectNotifierProvider.notifier).resetState();
             break;
         }
       },
