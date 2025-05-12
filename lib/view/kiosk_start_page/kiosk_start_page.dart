@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/state/app_mode.dart';
+import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
@@ -13,6 +15,7 @@ class KioskStartPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final appState = ref.watch(appStateProvider.notifier);
     final theme = ref.read(kioskThemeProvider);
     final style = ref.read(textStyleSetProvider);
 
