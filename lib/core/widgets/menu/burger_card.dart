@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
+import 'package:team_kiosk/core/constants/box_styles.dart';
 
 class BurgerCard extends StatelessWidget {
   final String name;
