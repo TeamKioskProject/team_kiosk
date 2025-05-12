@@ -7,6 +7,7 @@ import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
 import 'package:team_kiosk/core/widgets/kiosk/selectable_tile.dart';
+import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
 class PlaceSelectScreen extends ConsumerWidget {
   const PlaceSelectScreen({super.key});
@@ -52,6 +53,7 @@ class PlaceSelectScreen extends ConsumerWidget {
                 title: '매장에서 먹을래요',
                 onTap: () {
                   context.push('/menu-select-screen');
+                  ref.read(menuSelectNotifierProvider.notifier).resetState();
                 },
               ),
               const SizedBox(height: 20),
@@ -62,6 +64,7 @@ class PlaceSelectScreen extends ConsumerWidget {
                 title: '가져갈래요',
                 onTap: () {
                   context.push('/menu-select-screen');
+                  ref.read(menuSelectNotifierProvider.notifier).resetState();
                 },
               ),
             ],
