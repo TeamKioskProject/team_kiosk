@@ -38,17 +38,17 @@ class MenuSelectScreen extends ConsumerWidget {
               theme == KioskTheme.fromMode(KioskMode.burger)
                   ? Icons.lunch_dining
                   : Icons.coffee,
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거' : '커피',
+              theme == KioskTheme.fromMode(KioskMode.burger) ? '디저트' : '디저트',
               theme == KioskTheme.fromMode(KioskMode.burger)
-                  ? Icons.lunch_dining
+                  ? Icons.icecream_rounded
+                  : Icons.icecream_rounded,
+              theme == KioskTheme.fromMode(KioskMode.burger) ? '음료수' : '음료수',
+              theme == KioskTheme.fromMode(KioskMode.burger)
+                  ? Icons.sports_bar
                   : Icons.coffee,
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거' : '커피',
+              theme == KioskTheme.fromMode(KioskMode.burger) ? '사이드' : '사이드',
               theme == KioskTheme.fromMode(KioskMode.burger)
-                  ? Icons.lunch_dining
-                  : Icons.coffee,
-              theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거' : '커피',
-              theme == KioskTheme.fromMode(KioskMode.burger)
-                  ? Icons.lunch_dining
+                  ? Icons.cookie
                   : Icons.coffee,
               theme,
             ),
