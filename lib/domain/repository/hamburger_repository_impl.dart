@@ -1,5 +1,5 @@
-import 'package:team_kiosk/data/data_source/burger_data_source.dart';
 import 'package:team_kiosk/data/data_source/hamburger_data_source.dart';
+import 'package:team_kiosk/data/mapper/hamburger_mapper.dart';
 import 'package:team_kiosk/data/model/burger.dart';
 import 'package:team_kiosk/data/repository/hamburger_repository.dart';
 
@@ -12,7 +12,7 @@ class HamburgerRepositoryImpl implements HamburgerRepository {
   @override
   Future<List<Burger>> getBurgers() async {
     final dtoList = await _dataSource.getBurgerData();
-    final burgerList = dtoList.map((e) => e.toBurger()).toList();
+    final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
     return burgerList;
   }
 
