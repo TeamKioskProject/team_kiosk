@@ -38,7 +38,8 @@
         }
       ],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/abc1b2a1-8155-47e1-bc64-cbd33bf73114.png",
-      "menuNm": "초코 브라우니 킹퓨전"
+      "menuNm": "초코 브라우니 킹퓨전",
+      "price": 3800
     },
     {
       "menuComponents": "카라멜 버터쿠키 킹퓨전",
@@ -54,7 +55,8 @@
         }
       ],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/f94f090a-62c3-4759-96e6-f43726c5b554.png",
-      "menuNm": "카라멜 버터쿠키 킹퓨전"
+      "menuNm": "카라멜 버터쿠키 킹퓨전",
+      "price": 3900
     },
     {
       "menuComponents": "초코 선데",
@@ -65,7 +67,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/e60c9bd1-0d01-4d84-9f77-7ff084a62636.png",
-      "menuNm": "초코 선데"
+      "menuNm": "초코 선데",
+      "price": 2500
     },
     {
       "menuComponents": "밀크 선데",
@@ -76,7 +79,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/b475e391-ed91-4160-830e-70898f0730c1.png",
-      "menuNm": "밀크 선데"
+      "menuNm": "밀크 선데",
+      "price": 2300
     },
     {
       "menuComponents": "핫초코",
@@ -87,7 +91,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/b2577087-5e34-498b-b133-78a17c21c4c9.png",
-      "menuNm": "핫초코"
+      "menuNm": "핫초코",
+      "price": 3000
     },
     {
       "menuComponents": "아이스초코",
@@ -98,29 +103,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/efa5a362-a581-4a04-acb8-3bf062ecc860.png",
-      "menuNm": "아이스초코"
-    },
-    {
-      "menuComponents": "아메리카노",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c77ae44c-30a2-4b09-9438-4a072ce7299e.png",
-      "menuCd": "3030086",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/fdb94c35-0d24-41d4-b3ed-408fd2640bbb.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/f947e9c7-da31-4d3d-a775-0520cd0edaca.png",
-      "spicyYn": "0",
-      "menuFlagList": [],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a461bae1-fea4-492c-b700-2692776e5a84.png",
-      "menuNm": "아메리카노"
-    },
-    {
-      "menuComponents": "아이스아메리카노",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ca880124-cf85-4412-a939-4ea32c9ab70c.png",
-      "menuCd": "3030087",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/bdf3b729-be05-4fe3-ab89-9943a48ae2a9.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/a8fa617b-bdea-48ec-9b56-c273fb8fb59d.png",
-      "spicyYn": "0",
-      "menuFlagList": [],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d99f5ee6-467d-4306-aee9-64918681686f.png",
-      "menuNm": "아이스아메리카노"
+      "menuNm": "아이스초코",
+      "price": 3200
     },
     {
       "menuComponents": "코카콜라(R)",
@@ -131,7 +115,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/e12217ab-4c33-430d-81d9-0dcf1878d227.png",
-      "menuNm": "코카콜라(R)"
+      "menuNm": "코카콜라(R)",
+      "price": 2000
     },
     {
       "menuComponents": "코카콜라(L)",
@@ -142,7 +127,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/bd7dd55e-f89f-4f78-b9ed-28bca2202c00.png",
-      "menuNm": "코카콜라(L)"
+      "menuNm": "코카콜라(L)",
+      "price": 2500
     },
     {
       "menuComponents": "코카콜라 제로(R)",
@@ -153,7 +139,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d599a276-c3c5-4824-ab37-4293c686728e.png",
-      "menuNm": "코카콜라 제로(R)"
+      "menuNm": "코카콜라 제로(R)",
+      "price": 2000
     },
     {
       "menuComponents": "코카콜라 제로(L)",
@@ -164,7 +151,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/cae387de-1223-4060-a4a0-8c4eafe29e8d.png",
-      "menuNm": "코카콜라 제로(L)"
+      "menuNm": "코카콜라 제로(L)",
+      "price": 2500
     },
     {
       "menuComponents": "스프라이트(L)",
@@ -175,7 +163,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/cad03672-d032-4bca-b929-0e1b4ad8ab85.png",
-      "menuNm": "스프라이트(L)"
+      "menuNm": "스프라이트(L)",
+      "price": 2500
     },
     {
       "menuComponents": "스프라이트(R)",
@@ -186,7 +175,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/dfce119b-1626-4a72-b0e7-4b28a83c766c.png",
-      "menuNm": "스프라이트(R)"
+      "menuNm": "스프라이트(R)",
+      "price": 2000
     },
     {
       "menuComponents": "스프라이트 제로(R)",
@@ -197,7 +187,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/c9c81c18-f1ae-44de-86d0-2835c185cfc3.png",
-      "menuNm": "스프라이트 제로(R)"
+      "menuNm": "스프라이트 제로(R)",
+      "price": 2000
     },
     {
       "menuComponents": "스프라이트 제로(L)",
@@ -208,7 +199,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/b0faac44-aab0-49f5-9496-36a4e75b1431.png",
-      "menuNm": "스프라이트 제로(L)"
+      "menuNm": "스프라이트 제로(L)",
+      "price": 2500
     },
     {
       "menuComponents": "미닛메이드 오렌지",
@@ -219,7 +211,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/b4bf3ccf-7473-428e-ae3c-fd25a2ed991d.png",
-      "menuNm": "미닛메이드 오렌지"
+      "menuNm": "미닛메이드 오렌지",
+      "price": 2000
     },
     {
       "menuComponents": "순수(미네랄워터)",
@@ -230,7 +223,8 @@
       "spicyYn": "0",
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2024/12/05/ae6fe2d6-628e-4def-9c6c-129865f61277.png",
-      "menuNm": "순수(미네랄워터)"
+      "menuNm": "순수(미네랄워터)",
+      "price": 2000
     }
   ]
 }
