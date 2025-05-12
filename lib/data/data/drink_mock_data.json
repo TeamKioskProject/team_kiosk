@@ -73,30 +73,6 @@
       "price": 2500
     },
     {
-      "menuComponents": "코카콜라 제로(R)",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/bd7340ae-59d5-4b43-a638-e41fe1d77717.png",
-      "menuCd": "3040017",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ebb009bb-09cb-44cb-be21-9a5a606169a7.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/fdeb9eba-071d-48ce-9155-ff0012eff5c5.png",
-      "spicyYn": "0",
-      "menuFlagList": [],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d599a276-c3c5-4824-ab37-4293c686728e.png",
-      "menuNm": "코카콜라 제로(R)",
-      "price": 2000
-    },
-    {
-      "menuComponents": "코카콜라 제로(L)",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c4c1d0d8-7445-4673-9925-e2d5c16574b2.png",
-      "menuCd": "3040015",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/f0104b0f-c148-48a7-adf3-a2f161034e53.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b14aa19e-026f-4553-804e-a389ee6aefb3.png",
-      "spicyYn": "0",
-      "menuFlagList": [],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/cae387de-1223-4060-a4a0-8c4eafe29e8d.png",
-      "menuNm": "코카콜라 제로(L)",
-      "price": 2500
-    },
-    {
       "menuComponents": "스프라이트(L)",
       "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/ce899031-ae52-43d2-9bdd-e8572eed1051.png",
       "menuCd": "3040014",
@@ -119,6 +95,30 @@
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/dfce119b-1626-4a72-b0e7-4b28a83c766c.png",
       "menuNm": "스프라이트(R)",
       "price": 2000
+    },
+    {
+      "menuComponents": "코카콜라 제로(R)",
+      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/bd7340ae-59d5-4b43-a638-e41fe1d77717.png",
+      "menuCd": "3040017",
+      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/ebb009bb-09cb-44cb-be21-9a5a606169a7.png",
+      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/fdeb9eba-071d-48ce-9155-ff0012eff5c5.png",
+      "spicyYn": "0",
+      "menuFlagList": [],
+      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d599a276-c3c5-4824-ab37-4293c686728e.png",
+      "menuNm": "코카콜라 제로(R)",
+      "price": 2000
+    },
+    {
+      "menuComponents": "코카콜라 제로(L)",
+      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/01/06/c4c1d0d8-7445-4673-9925-e2d5c16574b2.png",
+      "menuCd": "3040015",
+      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/01/06/f0104b0f-c148-48a7-adf3-a2f161034e53.png",
+      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/01/06/b14aa19e-026f-4553-804e-a389ee6aefb3.png",
+      "spicyYn": "0",
+      "menuFlagList": [],
+      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/cae387de-1223-4060-a4a0-8c4eafe29e8d.png",
+      "menuNm": "코카콜라 제로(L)",
+      "price": 2500
     },
     {
       "menuComponents": "스프라이트 제로(R)",
