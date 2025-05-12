@@ -27,7 +27,7 @@ class OrderRepositoryImpl implements OrderRepository {
             .toList();
       case CategoryType.bugerDessert:
         final List<BugerTypeDto> orderDtoItemList = await dataSource
-            .getBugerData(type: BugerType.bugerDrink);
+            .getBugerData(type: BugerType.bugerDessert);
         return orderDtoItemList
             .map((items) => items.toOrderItemBuger(type: type))
             .toList();
