@@ -8,119 +8,108 @@ import 'package:team_kiosk/domain/repository/order_repository.dart';
 import 'package:team_kiosk/view/main_menu/menu_select.dart';
 import 'package:team_kiosk/view/main_menu/menu_state.dart';
 
-class MenuSelectNotifier extends Notifier<MenuState> {
+class MenuSelectNotifier extends Notifier<AsyncValue<MenuState>> {
   late final OrderRepository _orderRepository;
+  late final AppState _appState;
 
   @override
-  MenuState build() {
-    // OrderRepository 주입
+  AsyncValue<MenuState> build() {
+    // OrderRepository와 AppState 주입
     _orderRepository = ref.read(orderRepositoryProvider);
-    _loadInitialData();
-    return const MenuState();
-  }
+    _appState = ref.read(appStateProvider);
 
-  void resetState() {
-    state = const MenuState(); // 상태 초기화
-    _loadInitialData(); // 초기 데이터 다시 로드
+    // 초기 데이터 로딩
+    _loadInitialData();
+    return const AsyncValue.loading();
   }
 
   Future<void> _loadInitialData() async {
-    final appState = ref.read(appStateProvider);
-
-    // 초기 데이터 로딩을 비동기로 처리
-    await Future.delayed(Duration.zero, () async {
-      state = state.copyWith(itemList: []);
-      await changeTab(appStateMode: appState);
-    });
-  }
-
-  void changeMode({required AppState appStateMode, required int index}) async {
-    resetState(); // 상태 초기화 추가
-    if (appStateMode.mode == AppMode.burger) {
-      switch (index) {
-        case 0:
-          state = state.copyWith(selectTab: MenuSelect.mainMenu);
-          await changeTab(appStateMode: appStateMode);
-          break;
-        case 1:
-          state = state.copyWith(selectTab: MenuSelect.sideMenu);
-          await changeTab(appStateMode: appStateMode);
-          break;
-        case 2:
-          state = state.copyWith(selectTab: MenuSelect.drinkMenu);
-          await changeTab(appStateMode: appStateMode);
-          break;
-        case 3:
-          state = state.copyWith(selectTab: MenuSelect.dessertMenu);
-          await changeTab(appStateMode: appStateMode);
-          break;
-
-        default:
-          state = state.copyWith(selectTab: MenuSelect.mainMenu);
-          await changeTab(appStateMode: appStateMode);
+    try {
+      if (_appState.mode == AppMode.burger) {
+        state = AsyncValue.data(MenuState(selectTab: MenuSelect.mainMenu));
+        await _loadMenuItems(CategoryType.buger);
+      } else {
+        state = AsyncValue.data(MenuState(selectTab: MenuSelect.mainMenu));
+        await _loadMenuItems(CategoryType.cafeDrink);
       }
-    } else {
-      switch (index) {
-        case 0:
-          state = state.copyWith(selectTab: MenuSelect.mainMenu);
-          await changeTab(appStateMode: appStateMode);
-          break;
-        case 1:
-          state = state.copyWith(selectTab: MenuSelect.dessertMenu);
-          await changeTab(appStateMode: appStateMode);
-          break;
-      }
+    } catch (e, stack) {
+      state = AsyncValue.error(e, stack);
     }
-
-    // await changeTab(theme: theme);
   }
 
-  Future<void> changeTab({required AppState appStateMode}) async {
-    if (appStateMode.mode == AppMode.burger) {
-      switch (state.selectTab) {
-        case MenuSelect.mainMenu:
-          final data = await _orderRepository.getOrderItem(
-            type: CategoryType.burger,
-          );
-          state = state.copyWith(itemList: data);
-        case MenuSelect.sideMenu:
-          final data = await _orderRepository.getOrderItem(
-            type: CategoryType.burgerSide,
-          );
-          state = state.copyWith(itemList: data);
-        case MenuSelect.drinkMenu:
-          final data = await _orderRepository.getOrderItem(
-            type: CategoryType.burgerDrink,
-          );
-          state = state.copyWith(itemList: data);
-        case MenuSelect.dessertMenu:
-          final data = await _orderRepository.getOrderItem(
-            type: CategoryType.burgerDessert,
-          );
-          state = state.copyWith(itemList: data);
+  Future<void> changeMode({required int index}) async {
+    try {
+      if (_appState.mode == AppMode.burger) {
+        switch (index) {
+          case 0:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.mainMenu),
+            );
+            await _loadMenuItems(CategoryType.buger);
+            break;
+          case 1:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.sideMenu),
+            );
+            await _loadMenuItems(CategoryType.bugerSide);
+            break;
+          case 2:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.drinkMenu),
+            );
+            await _loadMenuItems(CategoryType.bugerDrink);
+            break;
+          case 3:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.dessertMenu),
+            );
+            await _loadMenuItems(CategoryType.bugerDessert);
+            break;
+          default:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.mainMenu),
+            );
+            await _loadMenuItems(CategoryType.buger);
+        }
+      } else {
+        switch (index) {
+          case 0:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.mainMenu),
+            );
+            await _loadMenuItems(CategoryType.cafeDrink);
+            break;
+          case 1:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.dessertMenu),
+            );
+            await _loadMenuItems(CategoryType.cafeDessert);
+            break;
+          default:
+            state = AsyncValue.data(
+              state.requireValue.copyWith(selectTab: MenuSelect.mainMenu),
+            );
+            await _loadMenuItems(CategoryType.cafeDrink);
+        }
       }
-    } else {
-      switch (state.selectTab) {
-        case MenuSelect.mainMenu:
-          final data = await _orderRepository.getOrderItem(
-            type: CategoryType.cafeDrink,
-          );
-          state = state.copyWith(itemList: data);
-        case MenuSelect.sideMenu:
-          // TODO: Handle this case.
-          throw UnimplementedError();
-        case MenuSelect.drinkMenu:
-          // TODO: Handle this case.
-          throw UnimplementedError();
-        case MenuSelect.dessertMenu:
-          final data = await _orderRepository.getOrderItem(
-            type: CategoryType.cafeDessert,
-          );
-          state = state.copyWith(itemList: data);
-      }
+    } catch (e, stack) {
+      state = AsyncValue.error(e, stack);
+    }
+  }
+
+  Future<void> _loadMenuItems(CategoryType type) async {
+    try {
+      final items = await _orderRepository.getOrderItem(type: type);
+      state = AsyncValue.data(
+        state.requireValue.copyWith(itemList: items),
+      );
+    } catch (e, stack) {
+      state = AsyncValue.error(e, stack);
     }
   }
 }
 
 final menuSelectNotifierProvider =
-    NotifierProvider<MenuSelectNotifier, MenuState>(MenuSelectNotifier.new);
+NotifierProvider<MenuSelectNotifier, AsyncValue<MenuState>>(
+  MenuSelectNotifier.new,
+);

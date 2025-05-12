@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
@@ -107,28 +106,30 @@ class MenuSelectScreen extends ConsumerWidget {
         ),
         body: Container(
           color: theme.background,
-          child:
-              appState.mode == AppMode.burger
-                  ? TabBarView(
-                    children: List.generate(
-                      4,
-                      (_) =>
-                          _buildMenuGrid(state.itemList, theme, cartViewModel),
-                    ),
-                  )
-                  : TabBarView(
-                    children: List.generate(
-                      2,
-                      (_) =>
-                          _buildMenuGrid(state.itemList, theme, cartViewModel),
-                    ),
-                  ),
-        ),
-        bottomNavigationBar: MenuBottomBar(
-          theme: theme,
-          onTap: () {
-            context.push('/cart');
-          },
+          child: state.when(
+            data: (menuState) => appState.mode == AppMode.burger
+                ? TabBarView(
+              children: [
+                _buildMenuGrid(menuState.itemList, theme),
+                _buildMenuGrid(menuState.itemList, theme),
+                _buildMenuGrid(menuState.itemList, theme),
+                _buildMenuGrid(menuState.itemList, theme),
+              ],
+            )
+                : TabBarView(
+              children: [
+                _buildMenuGrid(menuState.itemList, theme),
+                _buildMenuGrid(menuState.itemList, theme),
+              ],
+            ),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (error, stack) => Center(
+              child: Text(
+                '오류 발생: $error',
+                style: style.body,
+              ),
+            ),
+          ),
         ),
       ),
     );
