@@ -10,7 +10,7 @@
       "menuFlagList": [],
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/a461bae1-fea4-492c-b700-2692776e5a84.png",
       "menuNm": "아메리카노",
-      "price": 2840
+      "price": 1500
     },
     {
       "menuComponents": "아이스아메리카노",
@@ -23,64 +23,6 @@
       "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/01/06/d99f5ee6-467d-4306-aee9-64918681686f.png",
       "menuNm": "아이스아메리카노",
       "price": 1550
-    },
-    {
-      "menuComponents": "초코 브라우니 킹퓨전",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/04/28/dd51807c-29f8-470e-a3cd-9f84f53a76e3.png",
-      "menuCd": "4400048",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/04/28/daa22f8b-c28c-42d1-8b78-3e3833c9a184.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/04/28/c7e1ddc6-1acb-461d-876d-fd3f3af2de54.png",
-      "spicyYn": "0",
-      "menuFlagList": [
-        {
-          "menuFlagPk": "01",
-          "menuFlagNm": "NEW"
-        }
-      ],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/abc1b2a1-8155-47e1-bc64-cbd33bf73114.png",
-      "menuNm": "초코 브라우니 킹퓨전",
-      "price": 3800
-    },
-    {
-      "menuComponents": "카라멜 버터쿠키 킹퓨전",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/04/28/f680db41-81d2-418e-9b81-8355ee652e31.png",
-      "menuCd": "4400049",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/04/28/c3316502-4de4-41cd-8a63-9be28abb0f05.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/04/28/a53b382f-bdca-4d52-99b7-215d91575fd3.png",
-      "spicyYn": "0",
-      "menuFlagList": [
-        {
-          "menuFlagPk": "01",
-          "menuFlagNm": "NEW"
-        }
-      ],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/f94f090a-62c3-4759-96e6-f43726c5b554.png",
-      "menuNm": "카라멜 버터쿠키 킹퓨전",
-      "price": 3900
-    },
-    {
-      "menuComponents": "초코 선데",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/04/28/c3a36287-7c00-4bd3-9d0c-1269126b14de.png",
-      "menuCd": "4020035",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/04/28/a37e89c0-6583-4e0b-aecf-44fac8416d86.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/04/28/cb755dd7-c8c1-4453-960f-01506b641d09.png",
-      "spicyYn": "0",
-      "menuFlagList": [],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/e60c9bd1-0d01-4d84-9f77-7ff084a62636.png",
-      "menuNm": "초코 선데",
-      "price": 2500
-    },
-    {
-      "menuComponents": "밀크 선데",
-      "menuImgPath": "https://mob-prd.burgerking.co.kr/images/menu/web/main/2025/04/28/e4c9587f-7cde-4915-b7df-2899f07cb763.png",
-      "menuCd": "4020034",
-      "menuImgThumPath": "https://mob-prd.burgerking.co.kr/images/menu/web/thumb/2025/04/28/e01036bb-c6b0-4849-b467-71e27ac3fedc.png",
-      "menuImgMPath": "https://mob-prd.burgerking.co.kr/images/menu/app/main/2025/04/28/e9aa83a2-9600-40b6-8671-8eed080a24cf.png",
-      "spicyYn": "0",
-      "menuFlagList": [],
-      "menuImgMThumPath": "https://mob-prd.burgerking.co.kr/images/menu/app/thumb/2025/04/28/b475e391-ed91-4160-830e-70898f0730c1.png",
-      "menuNm": "밀크 선데",
-      "price": 2300
     },
     {
       "menuComponents": "핫초코",
