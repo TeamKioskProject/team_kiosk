@@ -26,6 +26,12 @@ final drinkListProvider = FutureProvider.autoDispose<List<Burger>>((ref) async {
   return await repository.getDrinks();
 });
 
+// 사이드 리스트 Provider
+final sideListProvider = FutureProvider.autoDispose<List<Burger>>((ref) async {
+  final repository = ref.watch(burgerRepositoryProvider);
+  return await repository.getSides();
+});
+
 final burgerRepositoryProvider = Provider<HamburgerRepository>((ref) {
   return HamburgerRepositoryImpl(dataSource: HamburgerDataSourceImpl());
 });
