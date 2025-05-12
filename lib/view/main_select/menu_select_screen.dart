@@ -18,6 +18,7 @@ class MenuSelectScreen extends ConsumerWidget {
     final burgerListAsync = ref.watch(burgerListProvider);
     final dessertAsync = ref.watch(dessertListProvider);
     final drinkAsync = ref.watch(drinkListProvider);
+    final sideAsync = ref.watch(sideListProvider);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -77,7 +78,12 @@ class MenuSelectScreen extends ConsumerWidget {
                 loading: () => const Center(child: CircularProgressIndicator()),
                 error: (error, stack) => Center(child: Text('오류 발생: $error')),
               ),
-              const Center(child: Text('Step 4')),
+              // Step 4 - 사이드
+              sideAsync.when(
+                data: (sideAsync) => _buildMenuGrid(sideAsync, theme),
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (error, stack) => Center(child: Text('오류 발생: $error')),
+              ),
             ],
           ),
         ),
