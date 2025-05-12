@@ -1,20 +1,12 @@
-enum BugerType {
-  buger,
-  bugerDrink,
-  bugerDessert,
-  bugerSide,
-}
+enum BurgerType { burger, burgerDrink, burgerDessert, burgerSide }
 
-enum CafeType {
-  cafeDrink,
-  cafeDessert
-}
+enum CafeType { cafeDrink, cafeDessert }
 
 enum CategoryType {
-  buger,
-  bugerDrink,
-  bugerDessert,
-  bugerSide,
+  burger,
+  burgerDrink,
+  burgerDessert,
+  burgerSide,
   cafeDrink,
   cafeDessert,
 }
