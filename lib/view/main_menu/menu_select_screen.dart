@@ -133,7 +133,6 @@ class MenuSelectScreen extends ConsumerWidget {
       ),
     );
   }
-}
 
 Widget _buildMenuGrid(
   List<OrderItem> items,

@@ -22,6 +22,10 @@ final router = GoRouter(
       builder: (context, state) => const KioskStartPage(),
     ),
     GoRoute(
+      path: '/place-select-screen',
+      builder: (context, state) => const PlaceSelectScreen(),
+    ),
+    GoRoute(
       path: '/menu-select-screen',
       builder: (context, state) => const MenuSelectScreen(),
     ),

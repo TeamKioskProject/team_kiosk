@@ -7,7 +7,6 @@ part 'menu_state.freezed.dart';
 class MenuState with _$MenuState {
   final MenuSelect selectTab;
   final List<OrderItem> itemList;
-
   const MenuState({
     this.selectTab = MenuSelect.mainMenu,
     this.itemList = const [],

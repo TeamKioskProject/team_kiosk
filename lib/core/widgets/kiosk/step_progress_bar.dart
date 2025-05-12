@@ -16,10 +16,7 @@ class StepProgressBar extends ConsumerWidget {
     required this.icons,
     required this.theme,
     super.key,
-  }) : assert(
-         titles.length == icons.length && titles.length <= 4,
-         'titles and icons must have the same length and be at most 4 items long.',
-       );
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
