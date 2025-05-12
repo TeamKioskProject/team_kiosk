@@ -24,8 +24,9 @@ class HamburgerRepositoryImpl implements HamburgerRepository {
   }
 
   @override
-  Future<List<Burger>> getDrinks() {
-    // TODO: implement getDrinks
-    throw UnimplementedError();
+  Future<List<Burger>> getDrinks() async {
+    final dtoList = await _dataSource.getDrinkData();
+    final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
+    return burgerList;
   }
 }
