@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/state/app_state_notifier.dart';
 
 class MenuCard extends ConsumerWidget {
   final String image;
@@ -23,6 +24,7 @@ class MenuCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final appState = ref.read(appStateProvider);
     final styles = ref.watch(textStyleSetProvider);
     return Container(
       width: double.infinity,
