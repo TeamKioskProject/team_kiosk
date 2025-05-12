@@ -9,33 +9,38 @@ class SettingButton extends ConsumerWidget {
   final String text;
   final IconData icon;
   final KioskTheme theme;
+  final void Function() onTap;
 
   const SettingButton({
     super.key,
     required this.text,
     required this.icon,
     required this.theme,
+    required this.onTap
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final styles = ref.watch(textStyleSetProvider);
-    return Container(
-      width: double.infinity,
-      decoration: ButtonStyles.kioskButton(Colors.white),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 22),
-            const SizedBox(width: 5),
-            Text(
-              text,
-              style: styles.headline2.copyWith(fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-          ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        decoration: ButtonStyles.kioskButton(Colors.white),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 22),
+              const SizedBox(width: 5),
+              Text(
+                text,
+                style: styles.headline2.copyWith(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );

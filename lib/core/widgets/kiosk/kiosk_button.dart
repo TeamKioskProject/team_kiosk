@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 
 @immutable
@@ -52,7 +53,9 @@ class KioskButton extends ConsumerWidget {
               ),
               child: Text(
                 text,
-                style: styles.headline1.copyWith(fontSize: 25),
+                style: styles.headline1.copyWith(
+                  fontSize: ref.read(appStateProvider).isBarrierFree ? 38 : 25,
+                ),
                 maxLines: 2,
                 textAlign: TextAlign.start,
               ),

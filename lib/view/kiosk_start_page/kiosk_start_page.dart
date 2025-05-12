@@ -16,8 +16,8 @@ class KioskStartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.watch(appStateProvider.notifier);
-    final theme = ref.read(kioskThemeProvider);
-    final style = ref.read(textStyleSetProvider);
+    final theme = ref.watch(kioskThemeProvider);
+    final style = ref.watch(textStyleSetProvider);
 
     return Scaffold(
       appBar: KioskAppBar(
@@ -81,27 +81,22 @@ class KioskStartPage extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text('※ 실제 주문이 발생하지 않는 연습용 앱입니다'),
+              Text('※ 실제 주문이 발생하지 않는 연습용 앱입니다', style: style.body),
               const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: SettingButton(
-                      text: '앱 사용법 보기',
-                      icon: Icons.help,
-                      theme: theme,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: SettingButton(
-                      text: '설정',
-                      icon: Icons.settings,
-                      theme: theme,
-                    ),
-                  ),
-                ],
+              SettingButton(
+                text:
+                    ref.read(appStateProvider).isBarrierFree
+                        ? '글자를 원래대로 해주세요'
+                        : '글자를 크고 진하게 해주세요',
+                icon: Icons.text_fields,
+                theme: theme,
+                onTap: () {
+                  if (ref.read(appStateProvider).isBarrierFree) {
+                    ref.read(appStateProvider.notifier).setBarrierFree(false);
+                  } else {
+                    ref.read(appStateProvider.notifier).setBarrierFree(true);
+                  }
+                },
               ),
             ],
           ),
