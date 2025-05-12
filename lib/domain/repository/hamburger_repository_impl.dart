@@ -3,11 +3,11 @@ import 'package:team_kiosk/data/mapper/buger_mapper.dart';
 import 'package:team_kiosk/data/model/burger.dart';
 import 'package:team_kiosk/data/repository/burger_repository.dart';
 
-class BurgerRepositoryImpl implements BurgerRepository {
+class HamburgerRepositoryImpl implements BurgerRepository {
   final BurgerDataSource _dataSource;
 
   BurgerRepositoryImpl({required BurgerDataSource dataSource})
-    : _dataSource = dataSource;
+      : _dataSource = dataSource;
 
   @override
   Future<List<Burger>> getBurgers() async {
