@@ -5,7 +5,7 @@ extension HambugerMapper on HamburgerDto {
   Burger toHamBurger() {
     return Burger(
       name: menuComponents ?? '',
-      imageUrl: menuImgPath ?? '',
+      imageUrl: menuImgThumPath ?? '',
       price: price ?? 0,
     );
   }
