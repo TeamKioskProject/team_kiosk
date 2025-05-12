@@ -23,7 +23,7 @@ class MenuBottomBar extends ConsumerWidget {
             children: [
               Text('선택된 메뉴', style: styles.caption),
               const SizedBox(width: 15),
-              Text('0', style: styles.accent),
+              Text('0', style: styles.accent.copyWith(color: theme.primary)),
             ],
           ),
 
