@@ -1,6 +1,5 @@
 import 'package:team_kiosk/data/data_source/data_type.dart';
 import 'package:team_kiosk/data/data_source/order_item_data_source.dart';
-import 'package:team_kiosk/data/dto/buger_type_dto.dart';
 import 'package:team_kiosk/data/dto/burger_type_dto.dart';
 import 'package:team_kiosk/data/dto/cafe_type_dto.dart';
 import 'package:team_kiosk/data/mapper/order_item_mapper.dart';
@@ -15,27 +14,27 @@ class OrderRepositoryImpl implements OrderRepository {
   @override
   Future<List<OrderItem>> getOrderItem({required CategoryType type}) async {
     switch (type) {
-      case CategoryType.buger:
+      case CategoryType.burger:
         final List<BurgerTypeDto> orderDtoItemList = await dataSource
-            .getBurgerData(type: BugerType.buger);
+            .getBurgerData(type: BurgerType.burger);
         return orderDtoItemList
             .map((items) => items.toOrderItemBurger(type: type))
             .toList();
-      case CategoryType.bugerDrink:
+      case CategoryType.burgerDrink:
         final List<BurgerTypeDto> orderDtoItemList = await dataSource
-            .getBurgerData(type: BugerType.bugerDrink);
+            .getBurgerData(type: BurgerType.burgerDrink);
         return orderDtoItemList
             .map((items) => items.toOrderItemBurger(type: type))
             .toList();
-      case CategoryType.bugerDessert:
+      case CategoryType.burgerDessert:
         final List<BurgerTypeDto> orderDtoItemList = await dataSource
-            .getBurgerData(type: BugerType.bugerDrink);
+            .getBurgerData(type: BurgerType.burgerDrink);
         return orderDtoItemList
             .map((items) => items.toOrderItemBurger(type: type))
             .toList();
-      case CategoryType.bugerSide:
+      case CategoryType.burgerSide:
         final List<BurgerTypeDto> orderDtoItemList = await dataSource
-            .getBurgerData(type: BugerType.bugerSide);
+            .getBurgerData(type: BurgerType.burgerSide);
         return orderDtoItemList
             .map((items) => items.toOrderItemBurger(type: type))
             .toList();

@@ -3,7 +3,6 @@ import 'package:team_kiosk/view/cart/cart_screen.dart';
 import 'package:team_kiosk/view/home_screen.dart';
 import 'package:team_kiosk/view/installment_select/installment_screen.dart';
 import 'package:team_kiosk/view/kiosk_start_page/kiosk_start_page.dart';
-import 'package:team_kiosk/view/main_select/menu_select_screen.dart';
 import 'package:team_kiosk/view/payment/payment_screen.dart';
 import 'package:team_kiosk/view/payment/payment_success_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
@@ -21,10 +20,10 @@ final router = GoRouter(
       path: '/kiosk-start-page',
       builder: (context, state) => const KioskStartPage(),
     ),
-    GoRoute(
-      path: '/menu-select-screen',
-      builder: (context, state) => const MenuSelectScreen(),
-    ),
+    // GoRoute(
+    //   path: '/menu-select-screen',
+    //   builder: (context, state) => const MenuSelectScreen(),
+    // ),
     GoRoute(
       path: '/place-select-screen',
       builder: (context, state) => const PlaceSelectScreen(),
