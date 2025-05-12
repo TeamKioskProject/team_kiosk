@@ -82,6 +82,7 @@ flutter:
     - lib/data/data/burger_mock_data.json
     - lib/data/data/dessert_mock_data.json
     - lib/data/data/drink_mock_data.json
+    - lib/data/data/side_mock_data.json
   fonts:
     - family: Pretendard
       fonts:
