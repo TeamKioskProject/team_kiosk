@@ -4,4 +4,6 @@ abstract interface class HamburgerDataSource {
   Future<List<HamburgerDto>> getBurgerData();
 
   Future<List<HamburgerDto>> getDessertData();
+
+  Future<List<HamburgerDto>> getDrinkData();
 }
