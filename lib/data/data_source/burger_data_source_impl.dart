@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:team_kiosk/data/data_source/burger_data_source.dart';
+import 'package:team_kiosk/data/data_source/hamburger_data_source.dart';
 import 'package:team_kiosk/data/dto/burger_dto.dart';
 
-class BurgerDataSourceImpl implements BurgerDataSource {
+class BurgerDataSourceImpl implements HamburgerDataSource {
   static const String path = 'lib/data/data/burger_mock_data.json';
 
   @override
