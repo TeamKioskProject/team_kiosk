@@ -41,7 +41,7 @@ class DialogActionButton extends StatelessWidget {
                 ? Center(
               child: Text(
                 text,
-                style: textStyleSet.headline2,
+                style: textStyleSet.headline2.copyWith(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             )
@@ -52,7 +52,7 @@ class DialogActionButton extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text(
                   text,
-                  style: textStyleSet.headline2,
+                  style: textStyleSet.headline2.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ],

@@ -13,6 +13,7 @@ class OrderSummaryBox extends StatefulWidget {
   final String itemId;
   final int itemQuantity;
   final void Function(String id) onAddTap;
+  final void Function(String id) onRemoveTap;
   final void Function(String id) onMinusTap;
 
   const OrderSummaryBox({
@@ -25,6 +26,7 @@ class OrderSummaryBox extends StatefulWidget {
     required this.itemImage,
     required this.itemQuantity,
     required this.onAddTap,
+    required this.onRemoveTap,
     required this.onMinusTap,
   });
 
@@ -52,7 +54,7 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
             top: 0,
             child: IconButton(
               onPressed: () {
-                // TODO: 아이템 제거 기능 추가
+                widget.onRemoveTap(widget.itemId);
               },
               icon: const Icon(Icons.restore_from_trash, size: 24),
             ),

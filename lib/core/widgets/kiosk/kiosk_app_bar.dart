@@ -10,6 +10,7 @@ class KioskAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final KioskTheme theme;
   final List<Widget>? action;
   final Widget? leading;
+  final PreferredSizeWidget? bottom;
 
   const KioskAppBar({
     super.key,
@@ -17,6 +18,7 @@ class KioskAppBar extends ConsumerWidget implements PreferredSizeWidget {
     this.centerTitle = false,
     this.action,
     this.leading,
+    this.bottom,
     required this.theme,
   });
 
@@ -32,9 +34,13 @@ class KioskAppBar extends ConsumerWidget implements PreferredSizeWidget {
       centerTitle: centerTitle,
       actions: action,
       leading: leading,
+      bottom: bottom,
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize {
+    final bottomHeight = bottom?.preferredSize.height ?? 0;
+    return Size.fromHeight(kToolbarHeight + bottomHeight);
+  }
 }

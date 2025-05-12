@@ -7,12 +7,12 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 
 @immutable
-class Kioskbutton extends ConsumerWidget {
+class KioskButton extends ConsumerWidget {
   final String text;
   final KioskTheme theme;
   final kiosk.Category category;
 
-  const Kioskbutton({
+  const KioskButton({
     super.key,
     required this.text,
     required this.theme,
@@ -26,11 +26,10 @@ class Kioskbutton extends ConsumerWidget {
     String imagePath;
     switch (category) {
       case kiosk.Category.burger:
-        imagePath = 'assets/icons/chat_bubble.png'; // Image for burger category
+        imagePath = 'assets/icons/chat_bubble.png';
         break;
       case kiosk.Category.cafe:
-        imagePath =
-            'assets/icons/chat_bubble_cafe.png'; // Image for cafe category
+        imagePath = 'assets/icons/chat_bubble_cafe.png';
         break; // Default image if needed
     }
     return ColumnSuper(

@@ -22,7 +22,7 @@ class InstallmentGroup extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('할부로 결제 하시겠어요?', style: textStyleSet.body),
+          Text('할부로 결제 하시겠어요?', style: textStyleSet.headline2),
           const SizedBox(
             height: 20,
           ),
@@ -43,6 +43,9 @@ class InstallmentGroup extends StatelessWidget {
                 child: Text(text, style: textStyleSet.button.copyWith(color:select ? Colors.white : theme.primary),),
               );
             },
+          ),
+          const SizedBox(
+            height: 20,
           ),
         ],
       ),
