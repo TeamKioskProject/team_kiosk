@@ -29,9 +29,9 @@ class HomeScreen extends ConsumerWidget {
                 text: "오늘은 어떤 주문을 연습해볼까요?",
                 theme: KioskTheme.fromMode(KioskMode.burger),
                 category:
-                    theme == KioskTheme.fromMode(KioskMode.burger)
-                        ? kiosk.Category.burger
-                        : kiosk.Category.cafe,
+                theme == KioskTheme.fromMode(KioskMode.burger)
+                    ? kiosk.Category.burger
+                    : kiosk.Category.cafe,
               ),
             ),
             Padding(
