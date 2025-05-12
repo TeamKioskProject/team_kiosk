@@ -29,4 +29,11 @@ class HamburgerRepositoryImpl implements HamburgerRepository {
     final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
     return burgerList;
   }
+
+  @override
+  Future<List<Burger>> getSides() async {
+    final dtoList = await _dataSource.getSideData();
+    final burgerList = dtoList.map((e) => e.toHamBurger()).toList();
+    return burgerList;
+  }
 }

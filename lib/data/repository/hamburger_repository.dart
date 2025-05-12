@@ -6,4 +6,6 @@ abstract interface class HamburgerRepository {
   Future<List<Burger>> getDesserts();
 
   Future<List<Burger>> getDrinks();
+
+  Future<List<Burger>> getSides();
 }
