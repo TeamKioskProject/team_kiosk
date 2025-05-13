@@ -45,30 +45,62 @@ class MenuSelectScreen extends ConsumerWidget {
                 final tabController = DefaultTabController.of(context);
                 final selectedIndex = tabController?.index ?? 0;
 
-                return StepProgressBar(
-                  onTap: (int index) {
-                    viewModel.changeMode(appStateMode: appState, index: index);
-                    tabController?.animateTo(index); // TabBarView 이동
-                  },
-                  titles: ['햄버거', '사이드', '음료', '디저트'],
-                  icons: [
-                    const Icon(Icons.lunch_dining),
-                    Image.asset(
-                      'assets/icons/fries.png',
-                      width: 24,
-                      height: 24,
-                      color: selectedIndex == 1 ? theme.primary : null,
-                    ),
-                    Image.asset(
-                      'assets/icons/cola.png',
-                      width: 24,
-                      height: 30,
-                      color: selectedIndex == 2 ? theme.primary : null,
-                    ),
-                    const Icon(Icons.icecream_rounded),
-                  ],
-                  theme: theme,
+                final appState = ref.watch(appStateProvider);
+                final theme = ref.watch(kioskThemeProvider);
+                final viewModel = ref.watch(
+                  menuSelectNotifierProvider.notifier,
                 );
+
+                return appState.mode == AppMode.burger
+                    ? StepProgressBar(
+                      onTap: (int index) {
+                        viewModel.changeMode(
+                          appStateMode: appState,
+                          index: index,
+                        );
+                        tabController?.animateTo(index);
+                      },
+                      titles: ['햄버거', '사이드', '음료', '디저트'],
+                      icons: [
+                        const Icon(Icons.lunch_dining),
+                        Image.asset(
+                          'assets/icons/fries.png',
+                          width: 24,
+                          height: 24,
+                          color: selectedIndex == 1 ? theme.primary : null,
+                        ),
+                        Image.asset(
+                          'assets/icons/cola.png',
+                          width: 24,
+                          height: 30,
+                          color: selectedIndex == 2 ? theme.primary : null,
+                        ),
+                        const Icon(Icons.icecream_rounded),
+                      ],
+                      theme: theme,
+                    )
+                    : StepProgressBar(
+                      onTap: (int index) {
+                        viewModel.changeMode(
+                          appStateMode: appState,
+                          index: index,
+                        );
+                        tabController?.animateTo(index);
+                      },
+                      titles: ['음료', '디저트'],
+                      icons: [
+                        Icon(
+                          Icons.coffee,
+                          color: selectedIndex == 0 ? theme.primary : null,
+                        ),
+                        Icon(
+                          Icons.bakery_dining,
+                          size: 32,
+                          color: selectedIndex == 1 ? theme.primary : null,
+                        ),
+                      ],
+                      theme: theme,
+                    );
               },
             ),
           ),
