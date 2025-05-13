@@ -109,16 +109,20 @@ class MenuSelectScreen extends ConsumerWidget {
                 price: item.price,
                 theme: theme,
                 onTap: () {
-                  context.push(
-                    "/set-select-screen",
-                    extra: MenuCard(
-                      image: item.imageUrl,
-                      title: item.name,
-                      price: item.price,
-                      theme: theme,
-                      onTap: () {},
-                    ),
-                  );
+                  if(theme == KioskTheme.fromMode(KioskMode.burger)) {
+                    context.push(
+                      "/set-select-screen",
+                      extra: MenuCard(
+                        image: item.imageUrl,
+                        title: item.name,
+                        price: item.price,
+                        theme: theme,
+                        onTap: () {},
+                      ),
+                    );
+                  }else{
+                    context.push("/ingredient-select", extra: item.imageUrl);
+                  }
                 },
               );
             },
