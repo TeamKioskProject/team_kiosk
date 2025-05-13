@@ -9,6 +9,7 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
+import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
 import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
@@ -52,95 +53,93 @@ class MenuSelectScreen extends ConsumerWidget {
 
                 return appState.mode == AppMode.burger
                     ? StepProgressBar(
-                      onTap: (int index) {
-                        viewModel.changeMode(
-                          appStateMode: appState,
-                          index: index,
-                        );
-                        tabController?.animateTo(index);
-                      },
-                      titles: ['햄버거', '사이드', '음료', '디저트'],
-                      icons: [
-                        const Icon(Icons.lunch_dining),
-                        Image.asset(
-                          'assets/icons/fries.png',
-                          width: 24,
-                          height: 24,
-                          color: selectedIndex == 1 ? theme.primary : null,
-                        ),
-                        Image.asset(
-                          'assets/icons/cola.png',
-                          width: 24,
-                          height: 30,
-                          color: selectedIndex == 2 ? theme.primary : null,
-                        ),
-                        const Icon(Icons.icecream_rounded),
-                      ],
-                      theme: theme,
-                    )
-                    : StepProgressBar(
-                      onTap: (int index) {
-                        viewModel.changeMode(
-                          appStateMode: appState,
-                          index: index,
-                        );
-                        tabController?.animateTo(index);
-                      },
-                      titles: ['음료', '디저트'],
-                      icons: [
-                        Icon(
-                          Icons.coffee,
-                          color: selectedIndex == 0 ? theme.primary : null,
-                        ),
-                        Icon(
-                          Icons.bakery_dining,
-                          size: 32,
-                          color: selectedIndex == 1 ? theme.primary : null,
-                        ),
-                      ],
-                      theme: theme,
+                  onTap: (int index) {
+                    viewModel.changeMode(
+                      appStateMode: appState,
+                      index: index,
                     );
+                    tabController?.animateTo(index);
+                  },
+                  titles: ['햄버거', '사이드', '음료', '디저트'],
+                  icons: [
+                    const Icon(Icons.lunch_dining),
+                    Image.asset(
+                      'assets/icons/fries.png',
+                      width: 24,
+                      height: 24,
+                      color: selectedIndex == 1 ? theme.primary : null,
+                    ),
+                    Image.asset(
+                      'assets/icons/cola.png',
+                      width: 24,
+                      height: 30,
+                      color: selectedIndex == 2 ? theme.primary : null,
+                    ),
+                    const Icon(Icons.icecream_rounded),
+                  ],
+                  theme: theme,
+                )
+                    : StepProgressBar(
+                  onTap: (int index) {
+                    viewModel.changeMode(
+                      appStateMode: appState,
+                      index: index,
+                    );
+                    tabController?.animateTo(index);
+                  },
+                  titles: ['음료', '디저트'],
+                  icons: [
+                    Icon(
+                      Icons.coffee,
+                      color: selectedIndex == 0 ? theme.primary : null,
+                    ),
+                    Icon(
+                      Icons.bakery_dining,
+                      size: 32,
+                      color: selectedIndex == 1 ? theme.primary : null,
+                    ),
+                  ],
+                  theme: theme,
+                );
               },
             ),
           ),
         ),
         body: Container(
           color: theme.background,
-          child: state.when(
-            data: (menuState) => appState.mode == AppMode.burger
-                ? TabBarView(
-              children: [
-                _buildMenuGrid(menuState.itemList, theme),
-                _buildMenuGrid(menuState.itemList, theme),
-                _buildMenuGrid(menuState.itemList, theme),
-                _buildMenuGrid(menuState.itemList, theme),
-              ],
-            )
-                : TabBarView(
-              children: [
-                _buildMenuGrid(menuState.itemList, theme),
-                _buildMenuGrid(menuState.itemList, theme),
-              ],
+          child:
+          appState.mode == AppMode.burger
+              ? TabBarView(
+            children: List.generate(
+              4,
+                  (_) =>
+                  _buildMenuGrid(state.itemList, theme, cartViewModel),
             ),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (error, stack) => Center(
-              child: Text(
-                '오류 발생: $error',
-                style: style.body,
-              ),
+          )
+              : TabBarView(
+            children: List.generate(
+              2,
+                  (_) =>
+                  _buildMenuGrid(state.itemList, theme, cartViewModel),
             ),
           ),
         ),
-        bottomNavigationBar: MenuBottomBar(theme: theme),
+        bottomNavigationBar: MenuBottomBar(
+          theme: theme,
+          onTap: () {
+            context.push('/cart');
+          },
+        ),
       ),
     );
   }
+}
 
 Widget _buildMenuGrid(
-  List<OrderItem> items,
-  KioskTheme theme,
-  CartNotifier cartViewModel,
-) {
+    List<OrderItem> items,
+    KioskTheme theme,
+    CartNotifier cartViewModel,
+    ) {
   return SingleChildScrollView(
     child: SafeArea(
       child: Padding(

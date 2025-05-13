@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:team_kiosk/data/data_source/hamburger_data_source.dart';
-import 'package:team_kiosk/data/dto/hamburger_dto.dart';
+import 'package:team_kiosk/data/dto/burger_type_dto.dart';
 
 class HamburgerDataSourceImpl implements HamburgerDataSource {
   static const String burgerPath = 'lib/data/data/burger_mock_data.json';
@@ -11,13 +11,13 @@ class HamburgerDataSourceImpl implements HamburgerDataSource {
   static const String sidePath = 'lib/data/data/side_mock_data.json';
 
   @override
-  Future<List<HamburgerDto>> getBurgerData() async {
+  Future<List<BurgerTypeDto>> getBurgerData() async {
     try {
       final jsonString = await rootBundle.loadString(burgerPath);
       final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
 
       final List<dynamic> jsonList = jsonResponse['burgers'];
-      final burgerList = jsonList.map((e) => HamburgerDto.fromJson(e)).toList();
+      final burgerList = jsonList.map((e) => BurgerTypeDto.fromJson(e)).toList();
 
       return burgerList;
     } catch (e) {
@@ -26,14 +26,14 @@ class HamburgerDataSourceImpl implements HamburgerDataSource {
   }
 
   @override
-  Future<List<HamburgerDto>> getDessertData() async {
+  Future<List<BurgerTypeDto>> getDessertData() async {
     try {
       final jsonString = await rootBundle.loadString(dessertPath);
       final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
 
       final List<dynamic> jsonList = jsonResponse['dessert'];
       final dessertList =
-          jsonList.map((e) => HamburgerDto.fromJson(e)).toList();
+          jsonList.map((e) => BurgerTypeDto.fromJson(e)).toList();
 
       return dessertList;
     } catch (e) {
@@ -42,13 +42,13 @@ class HamburgerDataSourceImpl implements HamburgerDataSource {
   }
 
   @override
-  Future<List<HamburgerDto>> getDrinkData() async {
+  Future<List<BurgerTypeDto>> getDrinkData() async {
     try {
       final jsonString = await rootBundle.loadString(drinkPath);
       final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
 
       final List<dynamic> jsonList = jsonResponse['drink'];
-      final drinkList = jsonList.map((e) => HamburgerDto.fromJson(e)).toList();
+      final drinkList = jsonList.map((e) => BurgerTypeDto.fromJson(e)).toList();
 
       return drinkList;
     } catch (e) {
@@ -57,13 +57,13 @@ class HamburgerDataSourceImpl implements HamburgerDataSource {
   }
 
   @override
-  Future<List<HamburgerDto>> getSideData() async {
+  Future<List<BurgerTypeDto>> getSideData() async {
     try {
       final jsonString = await rootBundle.loadString(sidePath);
       final Map<String, dynamic> jsonResponse = jsonDecode(jsonString);
 
       final List<dynamic> jsonList = jsonResponse['side'];
-      final sideList = jsonList.map((e) => HamburgerDto.fromJson(e)).toList();
+      final sideList = jsonList.map((e) => BurgerTypeDto.fromJson(e)).toList();
 
       return sideList;
     } catch (e) {

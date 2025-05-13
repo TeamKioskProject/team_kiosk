@@ -37,11 +37,11 @@ class SetBuilderNotification extends Notifier<SetBuilderState> {
 
   Future<void> changeTab() async {
     final drinkData = await _orderRepository.getOrderItem(
-      type: CategoryType.bugerDrink,
+      type: CategoryType.burgerDrink,
     );
 
     final sideData = await _orderRepository.getOrderItem(
-      type: CategoryType.bugerSide,
+      type: CategoryType.burgerSide,
     );
 
     state = state.copyWith(drinkMenuList: drinkData, sideMenuList: sideData);

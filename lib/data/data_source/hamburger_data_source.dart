@@ -1,11 +1,11 @@
-import 'package:team_kiosk/data/dto/hamburger_dto.dart';
+import 'package:team_kiosk/data/dto/burger_type_dto.dart';
 
 abstract interface class HamburgerDataSource {
-  Future<List<HamburgerDto>> getBurgerData();
+  Future<List<BurgerTypeDto>> getBurgerData();
 
-  Future<List<HamburgerDto>> getDessertData();
+  Future<List<BurgerTypeDto>> getDessertData();
 
-  Future<List<HamburgerDto>> getDrinkData();
+  Future<List<BurgerTypeDto>> getDrinkData();
 
-  Future<List<HamburgerDto>> getSideData();
+  Future<List<BurgerTypeDto>> getSideData();
 }
