@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
@@ -9,6 +10,7 @@ import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
+import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
 class MenuSelectScreen extends ConsumerWidget {
@@ -21,6 +23,7 @@ class MenuSelectScreen extends ConsumerWidget {
     final style = ref.watch(textStyleSetProvider);
     final state = ref.watch(menuSelectNotifierProvider);
     final viewModel = ref.watch(menuSelectNotifierProvider.notifier);
+    final cartViewModel = ref.watch(cartNotifierProvider.notifier);
 
     return DefaultTabController(
       length: appState.mode == AppMode.burger ? 4 : 2,
@@ -81,7 +84,12 @@ class MenuSelectScreen extends ConsumerWidget {
                     ],
                   ),
         ),
-        bottomNavigationBar: MenuBottomBar(theme: theme, onTap: () {}),
+        bottomNavigationBar: MenuBottomBar(
+          theme: theme,
+          onTap: () {
+            context.push('/cart');
+          },
+        ),
       ),
     );
   }
