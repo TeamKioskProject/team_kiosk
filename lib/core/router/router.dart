@@ -10,6 +10,7 @@ import 'package:team_kiosk/view/main_menu/menu_select_screen.dart';
 import 'package:team_kiosk/view/payment/payment_screen.dart';
 import 'package:team_kiosk/view/payment/payment_success_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
+import 'package:team_kiosk/view/set_builder/set_builder_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -41,6 +42,9 @@ final router = GoRouter(
     GoRoute(
       path: '/ingredient-select',
       builder: (context, state) => IngredientSelector(imageUri: state.extra as String)),
+    GoRoute(
+        path: '/set-builder',
+        builder: (context, state) => SetBuilderScreen(menuCard: state.extra as MenuCard,)),
     GoRoute(
       path: '/installment',
       builder: (context, state) => const InstallmentScreen(),

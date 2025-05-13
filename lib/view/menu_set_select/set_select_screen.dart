@@ -10,6 +10,7 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/payment/dialog_action_button.dart';
 import 'package:team_kiosk/view/menu_set_select/set_select_notifier.dart';
+import 'package:team_kiosk/view/set_builder/set_builder_notification.dart';
 
 class SetSelectScreen extends ConsumerWidget {
   final MenuCard menuData;
@@ -21,6 +22,7 @@ class SetSelectScreen extends ConsumerWidget {
     final styles = ref.watch(textStyleSetProvider);
     final appState = ref.watch(appStateProvider);
     final setSelectSate = ref.watch(setSelectProvider);
+    final setBuilderState = ref.watch(setBuilderProvider);
     final viewModel = ref.watch(setSelectProvider.notifier);
 
     return Scaffold(
@@ -111,36 +113,41 @@ class SetSelectScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 20),
               if (setSelectSate.isSetBool)
-                Container(
-                  margin: const EdgeInsets.all(16),
-                  padding: const EdgeInsets.all(16),
-                  decoration: ButtonStyles.kioskButton(Colors.white),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text('세트 구성', style: styles.headline2),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Icon(Icons.icecream_outlined, size: 30),
-                                Text('감자 튀김'),
-                              ],
+                GestureDetector(
+                  onTap: (){
+                    context.push('/set-builder', extra: menuData);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
+                    decoration: ButtonStyles.kioskButton(Colors.white),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text('세트 구성', style: styles.headline2),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.icecream_outlined, size: 30),
+                                  Text(setBuilderState.selectSideMenu),
+                                ],
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Icon(Icons.icecream_outlined, size: 30),
-                                Text('음료'),
-                              ],
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.icecream_outlined, size: 30),
+                                  Text(setBuilderState.selectDrink),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               if(!setSelectSate.isSetBool)
