@@ -6,8 +6,9 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 
 class MenuBottomBar extends ConsumerWidget {
   final KioskTheme theme;
+  final VoidCallback onTap;
 
-  const MenuBottomBar({super.key, required this.theme});
+  const MenuBottomBar({super.key, required this.theme, required this.onTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +29,7 @@ class MenuBottomBar extends ConsumerWidget {
           ),
 
           ElevatedButton(
-            onPressed: () {},
+            onPressed: onTap,
             style: ButtonStyles.categoryButton(theme.primary).copyWith(
               padding: WidgetStateProperty.all(
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
