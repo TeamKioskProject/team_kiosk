@@ -26,40 +26,6 @@ class MenuSelectScreen extends ConsumerWidget {
     final viewModel = ref.watch(menuSelectNotifierProvider.notifier);
     final cartViewModel = ref.watch(cartNotifierProvider.notifier);
 
-    Widget buildMenuGrid(List<OrderItem> items, KioskTheme theme) {
-      return SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: items.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 18,
-                crossAxisSpacing: 18,
-                childAspectRatio: 3 / 4,
-              ),
-              itemBuilder: (context, index) {
-                final item = items[index];
-                return MenuCard(
-                  image: item.imageUrl,
-                  title: item.name,
-                  price: item.price,
-                  theme: theme,
-                  onTap: () {
-                    final cartItem = item.toCart();
-                    cartViewModel.addItem(cartItem);
-                  },
-                );
-              },
-            ),
-          ),
-        ),
-      );
-    }
-
     return DefaultTabController(
       length: appState.mode == AppMode.burger ? 4 : 2,
       child: Scaffold(
@@ -105,18 +71,18 @@ class MenuSelectScreen extends ConsumerWidget {
           child:
               appState.mode == AppMode.burger
                   ? TabBarView(
-                    children: [
-                      buildMenuGrid(state.itemList, theme),
-                      buildMenuGrid(state.itemList, theme),
-                      buildMenuGrid(state.itemList, theme),
-                      buildMenuGrid(state.itemList, theme),
-                    ],
+                    children: List.generate(
+                      4,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
                   )
                   : TabBarView(
-                    children: [
-                      buildMenuGrid(state.itemList, theme),
-                      buildMenuGrid(state.itemList, theme),
-                    ],
+                    children: List.generate(
+                      2,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
                   ),
         ),
         bottomNavigationBar: MenuBottomBar(
@@ -128,4 +94,42 @@ class MenuSelectScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+Widget _buildMenuGrid(
+  List<OrderItem> items,
+  KioskTheme theme,
+  CartNotifier cartViewModel,
+) {
+  return SingleChildScrollView(
+    child: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: items.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 18,
+            crossAxisSpacing: 18,
+            childAspectRatio: 3 / 4,
+          ),
+          itemBuilder: (context, index) {
+            final item = items[index];
+            return MenuCard(
+              image: item.imageUrl,
+              title: item.name,
+              price: item.price,
+              theme: theme,
+              onTap: () {
+                final cartItem = item.toCart();
+                cartViewModel.addItem(cartItem);
+              },
+            );
+          },
+        ),
+      ),
+    ),
+  );
 }
