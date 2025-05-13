@@ -47,6 +47,7 @@ dependencies:
   flutter_tts: ^4.2.2
   mocktail_image_network: ^1.2.0
   auto_size_text: ^3.0.0
+  line_icons: ^2.0.3
 
 dev_dependencies:
   flutter_test:

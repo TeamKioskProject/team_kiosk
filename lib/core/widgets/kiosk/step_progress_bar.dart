@@ -7,7 +7,7 @@ import 'package:team_kiosk/core/constants/theme_provider.dart';
 class StepProgressBar extends ConsumerWidget {
   final void Function(int) onTap;
   final List<String> titles;
-  final List<IconData> icons;
+  final List<Widget> icons;
   final KioskTheme theme;
 
   const StepProgressBar({
@@ -41,7 +41,7 @@ class StepProgressBar extends ConsumerWidget {
         ),
         tabs: List.generate(
           titles.length,
-          (index) => Tab(icon: Icon(icons[index]), text: titles[index]),
+          (index) => Tab(icon: icons[index], text: titles[index]),
         ),
       ),
     );
