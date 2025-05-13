@@ -10,6 +10,10 @@ class CartNotifier extends Notifier<CartState> {
     return CartState.initial();
   }
 
+  void resetState() {
+    state = state.copyWith(cartItems: [], totalQuantity: 0, totalAmount: 0);
+  }
+
   void addItem(CartItem item) {
     final items = [...state.cartItems];
     final index = items.indexWhere((e) => e.id == item.id);

@@ -113,7 +113,7 @@ class CartScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(16),
                   child: CategoryCard(
                     icon: Icons.credit_card,
-                    category: Category.burger,
+                    category: theme == KioskTheme.fromMode(KioskMode.burger) ? Category.burger : Category.cafe,
                     theme: theme,
                     text: '결제하러가기',
                     onTap: () {

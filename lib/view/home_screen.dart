@@ -8,6 +8,7 @@ import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/first_select_category.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_button.dart';
+import 'package:team_kiosk/view/cart/cart_notifier.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -42,8 +43,6 @@ class HomeScreen extends ConsumerWidget {
                 theme: KioskTheme.fromMode(KioskMode.burger),
                 text: '햄버거 주문 연습 하기',
                 onTap: () {
-                  appState.changeMode(AppMode.burger);
-                  context.push("/kiosk-start-page");
                 },
               ),
             ),
@@ -56,8 +55,6 @@ class HomeScreen extends ConsumerWidget {
                 theme: KioskTheme.fromMode(KioskMode.cafe),
                 text: '카페 주문 연습 하기',
                 onTap: () {
-                  appState.changeMode(AppMode.cafe);
-                  context.push("/kiosk-start-page");
                 },
               ),
             ),

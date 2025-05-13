@@ -17,8 +17,8 @@ class PaymentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = ref.read(kioskThemeProvider);
-    final textStyles = ref.read(textStyleSetProvider);
+    final theme = ref.watch(kioskThemeProvider);
+    final textStyles = ref.watch(textStyleSetProvider);
     final cartState = ref.watch(cartNotifierProvider);
     final cartNotifier = ref.read(cartNotifierProvider.notifier);
     final paymentState = ref.watch(paymentNotifierProvider);
@@ -101,7 +101,7 @@ class PaymentScreen extends ConsumerWidget {
               padding: const EdgeInsets.all(16),
               child: CategoryCard(
                 icon: Icons.credit_card,
-                category: Category.burger,
+                category: theme == KioskTheme.fromMode(KioskMode.burger) ? Category.burger : Category.cafe,
                 theme: theme,
                 text: '다음으로',
                 onTap: () {
