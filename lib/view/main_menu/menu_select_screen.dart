@@ -10,6 +10,7 @@ import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
+import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
 class MenuSelectScreen extends ConsumerWidget {
