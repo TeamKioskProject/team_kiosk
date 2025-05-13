@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/router/router.dart';
@@ -16,3 +17,4 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
+
