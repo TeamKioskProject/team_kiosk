@@ -12,14 +12,16 @@ class MenuCard extends ConsumerWidget {
   final int price;
   final KioskTheme theme;
   final VoidCallback onTap;
+  bool? isSelected;
 
-  const MenuCard({
+  MenuCard({
     super.key,
     required this.image,
     required this.title,
     required this.price,
     required this.theme,
     required this.onTap,
+    this.isSelected
   });
 
   @override
@@ -31,7 +33,12 @@ class MenuCard extends ConsumerWidget {
       child: Container(
         width: double.infinity,
         // 전체 높이 고정
-        decoration: ButtonStyles.kioskButton(Colors.white),
+        decoration: ButtonStyles.kioskButton(Colors.white).copyWith(
+          border: Border.all(
+            color: isSelected == true ? theme.primary : Colors.transparent,
+            width: isSelected == null ? 0 : 1
+          )
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
           child: Column(
