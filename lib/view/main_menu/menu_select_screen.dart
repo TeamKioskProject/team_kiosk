@@ -40,41 +40,37 @@ class MenuSelectScreen extends ConsumerWidget {
           ],
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(80),
-            child:
-                appState.mode == AppMode.burger
-                    ? StepProgressBar(
-                      onTap: (int) {
-                        viewModel.changeMode(
-                          appStateMode: appState,
-                          index: int,
-                        );
-                      },
-                      titles: ['햄버거', '사이드', '음료', '디저트'],
-                      icons: [
-                        const Icon(Icons.lunch_dining), // 햄버거
-                        Image.asset(
-                          'assets/icons/fries.png',
-                          width: 24,
-                          height: 24,
-                        ),
-                        const Icon(Icons.lunch_dining),
-                      ],
-                      theme: theme,
-                    )
-                    : StepProgressBar(
-                      onTap: (int) {
-                        viewModel.changeMode(
-                          appStateMode: appState,
-                          index: int,
-                        );
-                      },
-                      titles: ['음료', '디저트'],
-                      icons: [
-                        const Icon(Icons.lunch_dining),
-                        const Icon(Icons.lunch_dining),
-                      ],
-                      theme: theme,
+            child: Consumer(
+              builder: (context, ref, _) {
+                final tabController = DefaultTabController.of(context);
+                final selectedIndex = tabController?.index ?? 0;
+
+                return StepProgressBar(
+                  onTap: (int index) {
+                    viewModel.changeMode(appStateMode: appState, index: index);
+                    tabController?.animateTo(index); // TabBarView 이동
+                  },
+                  titles: ['햄버거', '사이드', '음료', '디저트'],
+                  icons: [
+                    const Icon(Icons.lunch_dining),
+                    Image.asset(
+                      'assets/icons/fries.png',
+                      width: 24,
+                      height: 24,
+                      color: selectedIndex == 1 ? theme.primary : null,
                     ),
+                    Image.asset(
+                      'assets/icons/cola.png',
+                      width: 24,
+                      height: 30,
+                      color: selectedIndex == 2 ? theme.primary : null,
+                    ),
+                    const Icon(Icons.icecream_rounded),
+                  ],
+                  theme: theme,
+                );
+              },
+            ),
           ),
         ),
         body: Container(
