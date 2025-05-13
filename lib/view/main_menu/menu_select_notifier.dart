@@ -107,10 +107,10 @@ class MenuSelectNotifier extends Notifier<MenuState> {
           );
           state = state.copyWith(itemList: data);
         case MenuSelect.sideMenu:
-        // TODO: Handle this case.
+          // TODO: Handle this case.
           throw UnimplementedError();
         case MenuSelect.drinkMenu:
-        // TODO: Handle this case.
+          // TODO: Handle this case.
           throw UnimplementedError();
         case MenuSelect.dessertMenu:
           final data = await _orderRepository.getOrderItem(
@@ -123,4 +123,4 @@ class MenuSelectNotifier extends Notifier<MenuState> {
 }
 
 final menuSelectNotifierProvider =
-NotifierProvider<MenuSelectNotifier, MenuState>(MenuSelectNotifier.new);
+    NotifierProvider<MenuSelectNotifier, MenuState>(MenuSelectNotifier.new);

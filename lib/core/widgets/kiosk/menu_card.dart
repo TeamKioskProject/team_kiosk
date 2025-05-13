@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
-import 'package:team_kiosk/core/state/app_state_notifier.dart';
 
 class MenuCard extends ConsumerWidget {
   final String image;
@@ -12,33 +11,25 @@ class MenuCard extends ConsumerWidget {
   final int price;
   final KioskTheme theme;
   final VoidCallback onTap;
-  bool? isSelected;
 
-  MenuCard({
+  const MenuCard({
     super.key,
     required this.image,
     required this.title,
     required this.price,
     required this.theme,
     required this.onTap,
-    this.isSelected
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appState = ref.read(appStateProvider);
     final styles = ref.watch(textStyleSetProvider);
     return GestureDetector(
-      onTap:  onTap,
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         // 전체 높이 고정
-        decoration: ButtonStyles.kioskButton(Colors.white).copyWith(
-            border: Border.all(
-                color: isSelected == true ? theme.primary : Colors.transparent,
-                width: isSelected == null ? 0 : 1
-            )
-        ),
+        decoration: ButtonStyles.kioskButton(Colors.white),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
           child: Column(

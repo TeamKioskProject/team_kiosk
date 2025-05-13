@@ -53,54 +53,54 @@ class MenuSelectScreen extends ConsumerWidget {
 
                 return appState.mode == AppMode.burger
                     ? StepProgressBar(
-                  onTap: (int index) {
-                    viewModel.changeMode(
-                      appStateMode: appState,
-                      index: index,
-                    );
-                    tabController?.animateTo(index);
-                  },
-                  titles: ['햄버거', '사이드', '음료', '디저트'],
-                  icons: [
-                    const Icon(Icons.lunch_dining),
-                    Image.asset(
-                      'assets/icons/fries.png',
-                      width: 24,
-                      height: 24,
-                      color: selectedIndex == 1 ? theme.primary : null,
-                    ),
-                    Image.asset(
-                      'assets/icons/cola.png',
-                      width: 24,
-                      height: 30,
-                      color: selectedIndex == 2 ? theme.primary : null,
-                    ),
-                    const Icon(Icons.icecream_rounded),
-                  ],
-                  theme: theme,
-                )
+                      onTap: (int index) {
+                        viewModel.changeMode(
+                          appStateMode: appState,
+                          index: index,
+                        );
+                        tabController?.animateTo(index);
+                      },
+                      titles: ['햄버거', '사이드', '음료', '디저트'],
+                      icons: [
+                        const Icon(Icons.lunch_dining),
+                        Image.asset(
+                          'assets/icons/fries.png',
+                          width: 24,
+                          height: 24,
+                          color: selectedIndex == 1 ? theme.primary : null,
+                        ),
+                        Image.asset(
+                          'assets/icons/cola.png',
+                          width: 24,
+                          height: 30,
+                          color: selectedIndex == 2 ? theme.primary : null,
+                        ),
+                        const Icon(Icons.icecream_rounded),
+                      ],
+                      theme: theme,
+                    )
                     : StepProgressBar(
-                  onTap: (int index) {
-                    viewModel.changeMode(
-                      appStateMode: appState,
-                      index: index,
+                      onTap: (int index) {
+                        viewModel.changeMode(
+                          appStateMode: appState,
+                          index: index,
+                        );
+                        tabController?.animateTo(index);
+                      },
+                      titles: ['음료', '디저트'],
+                      icons: [
+                        Icon(
+                          Icons.coffee,
+                          color: selectedIndex == 0 ? theme.primary : null,
+                        ),
+                        Icon(
+                          Icons.bakery_dining,
+                          size: 32,
+                          color: selectedIndex == 1 ? theme.primary : null,
+                        ),
+                      ],
+                      theme: theme,
                     );
-                    tabController?.animateTo(index);
-                  },
-                  titles: ['음료', '디저트'],
-                  icons: [
-                    Icon(
-                      Icons.coffee,
-                      color: selectedIndex == 0 ? theme.primary : null,
-                    ),
-                    Icon(
-                      Icons.bakery_dining,
-                      size: 32,
-                      color: selectedIndex == 1 ? theme.primary : null,
-                    ),
-                  ],
-                  theme: theme,
-                );
               },
             ),
           ),
@@ -108,21 +108,21 @@ class MenuSelectScreen extends ConsumerWidget {
         body: Container(
           color: theme.background,
           child:
-          appState.mode == AppMode.burger
-              ? TabBarView(
-            children: List.generate(
-              4,
-                  (_) =>
-                  _buildMenuGrid(state.itemList, theme, cartViewModel),
-            ),
-          )
-              : TabBarView(
-            children: List.generate(
-              2,
-                  (_) =>
-                  _buildMenuGrid(state.itemList, theme, cartViewModel),
-            ),
-          ),
+              appState.mode == AppMode.burger
+                  ? TabBarView(
+                    children: List.generate(
+                      4,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
+                  )
+                  : TabBarView(
+                    children: List.generate(
+                      2,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
+                  ),
         ),
         bottomNavigationBar: MenuBottomBar(
           theme: theme,
@@ -136,10 +136,10 @@ class MenuSelectScreen extends ConsumerWidget {
 }
 
 Widget _buildMenuGrid(
-    List<OrderItem> items,
-    KioskTheme theme,
-    CartNotifier cartViewModel,
-    ) {
+  List<OrderItem> items,
+  KioskTheme theme,
+  CartNotifier cartViewModel,
+) {
   return SingleChildScrollView(
     child: SafeArea(
       child: Padding(
