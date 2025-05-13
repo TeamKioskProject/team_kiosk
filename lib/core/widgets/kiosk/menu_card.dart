@@ -21,7 +21,6 @@ class MenuCard extends ConsumerWidget {
     required this.price,
     required this.theme,
     required this.onTap,
-    this.isSelected
   });
 
   @override

@@ -13,7 +13,6 @@ import 'package:team_kiosk/data/model/order_item.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
 class MenuSelectScreen extends ConsumerWidget {
-
   const MenuSelectScreen({super.key});
 
   @override
