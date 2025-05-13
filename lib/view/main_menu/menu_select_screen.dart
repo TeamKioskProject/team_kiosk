@@ -9,6 +9,7 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
+import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
 import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
@@ -24,6 +25,41 @@ class MenuSelectScreen extends ConsumerWidget {
     final state = ref.watch(menuSelectNotifierProvider);
     final viewModel = ref.watch(menuSelectNotifierProvider.notifier);
     final cartViewModel = ref.watch(cartNotifierProvider.notifier);
+
+    Widget buildMenuGrid(List<OrderItem> items, KioskTheme theme) {
+      return SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: items.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 18,
+                crossAxisSpacing: 18,
+                childAspectRatio: 3 / 4,
+              ),
+              itemBuilder: (context, index) {
+                final item = items[index];
+                return MenuCard(
+                  image: item.imageUrl,
+                  title: item.name,
+                  price: item.price,
+                  theme: theme,
+                  onTap: () {
+                    final cartItem = item.toCart();
+                    cartViewModel.addItem(cartItem);
+                    print(cartItem);
+                  },
+                );
+              },
+            ),
+          ),
+        ),
+      );
+    }
 
     return DefaultTabController(
       length: appState.mode == AppMode.burger ? 4 : 2,
@@ -71,16 +107,16 @@ class MenuSelectScreen extends ConsumerWidget {
               appState.mode == AppMode.burger
                   ? TabBarView(
                     children: [
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
+                      buildMenuGrid(state.itemList, theme),
+                      buildMenuGrid(state.itemList, theme),
+                      buildMenuGrid(state.itemList, theme),
+                      buildMenuGrid(state.itemList, theme),
                     ],
                   )
                   : TabBarView(
                     children: [
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
+                      buildMenuGrid(state.itemList, theme),
+                      buildMenuGrid(state.itemList, theme),
                     ],
                   ),
         ),
@@ -89,39 +125,6 @@ class MenuSelectScreen extends ConsumerWidget {
           onTap: () {
             context.push('/cart');
           },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMenuGrid(List<OrderItem> items, KioskTheme theme) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: items.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 18,
-              crossAxisSpacing: 18,
-              childAspectRatio: 3 / 4,
-            ),
-            itemBuilder: (context, index) {
-              final item = items[index];
-              return MenuCard(
-                image: item.imageUrl,
-                title: item.name,
-                price: item.price,
-                theme: theme,
-                onTap: () {
-                  // TODO: 선택 동작 처리
-                },
-              );
-            },
-          ),
         ),
       ),
     );

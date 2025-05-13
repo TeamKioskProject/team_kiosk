@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
+import 'package:team_kiosk/view/cart/cart_notifier.dart';
 
 class MenuBottomBar extends ConsumerWidget {
   final KioskTheme theme;
@@ -14,6 +15,7 @@ class MenuBottomBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final styles = ref.watch(textStyleSetProvider);
     final theme = ref.read(kioskThemeProvider);
+    final cartState = ref.watch(cartNotifierProvider);
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
@@ -24,7 +26,10 @@ class MenuBottomBar extends ConsumerWidget {
             children: [
               Text('선택된 메뉴', style: styles.caption),
               const SizedBox(width: 15),
-              Text('0', style: styles.accent.copyWith(color: theme.primary)),
+              Text(
+                cartState.totalQuantity.toString(),
+                style: styles.accent.copyWith(color: theme.primary),
+              ),
             ],
           ),
 
