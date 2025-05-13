@@ -26,72 +26,75 @@ class MenuCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.read(appStateProvider);
     final styles = ref.watch(textStyleSetProvider);
-    return Container(
-      width: double.infinity,
-      // 전체 높이 고정
-      decoration: ButtonStyles.kioskButton(Colors.white),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // 이미지가 2/3 차지
-            Expanded(
-              flex: 2,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  image,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+    return GestureDetector(
+      onTap:  onTap,
+      child: Container(
+        width: double.infinity,
+        // 전체 높이 고정
+        decoration: ButtonStyles.kioskButton(Colors.white),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 이미지가 2/3 차지
+              Expanded(
+                flex: 2,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    image,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 3),
-            // 텍스트 영역이 1/3 차지
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    child: AutoSizeText(
-                      title,
-                      style: styles.headline2,
-                      maxLines: 2,
-                      minFontSize: 12,
-                      overflow: TextOverflow.ellipsis,
+              const SizedBox(height: 3),
+              // 텍스트 영역이 1/3 차지
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: AutoSizeText(
+                        title,
+                        style: styles.headline2,
+                        maxLines: 2,
+                        minFontSize: 12,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: AutoSizeText(
-                          '₩ ${price.toString()}',
-                          style: styles.accent,
-                          maxLines: 1,
-                          minFontSize: 6,
-                          overflow: TextOverflow.ellipsis,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: AutoSizeText(
+                            '₩ ${price.toString()}',
+                            style: styles.accent,
+                            maxLines: 1,
+                            minFontSize: 6,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 18),
-                      Expanded(
-                        child: AutoSizeText(
-                          '단품/세트',
-                          style: styles.caption,
-                          maxLines: 1,
-                          minFontSize: 6,
-                          overflow: TextOverflow.ellipsis,
+                        const SizedBox(width: 18),
+                        Expanded(
+                          child: AutoSizeText(
+                            '단품/세트',
+                            style: styles.caption,
+                            maxLines: 1,
+                            minFontSize: 6,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

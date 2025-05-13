@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IngredientSelector extends StatelessWidget {
-  const IngredientSelector({super.key});
+  const IngredientSelector({super.key, required String imageUri});
 
   @override
   Widget build(BuildContext context) {
