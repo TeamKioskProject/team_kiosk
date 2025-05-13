@@ -27,7 +27,7 @@ class MenuCard extends ConsumerWidget {
     final appState = ref.read(appStateProvider);
     final styles = ref.watch(textStyleSetProvider);
     return GestureDetector(
-      onTap: onTap,
+      onTap:  onTap,
       child: Container(
         width: double.infinity,
         // 전체 높이 고정
