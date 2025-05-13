@@ -50,7 +50,15 @@ class MenuSelectScreen extends ConsumerWidget {
                         );
                       },
                       titles: ['햄버거', '사이드', '음료', '디저트'],
-                      icons: List.generate(4, (index) => Icons.lunch_dining),
+                      icons: [
+                        const Icon(Icons.lunch_dining), // 햄버거
+                        Image.asset(
+                          'assets/icons/fries.png',
+                          width: 24,
+                          height: 24,
+                        ),
+                        const Icon(Icons.lunch_dining),
+                      ],
                       theme: theme,
                     )
                     : StepProgressBar(
@@ -61,7 +69,10 @@ class MenuSelectScreen extends ConsumerWidget {
                         );
                       },
                       titles: ['음료', '디저트'],
-                      icons: List.generate(2, (index) => Icons.lunch_dining),
+                      icons: [
+                        const Icon(Icons.lunch_dining),
+                        const Icon(Icons.lunch_dining),
+                      ],
                       theme: theme,
                     ),
           ),
