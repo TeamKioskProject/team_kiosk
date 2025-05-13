@@ -27,7 +27,7 @@ class MenuBottomBar extends ConsumerWidget {
               Text('선택된 메뉴', style: styles.caption),
               const SizedBox(width: 15),
               Text(
-                cartState.totalQuantity.toString(),
+                cartState.cartItems.length.toString(),
                 style: styles.accent.copyWith(color: theme.primary),
               ),
             ],
