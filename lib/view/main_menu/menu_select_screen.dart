@@ -81,7 +81,7 @@ class MenuSelectScreen extends ConsumerWidget {
                     ],
                   ),
         ),
-        bottomNavigationBar: MenuBottomBar(theme: theme),
+        bottomNavigationBar: MenuBottomBar(theme: theme, onTap: () {}),
       ),
     );
   }
