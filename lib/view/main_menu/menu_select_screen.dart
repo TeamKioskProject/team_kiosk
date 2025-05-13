@@ -51,7 +51,6 @@ class MenuSelectScreen extends ConsumerWidget {
                   onTap: () {
                     final cartItem = item.toCart();
                     cartViewModel.addItem(cartItem);
-                    print(cartItem);
                   },
                 );
               },
