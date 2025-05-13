@@ -6,6 +6,28 @@ class IngredientNotifier extends Notifier<IngredientState> {
   @override
   IngredientState build() => const IngredientState();
 
+
+  void resetSelection() {
+    final resetCafeOptions = state.cafeOptions.map((item) {
+      return {
+        ...item,
+        "isSelected": false,
+      };
+    }).toList();
+
+    final resetBurgerOptions = state.burgerOptions.map((item) {
+      return {
+        ...item,
+        "isSelected": false,
+      };
+    }).toList();
+
+    state = state.copyWith(
+      cafeOptions: resetCafeOptions,
+      burgerOptions: resetBurgerOptions,
+    );
+  }
+
   // 특정 인덱스의 선택 상태를 토글하는 메서드
   void toggleSelection(int index, bool isCafe) {
     if (isCafe) {

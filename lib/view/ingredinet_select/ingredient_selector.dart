@@ -1,7 +1,9 @@
 // ingredient_selector.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
+import 'package:team_kiosk/core/constants/app_texts.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
@@ -22,7 +24,20 @@ class IngredientSelector extends ConsumerWidget {
     final viewModel = ref.read(ingredientProvider.notifier);
 
     return Scaffold(
-      appBar: KioskAppBar(title: '재료 선택', theme: theme),
+      appBar: KioskAppBar(
+        title: '재료 선택',
+        theme: theme,
+        leading:
+            context.canPop()
+                ? IconButton(
+                  onPressed: () {
+                    viewModel.resetSelection();
+                    context.pop();
+                  },
+                  icon: Icon(Icons.arrow_back),
+                )
+                : null,
+      ),
       backgroundColor: theme.background,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -40,22 +55,20 @@ class IngredientSelector extends ConsumerWidget {
               Container(
                 margin: const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(16),
-                decoration: ButtonStyles.kioskButton(Colors.white),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      '햄버거 재료를 변경할까요?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+                    Text(
+                      theme == KioskTheme.fromMode(KioskMode.cafe)
+                          ? '음료에 토핑을 추가 할까요?'
+                          : '햄버거 재료를 변경할까요?',
+                      style: styles.body,
                     ),
                     const SizedBox(height: 8),
-                    const Text(
+                    Text(
                       '원하시는 재료를 선택해주세요',
-                      style: TextStyle(color: Colors.grey),
+                      style: styles.body.copyWith(color: theme.subText),
                     ),
                     if (theme == KioskTheme.fromMode(KioskMode.burger))
                       Column(
@@ -69,12 +82,10 @@ class IngredientSelector extends ConsumerWidget {
                                 items["isSelected"],
                                 index,
                                 (index) => {
-                                  viewModel.toggleSelection(
-                                    index,
-                                    false,
-                                  ),
+                                  viewModel.toggleSelection(index, false),
                                 },
                                 iconColor: items["color"],
+                                textSet: styles,
                               );
                             }).toList(),
                       ),
@@ -90,12 +101,10 @@ class IngredientSelector extends ConsumerWidget {
                                 items["isSelected"],
                                 index,
                                 (index) => {
-                                  viewModel.toggleSelection(
-                                    index,
-                                    true,
-                                  ),
+                                  viewModel.toggleSelection(index, true),
                                 },
                                 iconColor: items["color"],
+                                textSet: styles,
                               );
                             }).toList(),
                       ),
@@ -116,23 +125,14 @@ class IngredientSelector extends ConsumerWidget {
     int index,
     Function(int) onChanged, {
     Color? iconColor,
+    required TextStyleSet textSet,
   }) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade100,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
+      decoration: ButtonStyles.kioskButton(Colors.white),
       child: ListTile(
         leading: Icon(icon, color: iconColor ?? Colors.green, size: 32),
-        title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(name, style: textSet.body),
         trailing: Switch(
           value: selected,
           onChanged: (value) {
