@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
@@ -8,7 +9,9 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
+import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
+import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
 class MenuSelectScreen extends ConsumerWidget {
@@ -21,6 +24,7 @@ class MenuSelectScreen extends ConsumerWidget {
     final style = ref.watch(textStyleSetProvider);
     final state = ref.watch(menuSelectNotifierProvider);
     final viewModel = ref.watch(menuSelectNotifierProvider.notifier);
+    final cartViewModel = ref.watch(cartNotifierProvider.notifier);
 
     return DefaultTabController(
       length: appState.mode == AppMode.burger ? 4 : 2,
@@ -67,55 +71,65 @@ class MenuSelectScreen extends ConsumerWidget {
           child:
               appState.mode == AppMode.burger
                   ? TabBarView(
-                    children: [
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
-                    ],
+                    children: List.generate(
+                      4,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
                   )
                   : TabBarView(
-                    children: [
-                      _buildMenuGrid(state.itemList, theme),
-                      _buildMenuGrid(state.itemList, theme),
-                    ],
+                    children: List.generate(
+                      2,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
                   ),
         ),
-        bottomNavigationBar: MenuBottomBar(theme: theme),
-      ),
-    );
-  }
-
-  Widget _buildMenuGrid(List<OrderItem> items, KioskTheme theme) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: items.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 18,
-              crossAxisSpacing: 18,
-              childAspectRatio: 3 / 4,
-            ),
-            itemBuilder: (context, index) {
-              final item = items[index];
-              return MenuCard(
-                image: item.imageUrl,
-                title: item.name,
-                price: item.price,
-                theme: theme,
-                onTap: () {
-                  // TODO: 선택 동작 처리
-                },
-              );
-            },
-          ),
+        bottomNavigationBar: MenuBottomBar(
+          theme: theme,
+          onTap: () {
+            context.push('/cart');
+          },
         ),
       ),
     );
   }
+}
+
+Widget _buildMenuGrid(
+  List<OrderItem> items,
+  KioskTheme theme,
+  CartNotifier cartViewModel,
+) {
+  return SingleChildScrollView(
+    child: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: items.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 18,
+            crossAxisSpacing: 18,
+            childAspectRatio: 3 / 4,
+          ),
+          itemBuilder: (context, index) {
+            final item = items[index];
+            return MenuCard(
+              image: item.imageUrl,
+              title: item.name,
+              price: item.price,
+              theme: theme,
+              onTap: () {
+                final cartItem = item.toCart();
+                cartViewModel.addItem(cartItem);
+              },
+            );
+          },
+        ),
+      ),
+    ),
+  );
 }
