@@ -49,7 +49,7 @@ class PlaceSelectScreen extends ConsumerWidget {
               SelectableTile(
                 theme: theme,
                 icon: Icons.restaurant,
-                image: 'assets/images/inside.png',
+                image: 'assets/lottie/select_toeat_lottie.json',
                 title: '매장에서 먹을래요',
                 onTap: () {
                   context.push('/menu-select-screen');
@@ -60,7 +60,7 @@ class PlaceSelectScreen extends ConsumerWidget {
               SelectableTile(
                 theme: theme,
                 icon: Icons.shopping_bag,
-                image: 'assets/images/take.png',
+                image: 'assets/lottie/select_takeout_lottie.json',
                 title: '가져갈래요',
                 onTap: () {
                   context.push('/menu-select-screen');
