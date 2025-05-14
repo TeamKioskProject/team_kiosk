@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
@@ -45,12 +46,11 @@ class KioskStartPage extends ConsumerWidget {
                         : kiosk.Category.cafe,
               ),
               const SizedBox(height: 22),
-              Image.asset(
+              Lottie.asset(
                 theme == KioskTheme.fromMode(KioskMode.burger)
-                    ? 'assets/images/hamburger.png'
-                    : 'assets/images/coffee_ill.png',
-                width: 192,
-                height: 192,
+                    ? 'assets/lottie/hambuger_lottie.json'
+                    : 'assets/lottie/coffe_lottie.json',
+
               ),
               const SizedBox(height: 22),
               Semantics(

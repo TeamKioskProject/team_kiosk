@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
@@ -34,6 +35,10 @@ class HomeScreen extends ConsumerWidget {
                     ? kiosk.Category.burger
                     : kiosk.Category.cafe,
               ),
+            ),
+            Lottie.asset('assets/lottie/order_lottie.json'),
+            SizedBox(
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
