@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
@@ -31,7 +32,8 @@ class SelectableTile extends ConsumerWidget {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-            Image.asset(image, width: double.infinity, fit: BoxFit.cover),
+            //Image.asset(image, width: double.infinity, fit: BoxFit.cover),
+            Lottie.asset(image, width: double.infinity, fit: BoxFit.cover),
             const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
