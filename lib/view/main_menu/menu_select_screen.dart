@@ -167,7 +167,7 @@ Widget _buildMenuGrid(
               id: item.id,
               onTap: () {
                 if (item.category == CategoryType.burger ||
-                  item.category == CategoryType.cafeDrink) {
+                    item.category == CategoryType.cafeDrink) {
                   context.push(
                     theme == KioskTheme.fromMode(KioskMode.burger)
                         ? '/set-select-screen'
