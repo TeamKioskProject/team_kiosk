@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
@@ -34,6 +35,7 @@ class MenuCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.read(appStateProvider);
     final styles = ref.watch(textStyleSetProvider);
+    var f = NumberFormat('###,###,###,###').format(price);
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -85,10 +87,10 @@ class MenuCard extends ConsumerWidget {
                       children: [
                         Expanded(
                           child: AutoSizeText(
-                            '₩ ${price.toString()}',
+                            '₩ $f',
                             style: styles.accent,
                             maxLines: 1,
-                            minFontSize: 6,
+                            minFontSize: 10,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
