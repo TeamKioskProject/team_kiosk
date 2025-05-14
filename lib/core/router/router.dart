@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/view/cart/cart_screen.dart';
 import 'package:team_kiosk/view/home_screen.dart';
@@ -44,10 +41,16 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/ingredient-select',
-      builder: (context, state) => IngredientSelector(menuCard: state.extra as MenuCard,)),
+      builder:
+          (context, state) =>
+              IngredientSelector(menuCard: state.extra as MenuCard),
+    ),
     GoRoute(
-        path: '/set-builder',
-        builder: (context, state) => SetBuilderScreen(menuCard: state.extra as MenuCard,)),
+      path: '/set-builder',
+      builder:
+          (context, state) =>
+              SetBuilderScreen(menuCard: state.extra as MenuCard),
+    ),
     GoRoute(
       path: '/installment',
       builder: (context, state) => const InstallmentScreen(),

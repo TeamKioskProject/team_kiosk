@@ -48,6 +48,7 @@ dependencies:
   mocktail_image_network: ^1.2.0
   auto_size_text: ^3.0.0
   line_icons: ^2.0.3
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
