@@ -154,7 +154,7 @@ class SetSelectScreen extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: DialogActionButton(text: '다음 단계로', onTapEvent: (){
-                    context.push("/ingredient-select", extra: menuData.image);
+                    context.push("/ingredient-select", extra: menuData);
                   }, theme: theme, textStyleSet: styles),
                 )
             ],

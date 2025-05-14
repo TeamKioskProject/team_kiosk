@@ -44,7 +44,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/ingredient-select',
-      builder: (context, state) => IngredientSelector(imageUri: state.extra as String)),
+      builder: (context, state) => IngredientSelector(menuCard: state.extra as MenuCard,)),
     GoRoute(
         path: '/set-builder',
         builder: (context, state) => SetBuilderScreen(menuCard: state.extra as MenuCard,)),

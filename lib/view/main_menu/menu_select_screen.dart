@@ -161,9 +161,23 @@ Widget _buildMenuGrid(
               title: item.name,
               price: item.price,
               theme: theme,
+              categoryType: item.category,
+              id: item.id,
               onTap: () {
-                final cartItem = item.toCart();
-                cartViewModel.addItem(cartItem);
+                context.push(
+                  theme == KioskTheme.fromMode(KioskMode.burger) ? '/set-select-screen': '/ingredient-select',
+                  extra: MenuCard(
+                    image: item.imageUrl,
+                    title: item.name,
+                    price: item.price,
+                    theme: theme,
+                    categoryType: item.category,
+                    id: item.id,
+                    onTap: () {},
+                  ),
+                );
+                // final cartItem = item.toCart();
+                // cartViewModel.addItem(cartItem);
               },
             );
           },
