@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
@@ -26,7 +27,7 @@ class MenuCard extends ConsumerWidget {
     required this.onTap,
     required this.categoryType,
     required this.id,
-    this.isSelected
+    this.isSelected,
   });
 
   @override
@@ -34,15 +35,15 @@ class MenuCard extends ConsumerWidget {
     final appState = ref.read(appStateProvider);
     final styles = ref.watch(textStyleSetProvider);
     return GestureDetector(
-      onTap:  onTap,
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         // 전체 높이 고정
         decoration: ButtonStyles.kioskButton(Colors.white).copyWith(
-            border: Border.all(
-                color: isSelected == true ? theme.primary : Colors.transparent,
-                width: isSelected == null ? 0 : 1
-            )
+          border: Border.all(
+            color: isSelected == true ? theme.primary : Colors.transparent,
+            width: isSelected == null ? 0 : 1,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10),
@@ -54,13 +55,14 @@ class MenuCard extends ConsumerWidget {
                 flex: 2,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                    image,
+                  child: CachedNetworkImage(
+                    imageUrl: image,
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
                 ),
               ),
+
               const SizedBox(height: 3),
               // 텍스트 영역이 1/3 차지
               Expanded(

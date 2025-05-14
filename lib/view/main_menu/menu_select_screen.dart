@@ -9,7 +9,6 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
-import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
 import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
@@ -165,7 +164,9 @@ Widget _buildMenuGrid(
               id: item.id,
               onTap: () {
                 context.push(
-                  theme == KioskTheme.fromMode(KioskMode.burger) ? '/set-select-screen': '/ingredient-select',
+                  theme == KioskTheme.fromMode(KioskMode.burger)
+                      ? '/set-select-screen'
+                      : '/ingredient-select',
                   extra: MenuCard(
                     image: item.imageUrl,
                     title: item.name,
