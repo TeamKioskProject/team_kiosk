@@ -101,6 +101,8 @@ class SetBuilderScreen extends ConsumerWidget {
             image: item.imageUrl,
             title: item.name,
             price: item.price,
+            categoryType: item.category,
+            id: item.id,
             isSelected: type == 'side' ? state.selectSideMenu == item.name : state.selectDrink == item.name,
             theme: theme,
             onTap: () {

@@ -5,11 +5,14 @@ import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
+import 'package:team_kiosk/data/data_source/data_type.dart';
 
 class MenuCard extends ConsumerWidget {
   final String image;
   final String title;
   final int price;
+  final CategoryType categoryType;
+  final String id;
   final KioskTheme theme;
   final VoidCallback onTap;
   bool? isSelected;
@@ -21,6 +24,8 @@ class MenuCard extends ConsumerWidget {
     required this.price,
     required this.theme,
     required this.onTap,
+    required this.categoryType,
+    required this.id,
     this.isSelected
   });
 
