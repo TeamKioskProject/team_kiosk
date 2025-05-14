@@ -6,6 +6,7 @@ import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
+import 'package:team_kiosk/view/cart/cart_notifier.dart';
 
 enum Category { burger, cafe }
 
@@ -35,12 +36,16 @@ class FirstSelectCategory extends ConsumerWidget {
         switch (category) {
           case Category.burger:
             appState.changeMode(AppMode.burger);
+            ref.watch(cartNotifierProvider.notifier).resetState();
+            print(ref.read(cartNotifierProvider).cartItems);
             break;
           case Category.cafe:
             appState.changeMode(AppMode.cafe);
+            ref.watch(cartNotifierProvider.notifier).resetState();
+            print(ref.read(cartNotifierProvider).cartItems);
             break;
         }
-        context.push('/kiosk-start-page?category=${category.name}');
+        context.push('/kiosk-start-page');
       },
       style: ButtonStyles.categoryButton(theme.primary),
       child: Row(

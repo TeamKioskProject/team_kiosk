@@ -88,21 +88,12 @@ class CartScreen extends ConsumerWidget {
                               itemId: items.id,
                               onAddTap: (id) {
                                 cartNotifier.incrementQuantity(id);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('${items.name}의 수량이 증가했습니다.'),
-                                    duration: const Duration(seconds: 1),
-                                  ),
-                                );
                               },
                               onMinusTap: (id) {
                                 cartNotifier.decrementQuantity(id);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('${items.name}의 수량이 감소했습니다.'),
-                                    duration: const Duration(seconds: 1),
-                                  ),
-                                );
+                              },
+                              onRemoveTap: (id) {
+                                cartNotifier.removeItem(id);
                               },
                             ),
                           ),
@@ -122,7 +113,7 @@ class CartScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(16),
                   child: CategoryCard(
                     icon: Icons.credit_card,
-                    category: Category.burger,
+                    category: theme == KioskTheme.fromMode(KioskMode.burger) ? Category.burger : Category.cafe,
                     theme: theme,
                     text: '결제하러가기',
                     onTap: () {

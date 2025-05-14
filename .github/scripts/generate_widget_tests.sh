@@ -49,11 +49,16 @@ while IFS= read -r widget_file; do
   if [ ! -f "$test_file" ]; then
     echo "📝 Creating test file for $widget_file -> $test_file"
     mkdir -p "$(dirname "$test_file")"
-    cat > "$test_file" <<EOF
+
+    # Here Document에서 직접 변수 치환
+    export widget_name="$widget_name"
+    export import_path="$import_path"
+    export golden_dir="$golden_dir"
+    
+    cat <<'EOF' | envsubst > "$test_file"
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:team_kiosk/main.dart';
 import 'package:team_kiosk/$import_path';
 
 void main() {
@@ -65,10 +70,10 @@ void main() {
     await tester.pumpWidget(MyApp());
 
     // 위젯 로드 테스트
-    expect(find.byType(${widget_name}), findsOneWidget);
+    expect(find.byType($widget_name), findsOneWidget);
     
     // 스크린 리더 접근성 테스트
-    final semantics = tester.getSemantics(find.byType(${widget_name}));
+    final semantics = tester.getSemantics(find.byType($widget_name));
     expect(semantics, isNotNull, reason: '스크린 리더에서 접근할 수 없는 위젯입니다.');
     semantics.visitChildren((child) {
       final hasLabel = child.label != null && child.label.isNotEmpty;
@@ -83,19 +88,16 @@ void main() {
       Size(768, 1024),
       Size(1024, 1366),
     ];
-
     for (final resolution in resolutions) {
       tester.binding.window.physicalSizeTestValue = resolution;
       tester.binding.window.devicePixelRatioTestValue = 2.0;
       await tester.pumpAndSettle();
-
       final goldenFile = '${golden_dir}/${widget_name}_${resolution.width.toInt()}x${resolution.height.toInt()}.png';
       await expectLater(
-        find.byType(${widget_name}),
+        find.byType($widget_name),
         matchesGoldenFile(goldenFile)
       );
     }
-
     // 해상도 초기화
     tester.binding.window.clearPhysicalSizeTestValue();
   });

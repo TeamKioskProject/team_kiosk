@@ -10,42 +10,41 @@ class CartNotifier extends Notifier<CartState> {
     return CartState.initial();
   }
 
+  void resetState() {
+    state = state.copyWith(cartItems: [], totalQuantity: 0, totalAmount: 0);
+  }
+
   void addItem(CartItem item) {
-    final existingItemIndex = state.cartItems.indexWhere((i) => i.id == item.id);
-    if (existingItemIndex != -1) {
-      final updatedItems = List<CartItem>.from(state.cartItems);
-      final existingItem = updatedItems[existingItemIndex];
-      final updatedItem = existingItem.copyWith(quantity: existingItem.quantity + item.quantity);
-      updatedItems[existingItemIndex] = updatedItem;
+    final items = [...state.cartItems];
+    final index = items.indexWhere((e) => e.id == item.id);
 
-      final updatedTotalAmount = updatedItems.fold<int>(
-        0,
-            (sum, item) => sum + (item.price * item.quantity),
-      );
-
-      state = state.copyWith(
-        cartItems: updatedItems,
-        totalAmount: updatedTotalAmount,
-      );
+    if (index >= 0) {
+      // 이미 있으면 수량 증가
+      items[index] = items[index].copyWith(quantity: items[index].quantity + 1);
     } else {
-      final updatedItems = [...state.cartItems, item];
-      final updatedTotalAmount = updatedItems.fold<int>(
-        0,
-            (sum, item) => sum + (item.price * item.quantity),
-      );
-
-      state = state.copyWith(
-        cartItems: updatedItems,
-        totalAmount: updatedTotalAmount,
-      );
+      // 없으면 추가
+      items.add(item);
     }
+
+    final totalQuantity = items.fold<int>(0, (sum, i) => sum + i.quantity);
+    final totalAmount = items.fold<int>(
+      0,
+      (sum, i) => sum + (i.price * i.quantity),
+    );
+
+    state = state.copyWith(
+      cartItems: items,
+      totalQuantity: totalQuantity,
+      totalAmount: totalAmount,
+    );
   }
 
   void removeItem(String id) {
-    final updatedItems = state.cartItems.where((item) => item.id != id).toList();
+    final updatedItems =
+        state.cartItems.where((item) => item.id != id).toList();
     final updatedTotalAmount = updatedItems.fold<int>(
       0,
-          (sum, item) => sum + (item.price * item.quantity),
+      (sum, item) => sum + (item.price * item.quantity),
     );
 
     state = state.copyWith(
@@ -55,16 +54,17 @@ class CartNotifier extends Notifier<CartState> {
   }
 
   void incrementQuantity(String id) {
-    final updatedItems = state.cartItems.map((item) {
-      if (item.id == id) {
-        return item.copyWith(quantity: item.quantity + 1);
-      }
-      return item;
-    }).toList();
+    final updatedItems =
+        state.cartItems.map((item) {
+          if (item.id == id) {
+            return item.copyWith(quantity: item.quantity + 1);
+          }
+          return item;
+        }).toList();
 
     final updatedTotalAmount = updatedItems.fold<int>(
       0,
-          (sum, item) => sum + (item.price * item.quantity),
+      (sum, item) => sum + (item.price * item.quantity),
     );
 
     state = state.copyWith(
@@ -85,7 +85,7 @@ class CartNotifier extends Notifier<CartState> {
 
     final updatedTotalAmount = updatedItems.fold<int>(
       0,
-          (sum, item) => sum + (item.price * item.quantity),
+      (sum, item) => sum + (item.price * item.quantity),
     );
 
     state = state.copyWith(
@@ -100,5 +100,5 @@ class CartNotifier extends Notifier<CartState> {
 }
 
 final cartNotifierProvider = NotifierProvider<CartNotifier, CartState>(
-      () => CartNotifier(),
+  () => CartNotifier(),
 );

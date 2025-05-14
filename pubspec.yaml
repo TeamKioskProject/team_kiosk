@@ -46,6 +46,8 @@ dependencies:
   syncfusion_flutter_signaturepad: ^29.1.41
   flutter_tts: ^4.2.2
   mocktail_image_network: ^1.2.0
+  auto_size_text: ^3.0.0
+  line_icons: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +80,12 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/lottie/
+    - lib/data/data/burger_mock_data.json
+    - lib/data/data/dessert_mock_data.json
+    - lib/data/data/drink_mock_data.json
+    - lib/data/data/side_mock_data.json
+    - lib/data/data/starbucks_desserts.json
+    - lib/data/data/starbucks_drinks_trimmed.json
   fonts:
     - family: Pretendard
       fonts:

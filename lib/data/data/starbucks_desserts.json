@@ -5,84 +5,80 @@
       "content": "하트 모양의 바삭한 파이입니다.",
       "category": "빵",
       "price": 5000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2021/04/[5110006070]_20210422111451589.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2021/04/[5110006070]_20210422111451589.jpg",
+      "id": "5110006070"
     },
     {
       "name": "우리 찹쌀 꽈배기",
       "content": "국내산 찹쌀이 들어있는 쫀득한 식감의 꽈배기입니다.",
       "category": "빵",
       "price": 3000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/01/[9300000005776]_20250102152400394.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/01/[9300000005776]_20250102152400394.jpg",
+      "id": "9300000005776"
     },
     {
       "name": "바게트 소금빵",
       "content": "바게트 빵처럼 토스트 된 겉면과 쫄깃한 빵 속 그리고 버터가 녹여진 바삭한 바닥면까지 다양한 식감을 즐길 수 있는 소금빵입니다.",
       "category": "빵",
       "price": 7000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/04/[9300000005856]_20250401131732335.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/04/[9300000005856]_20250401131732335.jpg",
+      "id": "9300000005856"
     },
     {
       "name": "소시지 프레첼 소금빵",
       "content": "버터 풍미 가득한 프레첼 소금빵에 훈제된 도톰한 소시지와 홀그레인 머스터드가 맛의 조화를 이룬 든든한 간식용 소시지 브레드 입니다.",
       "category": "빵",
       "price": 7000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/04/[9300000005262]_20240424133619080.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/04/[9300000005262]_20240424133619080.jpg",
+      "id": "9300000005262"
     },
     {
       "name": "딸기 촉촉 초코 생크림 케이크",
       "content": "촉촉한 초코 카스텔라 안에 달콤한 가나슈 생크림을 듬뿍 담은 뒤 우유 생크림과 딸기로 상단에 토핑을 한 케이크입니다.",
       "category": "케이크",
       "price": 9000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/02/[9300000005594]_20250205141352684.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/02/[9300000005594]_20250205141352684.jpg",
+      "id": "9300000005594"
     },
     {
       "name": "부드러운 흑임자 롤",
       "content": "국내산 흑임자를 사용한 고소한 흑임자 시트 사이에 흑임자 크림을 듬뿍 샌드 한 부드러운 롤 케이크입니다.",
       "category": "케이크",
       "price": 8000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/08/[9300000005312]_20240802095636320.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/08/[9300000005312]_20240802095636320.jpg",
+      "id": "9300000005312"
     },
     {
       "name": "부드러운 생크림 카스텔라",
       "content": "부드러운 생크림이 듬뿍 들어있는 촉촉한 카스텔라입니다.",
       "category": "케이크",
       "price": 7000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2021/04/[5110007181]_20210421164728509.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2021/04/[5110007181]_20210421164728509.jpg",
+      "id": "5110007181"
     },
     {
       "name": "세븐 레이어 가나슈 케이크",
       "content": "초콜릿, 가나슈, 모카로 만든 시트와 크림으로 만든 7개의 층이 특징이며, 가나슈로 감싸 진한 풍미의 초콜릿 케이크입니다.(지름 12cm / 중량 510g).",
       "category": "케이크",
       "price": 12000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2022/05/[9300000002065]_20220523145502021.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2022/05/[9300000002065]_20220523145502021.jpg",
+      "id": "9300000002065"
     },
     {
       "name": "크랜베리 치킨 샌드위치",
       "content": "고소한 호밀 식빵 안에 크랜베리와 호두가 들어간 치킨 샐러드와 신선한 로메인, 토마토가 어우러진 샌드위치입니다.",
       "category": "샌드위치",
       "price": 7000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/04/[9300000005855]_20250414090237000.jpg"
-    },
-    {
-      "name": "더블 치킨 브레스트 체다 & 에그 샌드위치",
-      "content": "쫄깃한 잉글리시 머핀 사이 담백한 닭가슴살로 만든 치킨 브레스트 햄과 베이컨, 에그 프라이, 체다 치즈, 스윗 올리브& 칠리 마요 소스로 부드러우면서 매콤한 맛을 더한 모닝 샌드위치 입니다.",
-      "category": "샌드위치",
-      "price": 7000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/08/[9300000005349]_20240802095756947.jpg"
-    },
-    {
-      "name": "베이컨 체다 & 오믈렛 샌드위치",
-      "content": "고소한 버터 풍미의 브리오슈 감자 번 사이 도톰한 오믈렛과 베이컨, 체다 치즈와 케이준& 마요 소스로 부드러우면서 매콤한 맛을 더한 모닝 샌드위치 입니다",
-      "category": "샌드위치",
-      "price": 8000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/08/[9300000005350]_20240802095851565.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2025/04/[9300000005855]_20250414090237000.jpg",
+      "id": "9300000005855"
     },
     {
       "name": "치킨 베이컨 랩",
       "content": "닭가슴살과 스크램블 에그, 베이컨, 치즈에 매콤한 할라피뇨 마요 소스를 더해 감칠맛을 살린 랩입니다.",
       "category": "샌드위치",
       "price": 6000,
-      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/02/[9300000005046]_20240229090615568.jpg"
+      "image": "https://www.istarbucks.co.kr/upload/store/skuimg/2024/02/[9300000005046]_20240229090615568.jpg",
+      "id": "9300000005046"
     }
   ]
 }

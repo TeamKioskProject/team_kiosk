@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
@@ -13,6 +14,7 @@ class OrderSummaryBox extends StatefulWidget {
   final String itemId;
   final int itemQuantity;
   final void Function(String id) onAddTap;
+  final void Function(String id) onRemoveTap;
   final void Function(String id) onMinusTap;
 
   const OrderSummaryBox({
@@ -25,6 +27,7 @@ class OrderSummaryBox extends StatefulWidget {
     required this.itemImage,
     required this.itemQuantity,
     required this.onAddTap,
+    required this.onRemoveTap,
     required this.onMinusTap,
   });
 
@@ -47,46 +50,62 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
       decoration: ButtonStyles.kioskButton(Colors.white),
       child: Stack(
         children: [
-          Positioned(
-            right: 0,
-            top: 0,
-            child: IconButton(
-              onPressed: () {
-                // TODO: 아이템 제거 기능 추가
-              },
-              icon: const Icon(Icons.restore_from_trash, size: 24),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: 16,
+              left: 10,
+              right: 10,
+              bottom: 12,
               top: 10,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(width: 80, child: Image.network(widget.itemImage)),
+                    SizedBox(width: 90, child: Image.network(widget.itemImage)),
                     const SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.itemName,
-                          style: widget.textStyleSet.headline2,
-                        ),
-                        Text(
-                          '${widget.itemPrice}원',
-                          style: widget.textStyleSet.caption,
-                        ),
-                      ],
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AutoSizeText(
+                                  widget.itemName,
+                                  style: widget.textStyleSet.headline2,
+                                  maxLines: 2,
+                                  minFontSize: 12,
+                                  overflow:
+                                      TextOverflow
+                                          .ellipsis, // visible → ellipsis
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '${widget.itemPrice}원',
+                                  style: widget.textStyleSet.caption,
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              widget.onRemoveTap(widget.itemId);
+                            },
+                            icon: const Icon(
+                              Icons.restore_from_trash,
+                              size: 30,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
+
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,7 +137,10 @@ class _OrderSummaryBoxState extends State<OrderSummaryBox> {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        Text(widget.itemQuantity.toString(), style: widget.textStyleSet.body),
+                        Text(
+                          widget.itemQuantity.toString(),
+                          style: widget.textStyleSet.body,
+                        ),
                         const SizedBox(width: 16),
                         GestureDetector(
                           onTap: () {
