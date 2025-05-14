@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
-import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart' as kiosk;
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
@@ -45,14 +44,13 @@ class KioskStartPage extends ConsumerWidget {
                         ? kiosk.Category.burger
                         : kiosk.Category.cafe,
               ),
-              const SizedBox(height: 22),
+              const SizedBox(height: 10),
               Lottie.asset(
                 theme == KioskTheme.fromMode(KioskMode.burger)
                     ? 'assets/lottie/hambuger_lottie.json'
                     : 'assets/lottie/coffe_lottie.json',
-
               ),
-              const SizedBox(height: 22),
+              const SizedBox(height: 10),
               Semantics(
                 label:
                     theme == KioskTheme.fromMode(KioskMode.burger)
