@@ -9,7 +9,10 @@ import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
+import 'package:team_kiosk/data/data_source/data_type.dart';
+import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
+import 'package:team_kiosk/view/cart/cart_item.dart';
 import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
@@ -163,22 +166,26 @@ Widget _buildMenuGrid(
               categoryType: item.category,
               id: item.id,
               onTap: () {
-                context.push(
-                  theme == KioskTheme.fromMode(KioskMode.burger)
-                      ? '/set-select-screen'
-                      : '/ingredient-select',
-                  extra: MenuCard(
-                    image: item.imageUrl,
-                    title: item.name,
-                    price: item.price,
-                    theme: theme,
-                    categoryType: item.category,
-                    id: item.id,
-                    onTap: () {},
-                  ),
-                );
-                // final cartItem = item.toCart();
-                // cartViewModel.addItem(cartItem);
+                if (item.category == CategoryType.burger ||
+                    item.category == CategoryType.cafeDrink) {
+                  context.push(
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? '/set-select-screen'
+                        : '/ingredient-select',
+                    extra: MenuCard(
+                      image: item.imageUrl,
+                      title: item.name,
+                      price: item.price,
+                      theme: theme,
+                      categoryType: item.category,
+                      id: item.id,
+                      onTap: () {},
+                    ),
+                  );
+                } else {
+                  final CartItem cartItem = item.toCart();
+                  cartViewModel.addItem(cartItem);
+                }
               },
             );
           },
