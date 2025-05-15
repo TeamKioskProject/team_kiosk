@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
-import 'package:team_kiosk/view/cart/cart_notifier.dart';
+import 'package:team_kiosk/view/set_builder/set_builder_notification.dart';
 
 class PaymentSuccessScreen extends ConsumerWidget {
   const PaymentSuccessScreen({super.key});
@@ -14,6 +14,7 @@ class PaymentSuccessScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.read(kioskThemeProvider);
     final textStyles = ref.read(textStyleSetProvider);
+    final setBuilderState = ref.watch(setBuilderProvider.notifier);
     return Scaffold(
       backgroundColor: theme.background,
       body: Column(
@@ -37,11 +38,16 @@ class PaymentSuccessScreen extends ConsumerWidget {
               padding: const EdgeInsets.all(16),
               child: CategoryCard(
                 icon: Icons.refresh,
-                category: theme == KioskTheme.fromMode(KioskMode.burger) ? Category.burger : Category.cafe,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? Category.burger
+                        : Category.cafe,
                 theme: theme,
                 text: '처음으로',
                 onTap: () {
                   context.go('/');
+                  setBuilderState.selectSideMenu(name: '');
+                  setBuilderState.selectDrinkMenu(name: '');
                 },
               ),
             ),
