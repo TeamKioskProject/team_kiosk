@@ -49,10 +49,9 @@ class CartScreen extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Semantics(
-                      label:
-                          theme == KioskTheme.fromMode(KioskMode.burger)
-                              ? "버거 장바구니 비어 있음"
-                              : "커피 장바구니 비어 있음",
+                      label: theme == KioskTheme.fromMode(KioskMode.burger)
+                          ? "버거 장바구니가 비어 있습니다"
+                          : "커피 장바구니가 비어 있습니다",
                       child: Lottie.asset(
                         theme == KioskTheme.fromMode(KioskMode.burger)
                             ? "assets/lottie/hambuger_lottie.json"
@@ -60,8 +59,11 @@ class CartScreen extends ConsumerWidget {
                       ),
                     ),
                     Semantics(
-                      label: '장바구니에 담은 상품이 없습니다',
-                      child: Text('장바구니에 담은 상품이 없습니다', style: textStyles.body),
+                      label: '장바구니에 담긴 상품이 없습니다',
+                      child: Text(
+                        '장바구니에 담긴 상품이 없습니다',
+                        style: textStyles.body,
+                      ),
                     ),
                   ],
                 ),
@@ -70,35 +72,36 @@ class CartScreen extends ConsumerWidget {
             // 장바구니에 상품이 있는 경우
             if (cartState.cartItems.isNotEmpty)
               Expanded(
-                child: ListView(
-                  children:
-                      cartState.cartItems.map((items) {
-                        return Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Semantics(
-                            label:
-                                '${items.name}, 가격 ${items.price}원, 수량 ${items.quantity}개',
-                            child: OrderSummaryBox(
-                              theme: theme,
-                              textStyleSet: textStyles,
-                              itemName: items.name,
-                              itemPrice: items.price.toString(),
-                              itemImage: items.imagePath,
-                              itemQuantity: items.quantity,
-                              itemId: items.id,
-                              onAddTap: (id) {
-                                cartNotifier.incrementQuantity(id);
-                              },
-                              onMinusTap: (id) {
-                                cartNotifier.decrementQuantity(id);
-                              },
-                              onRemoveTap: (id) {
-                                cartNotifier.removeItem(id);
-                              },
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                child: ListView.builder(
+                  itemCount: cartState.cartItems.length,
+                  itemBuilder: (context, index) {
+                    final item = cartState.cartItems[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Semantics(
+                        label:
+                        '${item.name}, 가격 ${item.price}원, 수량 ${item.quantity}개',
+                        child: OrderSummaryBox(
+                          theme: theme,
+                          textStyleSet: textStyles,
+                          itemName: item.name,
+                          itemPrice: item.price.toString(),
+                          itemImage: item.imagePath,
+                          itemQuantity: item.quantity,
+                          itemId: item.id,
+                          onAddTap: (id) {
+                            cartNotifier.incrementQuantity(id);
+                          },
+                          onMinusTap: (id) {
+                            cartNotifier.decrementQuantity(id);
+                          },
+                          onRemoveTap: (id) {
+                            cartNotifier.removeItem(id);
+                          },
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
 
@@ -113,7 +116,9 @@ class CartScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(16),
                   child: CategoryCard(
                     icon: Icons.credit_card,
-                    category: theme == KioskTheme.fromMode(KioskMode.burger) ? Category.burger : Category.cafe,
+                    category: theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? Category.burger
+                        : Category.cafe,
                     theme: theme,
                     text: '결제하러가기',
                     onTap: () {

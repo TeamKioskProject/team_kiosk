@@ -15,33 +15,51 @@ class PaymentSuccessScreen extends ConsumerWidget {
     final theme = ref.read(kioskThemeProvider);
     final textStyles = ref.read(textStyleSetProvider);
     final setBuilderState = ref.watch(setBuilderProvider.notifier);
+
     return Scaffold(
       backgroundColor: theme.background,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // 결제 완료 애니메이션
           Flexible(
             flex: 3,
             child: Center(
-              child: Lottie.asset('assets/lottie/payment_animation.json'),
+              child: Semantics(
+                label: '결제가 완료되었습니다',
+                child: Lottie.asset(
+                  'assets/lottie/payment_animation.json',
+                  excludeFromSemantics: true,
+                ),
+              ),
             ),
           ),
-          Text('결제가 완료 되었습니다!', style: textStyles.headline2),
+
+          // 결제 완료 메시지
+          Semantics(
+            label: '결제가 완료되었습니다',
+            child: Text(
+              '결제가 완료되었습니다!',
+              style: textStyles.headline2,
+            ),
+          ),
+
           Expanded(child: Container()),
+
+          // 처음으로 버튼
           Semantics(
             button: true,
-            label: '',
+            label: '처음으로 돌아가기 버튼',
             child: Container(
               width: double.infinity,
               color: Colors.transparent,
               padding: const EdgeInsets.all(16),
               child: CategoryCard(
                 icon: Icons.refresh,
-                category:
-                    theme == KioskTheme.fromMode(KioskMode.burger)
-                        ? Category.burger
-                        : Category.cafe,
+                category: theme == KioskTheme.fromMode(KioskMode.burger)
+                    ? Category.burger
+                    : Category.cafe,
                 theme: theme,
                 text: '처음으로',
                 onTap: () {
