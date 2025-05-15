@@ -30,7 +30,6 @@ class PaymentSuccessScreen extends ConsumerWidget {
                 label: '결제가 완료되었습니다',
                 child: Lottie.asset(
                   'assets/lottie/payment_animation.json',
-                  excludeFromSemantics: true,
                 ),
               ),
             ),

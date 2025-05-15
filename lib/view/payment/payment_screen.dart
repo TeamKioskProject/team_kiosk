@@ -113,7 +113,7 @@ class PaymentScreen extends ConsumerWidget {
           ),
 
           // 결제 안내 메시지
-          const Expanded(
+           Expanded(
             child: SizedBox(
               child: Center(
                 child: Semantics(
