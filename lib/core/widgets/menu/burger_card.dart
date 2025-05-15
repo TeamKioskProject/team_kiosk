@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/app_texts.dart';
@@ -28,19 +29,23 @@ class BurgerCard extends StatelessWidget {
         children: [
           image ?? const Center(child: Text("IMG")),
           const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: textStyleSet.body,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                price,
-                style: textStyleSet.caption.copyWith(color: theme.primary),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AutoSizeText(
+                  name,
+                  maxLines: 2,
+                  style: textStyleSet.body,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  price,
+                  style: textStyleSet.caption.copyWith(color: theme.primary),
+                ),
+              ],
+            ),
           ),
         ],
       ),
