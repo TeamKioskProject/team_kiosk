@@ -7,6 +7,7 @@ import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
+import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_sheet.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
 import 'package:team_kiosk/data/data_source/data_type.dart';
@@ -46,13 +47,6 @@ class MenuSelectScreen extends ConsumerWidget {
               builder: (context, ref, _) {
                 final tabController = DefaultTabController.of(context);
                 final selectedIndex = tabController?.index ?? 0;
-
-                final appState = ref.watch(appStateProvider);
-                final theme = ref.watch(kioskThemeProvider);
-                final viewModel = ref.watch(
-                  menuSelectNotifierProvider.notifier,
-                );
-
                 return appState.mode == AppMode.burger
                     ? StepProgressBar(
                       onTap: (int index) {
@@ -185,6 +179,14 @@ Widget _buildMenuGrid(
                 } else {
                   final CartItem cartItem = item.toCart();
                   cartViewModel.addItem(cartItem);
+                  final controller = Scaffold.of(context).showBottomSheet((
+                    BuildContext context,
+                  ) {
+                    return MenuBottomSheet(theme: theme, text: item.name);
+                  });
+                  Future.delayed(const Duration(seconds: 2), () {
+                    controller.close();
+                  });
                 }
               },
             );
