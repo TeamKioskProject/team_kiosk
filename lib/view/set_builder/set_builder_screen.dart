@@ -13,6 +13,7 @@ import 'package:team_kiosk/view/set_builder/set_builder_state.dart';
 
 class SetBuilderScreen extends ConsumerWidget {
   final MenuCard menuCard;
+
   const SetBuilderScreen({super.key, required this.menuCard});
 
   @override
@@ -34,7 +35,7 @@ class SetBuilderScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    margin: EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(16),
                     child: BurgerCard(
                       name: menuCard.title,
                       price: menuCard.price.toString(),
@@ -47,18 +48,30 @@ class SetBuilderScreen extends ConsumerWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Text('사이드 메뉴 선택', style: textStyles.headline2),
                   ),
 
-                  _buildMenuGrid(state.sideMenuList, theme, 'side' ,viewModel, state),
+                  _buildMenuGrid(
+                    state.sideMenuList,
+                    theme,
+                    'side',
+                    viewModel,
+                    state,
+                  ),
 
                   Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Text('음료 선택', style: textStyles.headline2),
                   ),
 
-                  _buildMenuGrid(state.drinkMenuList, theme, 'drink', viewModel, state),
+                  _buildMenuGrid(
+                    state.drinkMenuList,
+                    theme,
+                    'drink',
+                    viewModel,
+                    state,
+                  ),
                 ],
               ),
             ),
@@ -82,7 +95,13 @@ class SetBuilderScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildMenuGrid(List<OrderItem> items, KioskTheme theme, String type,SetBuilderNotification viewModel, SetBuilderState state ) {
+  Widget _buildMenuGrid(
+    List<OrderItem> items,
+    KioskTheme theme,
+    String type,
+    SetBuilderNotification viewModel,
+    SetBuilderState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: GridView.builder(
@@ -103,12 +122,15 @@ class SetBuilderScreen extends ConsumerWidget {
             price: item.price,
             categoryType: item.category,
             id: item.id,
-            isSelected: type == 'side' ? state.selectSideMenu == item.name : state.selectDrink == item.name,
+            isSelected:
+                type == 'side'
+                    ? state.selectSideMenu == item.name
+                    : state.selectDrink == item.name,
             theme: theme,
             onTap: () {
-              if(type == "side") {
+              if (type == "side") {
                 viewModel.selectSideMenu(name: item.name);
-              }else{
+              } else {
                 viewModel.selectDrinkMenu(name: item.name);
               }
             },
