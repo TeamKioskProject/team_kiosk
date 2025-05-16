@@ -131,7 +131,7 @@ class SetSelectScreen extends ConsumerWidget {
                             Expanded(
                               child: Column(
                                 children: [
-                                  Icon(Icons.icecream_outlined, size: 30),
+                                  Image.asset('assets/icons/set_menu.png', width: 80, height: 80),
                                   Text(setBuilderState.selectSideMenu),
                                 ],
                               ),
@@ -139,7 +139,7 @@ class SetSelectScreen extends ConsumerWidget {
                             Expanded(
                               child: Column(
                                 children: [
-                                  Icon(Icons.icecream_outlined, size: 30),
+                                  Image.asset('assets/icons/set_menu.png', width: 80, height: 80),
                                   Text(setBuilderState.selectDrink),
                                 ],
                               ),
