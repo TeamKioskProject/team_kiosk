@@ -22,7 +22,7 @@ class SetSelectScreen extends ConsumerWidget {
     final theme = ref.watch(kioskThemeProvider);
     final styles = ref.watch(textStyleSetProvider);
     final appState = ref.watch(appStateProvider);
-    final setSelectSate = ref.watch(setSelectProvider);
+    final setSelectState = ref.watch(setSelectProvider);
     final setBuilderState = ref.watch(setBuilderProvider);
     final viewModel = ref.watch(setSelectProvider.notifier);
 
@@ -40,7 +40,11 @@ class SetSelectScreen extends ConsumerWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      child: Image.network(menuData.image),
+                      child: Semantics(
+                        label: '${menuData.title} 이미지',
+                        hint: '선택된 메뉴의 이미지입니다',
+                        child: Image.network(menuData.image),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Text(menuData.title, style: styles.headline2),
@@ -63,11 +67,11 @@ class SetSelectScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text('주문 유형을 선택해주세요', style: styles.headline2),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     GroupButton<String>(
                       buttons: ['단품', '세트'],
-                      onSelected: (String, int, bool) {
-                        viewModel.isSetChange(change: String == '세트');
+                      onSelected: (String value, int index, bool isSelected) {
+                        viewModel.isSetChange(change: value == '세트');
                       },
                       options: GroupButtonOptions(
                         groupingType: GroupingType.column,
@@ -83,7 +87,7 @@ class SetSelectScreen extends ConsumerWidget {
                             vertical: 17,
                             horizontal: 20,
                           ),
-                          margin: EdgeInsets.only(bottom: 16),
+                          margin: const EdgeInsets.only(bottom: 16),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
@@ -104,8 +108,7 @@ class SetSelectScreen extends ConsumerWidget {
                               Text(
                                 text == '단품'
                                     ? '${NumberFormat.currency(locale: "ko_KR").format(int.parse(menuData.price.toString())).replaceAll("KRW", '')}원'
-                                    : '${NumberFormat.currency(locale: "ko_KR"
-                                    "").format(int.parse((menuData.price + 2000).toString())).replaceAll("KRW", '')}원',
+                                    : '${NumberFormat.currency(locale: "ko_KR").format(int.parse((menuData.price + 2000).toString())).replaceAll("KRW", '')}원',
                                 style: styles.button.copyWith(
                                   color: select ? theme.primary : theme.subText,
                                 ),
@@ -119,8 +122,7 @@ class SetSelectScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 20),
-
-              if (setSelectSate.isSetBool)
+              if (setSelectState.isSetBool)
                 Column(
                   children: [
                     GestureDetector(
@@ -137,9 +139,8 @@ class SetSelectScreen extends ConsumerWidget {
                           children: [
                             Text('세트 구성', style: styles.headline2),
                             const SizedBox(height: 10),
-
                             Text(
-                              '세트 구성을 선택해주세요(아이콘을 터치 하시면 선택하실수 있습니다)',
+                              '세트 구성을 선택해주세요',
                               style: styles.accent.copyWith(
                                 color: theme.primary,
                               ),
@@ -152,15 +153,15 @@ class SetSelectScreen extends ConsumerWidget {
                                     children: [
                                       setBuilderState.selectSideImage == ''
                                           ? Image.asset(
-                                            'assets/icons/set_menu.png',
-                                            width: 80,
+                                        'assets/icons/set_menu.png',
+                                        width: 80,
                                         fit: BoxFit.contain,
-                                          )
+                                      )
                                           : Image.network(
-                                            setBuilderState.selectSideImage,
-                                            width: 80,
-                                            fit: BoxFit.contain,
-                                          ),
+                                        setBuilderState.selectSideImage,
+                                        width: 80,
+                                        fit: BoxFit.contain,
+                                      ),
                                       Text(setBuilderState.selectSideMenu),
                                     ],
                                   ),
@@ -191,7 +192,7 @@ class SetSelectScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-              if (!setSelectSate.isSetBool ||
+              if (!setSelectState.isSetBool ||
                   setBuilderState.selectDrink != '' ||
                   setBuilderState.selectSideMenu != '')
                 Padding(
