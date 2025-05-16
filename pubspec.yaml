@@ -87,6 +87,7 @@ flutter:
     - lib/data/data/side_mock_data.json
     - lib/data/data/starbucks_desserts.json
     - lib/data/data/starbucks_drinks_trimmed.json
+    - shorebird.yaml
   fonts:
     - family: Pretendard
       fonts:
