@@ -17,12 +17,12 @@ class SetBuilderNotification extends Notifier<SetBuilderState> {
     return const SetBuilderState();
   }
 
-  void selectSideMenu({required String name}) {
-    state = state.copyWith(selectSideMenu: name);
+  void selectSideMenu({required String name, required String uri}) {
+    state = state.copyWith(selectSideMenu: name, selectSideImage: uri);
   }
 
-  void selectDrinkMenu({required String name}) {
-    state = state.copyWith(selectDrink: name);
+  void selectDrinkMenu({required String name, required String uri}) {
+    state = state.copyWith(selectDrink: name, selectDrinkImage: uri);
   }
 
   Future<void> _loadInitialData() async {

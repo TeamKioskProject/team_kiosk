@@ -63,8 +63,8 @@ class PaymentSuccessScreen extends ConsumerWidget {
                 text: '처음으로',
                 onTap: () {
                   context.go('/');
-                  setBuilderState.selectSideMenu(name: '');
-                  setBuilderState.selectDrinkMenu(name: '');
+                  setBuilderState.selectSideMenu(name: '', uri:'');
+                  setBuilderState.selectDrinkMenu(name: '', uri: '');
                 },
               ),
             ),
