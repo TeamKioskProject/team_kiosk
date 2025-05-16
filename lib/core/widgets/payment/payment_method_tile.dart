@@ -34,7 +34,7 @@ class PaymentMethodTile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 70, color: theme.primary),
+          Icon(icon, size: MediaQuery.of(context).size.width * 0.15, color: theme.primary),
           const SizedBox(height: 10),
           AutoSizeText(
             paymentName,

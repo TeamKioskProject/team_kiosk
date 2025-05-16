@@ -25,36 +25,51 @@ class HomeScreen extends ConsumerWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: KioskButton(
-                  text: "오늘은 어떤 주문을 연습해볼까요?",
-                  theme: KioskTheme.fromMode(KioskMode.burger),
-                  category:
-                      theme == KioskTheme.fromMode(KioskMode.burger)
-                          ? kiosk.Category.burger
-                          : kiosk.Category.cafe,
+                child: Semantics(
+                  label: "오늘의 주문 연습 시작",
+                  button: true,
+                  child: KioskButton(
+                    text: "오늘은 어떤 주문을 연습해볼까요?",
+                    theme: KioskTheme.fromMode(KioskMode.burger),
+                    category: theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? kiosk.Category.burger
+                        : kiosk.Category.cafe,
+                  ),
                 ),
               ),
-              Lottie.asset('assets/lottie/order_lottie.json'),
+              Semantics(
+                label: "주문 안내 애니메이션",
+                child: Lottie.asset('assets/lottie/order_lottie.json',
+                ),
+              ),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: FirstSelectCategory(
-                  icon: Icons.fastfood,
-                  category: Category.burger,
-                  theme: KioskTheme.fromMode(KioskMode.burger),
-                  text: '햄버거 주문 연습 하기',
-                  onTap: () {},
+                child: Semantics(
+                  label: "햄버거 주문 연습",
+                  button: true,
+                  child: FirstSelectCategory(
+                    icon: Icons.fastfood,
+                    category: Category.burger,
+                    theme: KioskTheme.fromMode(KioskMode.burger),
+                    text: '햄버거 주문 연습 하기',
+                    onTap: () {},
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: FirstSelectCategory(
-                  icon: Icons.local_cafe,
-                  category: Category.cafe,
-                  theme: KioskTheme.fromMode(KioskMode.cafe),
-                  text: '카페 주문 연습 하기',
-                  onTap: () {},
+                child: Semantics(
+                  label: "카페 주문 연습",
+                  button: true,
+                  child: FirstSelectCategory(
+                    icon: Icons.local_cafe,
+                    category: Category.cafe,
+                    theme: KioskTheme.fromMode(KioskMode.cafe),
+                    text: '카페 주문 연습 하기',
+                    onTap: () {},
+                  ),
                 ),
               ),
             ],
