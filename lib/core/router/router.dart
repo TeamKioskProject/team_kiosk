@@ -7,6 +7,7 @@ import 'package:team_kiosk/view/installment_select/installment_screen.dart';
 import 'package:team_kiosk/view/kiosk_start_page/kiosk_start_page.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_screen.dart';
 import 'package:team_kiosk/view/menu_set_select/set_select_screen.dart';
+import 'package:team_kiosk/view/order_complete/order_complete_screen.dart';
 import 'package:team_kiosk/view/payment/payment_screen.dart';
 import 'package:team_kiosk/view/payment/payment_success_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
@@ -58,6 +59,10 @@ final router = GoRouter(
     GoRoute(
       path: '/payment-success',
       builder: (context, state) => const PaymentSuccessScreen(),
+    ),
+    GoRoute(
+      path: '/order-complete-screen',
+      builder: (context, state) => const OrderCompleteScreen(),
     ),
   ],
 );

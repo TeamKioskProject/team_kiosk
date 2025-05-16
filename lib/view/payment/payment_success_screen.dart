@@ -5,7 +5,6 @@ import 'package:lottie/lottie.dart';
 import 'package:team_kiosk/core/constants/app_colors.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
-import 'package:team_kiosk/view/set_builder/set_builder_notification.dart';
 
 class PaymentSuccessScreen extends ConsumerWidget {
   const PaymentSuccessScreen({super.key});
@@ -14,7 +13,6 @@ class PaymentSuccessScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.read(kioskThemeProvider);
     final textStyles = ref.read(textStyleSetProvider);
-    final setBuilderState = ref.watch(setBuilderProvider.notifier);
 
     return Scaffold(
       backgroundColor: theme.background,
@@ -28,9 +26,7 @@ class PaymentSuccessScreen extends ConsumerWidget {
             child: Center(
               child: Semantics(
                 label: '결제가 완료되었습니다',
-                child: Lottie.asset(
-                  'assets/lottie/payment_animation.json',
-                ),
+                child: Lottie.asset('assets/lottie/payment_animation.json'),
               ),
             ),
           ),
@@ -38,10 +34,7 @@ class PaymentSuccessScreen extends ConsumerWidget {
           // 결제 완료 메시지
           Semantics(
             label: '결제가 완료되었습니다',
-            child: Text(
-              '결제가 완료되었습니다!',
-              style: textStyles.headline2,
-            ),
+            child: Text('결제가 완료되었습니다!', style: textStyles.headline2),
           ),
 
           Expanded(child: Container()),
@@ -49,22 +42,21 @@ class PaymentSuccessScreen extends ConsumerWidget {
           // 처음으로 버튼
           Semantics(
             button: true,
-            label: '처음으로 돌아가기 버튼',
+            label: '진동벨 번호 확인 버튼',
             child: Container(
               width: double.infinity,
               color: Colors.transparent,
               padding: const EdgeInsets.all(16),
               child: CategoryCard(
-                icon: Icons.refresh,
-                category: theme == KioskTheme.fromMode(KioskMode.burger)
-                    ? Category.burger
-                    : Category.cafe,
+                icon: Icons.arrow_forward,
+                category:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? Category.burger
+                        : Category.cafe,
                 theme: theme,
-                text: '처음으로',
+                text: '진동벨 번호 확인',
                 onTap: () {
-                  context.go('/');
-                  setBuilderState.selectSideMenu(name: '', uri:'');
-                  setBuilderState.selectDrinkMenu(name: '', uri: '');
+                  context.go('/order-complete-screen');
                 },
               ),
             ),
