@@ -81,6 +81,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/lottie/
+    - assets/ingredient/
     - lib/data/data/burger_mock_data.json
     - lib/data/data/dessert_mock_data.json
     - lib/data/data/drink_mock_data.json
