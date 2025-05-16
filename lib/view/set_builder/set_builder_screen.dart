@@ -43,7 +43,10 @@ class SetBuilderScreen extends ConsumerWidget {
                       theme: theme,
                       image: SizedBox(
                         width: 80,
-                        child: Image.network(menuCard.image, fit: BoxFit.contain),
+                        child: Image.network(
+                          menuCard.image,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),
@@ -51,7 +54,6 @@ class SetBuilderScreen extends ConsumerWidget {
                     padding: const EdgeInsets.all(16),
                     child: Text('사이드 메뉴 선택', style: textStyles.headline2),
                   ),
-
                   _buildMenuGrid(
                     state.sideMenuList,
                     theme,
@@ -59,12 +61,10 @@ class SetBuilderScreen extends ConsumerWidget {
                     viewModel,
                     state,
                   ),
-
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: Text('음료 선택', style: textStyles.headline2),
                   ),
-
                   _buildMenuGrid(
                     state.drinkMenuList,
                     theme,
