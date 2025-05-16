@@ -10,7 +10,6 @@ import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
-import 'package:team_kiosk/data/data_source/data_type.dart';
 import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
 import 'package:team_kiosk/view/cart/cart_item.dart';
@@ -42,7 +41,7 @@ class IngredientSelector extends ConsumerWidget {
                     viewModel.resetSelection();
                     context.pop();
                   },
-                  icon: Icon(Icons.arrow_back),
+                  icon: const Icon(Icons.arrow_back),
                 )
                 : null,
       ),
@@ -91,7 +90,7 @@ class IngredientSelector extends ConsumerWidget {
                                   var items = entry.value;
                                   return _ingredientTile(
                                     items["name"],
-                                    items["icon"],
+                                    items["icon"] as String,
                                     items["isSelected"],
                                     index,
                                     (index) => {
@@ -129,7 +128,7 @@ class IngredientSelector extends ConsumerWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             color: Colors.white,
             child: CategoryCard(
               icon: Icons.check,
@@ -151,12 +150,6 @@ class IngredientSelector extends ConsumerWidget {
                   imageUrl: menuCard.image,
                   price: menuCard.price,
                 );
-                // final menuData = {
-                //   'title' : menuCard.title,
-                //   'price' : menuCard.price,
-                //   'theme' : menuCard.theme,
-                //   'image' : menuCard.image,
-                // };
                 context.pop();
                 if (theme == KioskTheme.fromMode(KioskMode.burger)) {
                   context.pop();
@@ -174,7 +167,7 @@ class IngredientSelector extends ConsumerWidget {
 
   static Widget _ingredientTile(
     String name,
-    IconData icon,
+    String path,
     bool selected,
     int index,
     Function(int) onChanged, {
@@ -185,7 +178,8 @@ class IngredientSelector extends ConsumerWidget {
       margin: const EdgeInsets.symmetric(vertical: 6),
       decoration: ButtonStyles.kioskButton(Colors.white),
       child: ListTile(
-        leading: Icon(icon, color: iconColor ?? Colors.green, size: 32),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+        leading: Image.asset(path, width: 25, height: 30),
         title: Text(name, style: textSet.body),
         trailing: Switch(
           value: selected,
