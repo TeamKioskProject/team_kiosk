@@ -55,11 +55,12 @@ class IngredientSelector extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 20),
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundImage: NetworkImage(menuCard.image),
-                    backgroundColor: Colors.transparent,
-                  ),
+                  Image.network(menuCard.image),
+                  // CircleAvatar(
+                  //   radius: 80,
+                  //   backgroundImage: NetworkImage()
+                  //   backgroundColor: Colors.transparent,
+                  // ),
                   const SizedBox(height: 20),
                   Container(
                     margin: const EdgeInsets.all(16),

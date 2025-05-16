@@ -43,7 +43,7 @@ class SetBuilderScreen extends ConsumerWidget {
                       theme: theme,
                       image: SizedBox(
                         width: 80,
-                        child: Image.network(menuCard.image, fit: BoxFit.fill),
+                        child: Image.network(menuCard.image, fit: BoxFit.contain),
                       ),
                     ),
                   ),
@@ -129,9 +129,9 @@ class SetBuilderScreen extends ConsumerWidget {
             theme: theme,
             onTap: () {
               if (type == "side") {
-                viewModel.selectSideMenu(name: item.name);
+                viewModel.selectSideMenu(name: item.name, uri: item.imageUrl);
               } else {
-                viewModel.selectDrinkMenu(name: item.name);
+                viewModel.selectDrinkMenu(name: item.name, uri: item.imageUrl);
               }
             },
           );

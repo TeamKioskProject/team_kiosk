@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:group_button/group_button.dart';
+import 'package:intl/intl.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
@@ -43,7 +44,12 @@ class SetSelectScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 20),
                     Text(menuData.title, style: styles.headline2),
-                    Text('${menuData.price}원', style: styles.caption),
+                    const SizedBox(height: 20),
+                    Text(
+                      '${NumberFormat.currency(locale: "ko_KR").format(int.parse(menuData.price.toString())).replaceAll("KRW", '')}원',
+                      style: styles.accent.copyWith(color: theme.primary),
+                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -97,8 +103,9 @@ class SetSelectScreen extends ConsumerWidget {
                               ),
                               Text(
                                 text == '단품'
-                                    ? menuData.price.toString()
-                                    : (menuData.price + 2000).toString(),
+                                    ? '${NumberFormat.currency(locale: "ko_KR").format(int.parse(menuData.price.toString())).replaceAll("KRW", '')}원'
+                                    : '${NumberFormat.currency(locale: "ko_KR"
+                                    "").format(int.parse((menuData.price + 2000).toString())).replaceAll("KRW", '')}원',
                                 style: styles.button.copyWith(
                                   color: select ? theme.primary : theme.subText,
                                 ),
@@ -112,51 +119,92 @@ class SetSelectScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 20),
+
               if (setSelectSate.isSetBool)
-                GestureDetector(
-                  onTap: (){
-                    context.push('/set-builder', extra: menuData);
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(16),
-                    padding: const EdgeInsets.all(16),
-                    decoration: ButtonStyles.kioskButton(Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text('세트 구성', style: styles.headline2),
-                        Row(
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        context.push('/set-builder', extra: menuData);
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
+                        decoration: ButtonStyles.kioskButton(Colors.white),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Image.asset('assets/icons/set_menu.png', width: 80, height: 80),
-                                  Text(setBuilderState.selectSideMenu),
-                                ],
+                            Text('세트 구성', style: styles.headline2),
+                            const SizedBox(height: 10),
+
+                            Text(
+                              '세트 구성을 선택해주세요(아이콘을 터치 하시면 선택하실수 있습니다)',
+                              style: styles.accent.copyWith(
+                                color: theme.primary,
                               ),
                             ),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Image.asset('assets/icons/set_menu.png', width: 80, height: 80),
-                                  Text(setBuilderState.selectDrink),
-                                ],
-                              ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      setBuilderState.selectSideImage == ''
+                                          ? Image.asset(
+                                            'assets/icons/set_menu.png',
+                                            width: 80,
+                                        fit: BoxFit.contain,
+                                          )
+                                          : Image.network(
+                                            setBuilderState.selectSideImage,
+                                            width: 80,
+                                            fit: BoxFit.contain,
+                                          ),
+                                      Text(setBuilderState.selectSideMenu),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      setBuilderState.selectDrinkImage == ''
+                                          ? Image.asset(
+                                        'assets/icons/set_menu.png',
+                                        width: 80,
+                                        fit: BoxFit.contain,
+                                      )
+                                          : Image.network(
+                                        setBuilderState.selectDrinkImage,
+                                        width: 80,
+                                        fit: BoxFit.contain,
+                                      ),
+                                      Text(setBuilderState.selectDrink),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              if(!setSelectSate.isSetBool || setBuilderState.selectDrink != '' || setBuilderState.selectSideMenu != '')
+              if (!setSelectSate.isSetBool ||
+                  setBuilderState.selectDrink != '' ||
+                  setBuilderState.selectSideMenu != '')
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: DialogActionButton(text: '다음 단계로', onTapEvent: (){
-                    context.push("/ingredient-select", extra: menuData);
-                  }, theme: theme, textStyleSet: styles),
-                )
+                  child: DialogActionButton(
+                    text: '다음 단계로',
+                    onTapEvent: () {
+                      context.push("/ingredient-select", extra: menuData);
+                    },
+                    theme: theme,
+                    textStyleSet: styles,
+                  ),
+                ),
             ],
           ),
         ),
