@@ -45,29 +45,43 @@ class CartScreen extends ConsumerWidget {
             // 빈 장바구니 상태
             if (cartState.cartItems.isEmpty)
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Semantics(
-                      label: theme == KioskTheme.fromMode(KioskMode.burger)
-                          ? "버거 장바구니가 비어 있습니다"
-                          : "커피 장바구니가 비어 있습니다",
-                      child: Lottie.asset(
-                        theme == KioskTheme.fromMode(KioskMode.burger)
-                            ? "assets/lottie/hambuger_lottie.json"
-                            : "assets/lottie/coffe_lottie.json",
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height * 0.6,
+                    ),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Semantics(
+                            label: theme == KioskTheme.fromMode(KioskMode.burger)
+                                ? "버거 장바구니가 비어 있습니다"
+                                : "커피 장바구니가 비어 있습니다",
+                            child: Lottie.asset(
+                              theme == KioskTheme.fromMode(KioskMode.burger)
+                                  ? "assets/lottie/hambuger_lottie.json"
+                                  : "assets/lottie/coffe_lottie.json",
+                              width: 640,
+                              height: 640,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Semantics(
+                            label: '장바구니에 담긴 상품이 없습니다',
+                            child: Text(
+                              '장바구니에 담긴 상품이 없습니다',
+                              style: textStyles.body,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Semantics(
-                      label: '장바구니에 담긴 상품이 없습니다',
-                      child: Text(
-                        '장바구니에 담긴 상품이 없습니다',
-                        style: textStyles.body,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
+
 
             // 장바구니에 상품이 있는 경우
             if (cartState.cartItems.isNotEmpty)
