@@ -32,6 +32,10 @@ class InstallmentGroup extends StatelessWidget {
               '6개월',
               '일시불'
             ],
+            options: GroupButtonOptions(
+              groupingType: GroupingType.row,
+              groupRunAlignment: GroupRunAlignment.spaceBetween
+            ),
             buttonBuilder: (select, text, context) {
               return Container(
                 padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
