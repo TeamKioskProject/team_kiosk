@@ -65,16 +65,14 @@ class InstallmentScreen extends ConsumerWidget {
                 ),
               ),
             if (!requiresSignature)
-              Expanded(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Semantics(
-                      label: '5만원 미만은 서명이 필요하지 않습니다',
-                      child: Text(
-                        "5만원 미만은 무서명입니다",
-                        style: textStyles.headline2,
-                      ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Semantics(
+                    label: '5만원 미만은 서명이 필요하지 않습니다',
+                    child: Text(
+                      "5만원 미만은 무서명입니다",
+                      style: textStyles.headline2,
                     ),
                   ),
                 ),
