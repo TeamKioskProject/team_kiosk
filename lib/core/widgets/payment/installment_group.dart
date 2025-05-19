@@ -23,34 +23,37 @@ class InstallmentGroup extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text('할부로 결제 하시겠어요?', style: textStyleSet.headline2),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           GroupButton<String>(
-            buttons: [
-              '3개월',
-              '6개월',
-              '일시불'
-            ],
+            buttons: ['3개월', '6개월', '일시불'],
             options: GroupButtonOptions(
-              groupingType: GroupingType.row,
-              groupRunAlignment: GroupRunAlignment.spaceBetween
+              groupingType: GroupingType.column,
+              groupRunAlignment: GroupRunAlignment.spaceBetween,
             ),
             buttonBuilder: (select, text, context) {
               return Container(
-                padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 17,
+                  horizontal: 20,
+                ),
+                margin: EdgeInsets.only(bottom: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: theme.primary),
-                  color:  select ? theme.primary : Colors.white
+                  color: select ? theme.primary : Colors.white,
                 ),
-                child: Text(text, style: textStyleSet.button.copyWith(color:select ? Colors.white : theme.primary),),
+                child: Text(
+                  text,
+                  style: textStyleSet.button.copyWith(
+                    color: select ? Colors.white : theme.primary,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               );
             },
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
