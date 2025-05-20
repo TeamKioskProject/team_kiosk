@@ -7,6 +7,7 @@ import 'package:team_kiosk/core/constants/box_styles.dart';
 class InstallmentGroup extends StatelessWidget {
   final KioskTheme theme;
   final TextStyleSet textStyleSet;
+
   const InstallmentGroup({
     super.key,
     required this.theme,
@@ -23,34 +24,36 @@ class InstallmentGroup extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text('할부로 결제 하시겠어요?', style: textStyleSet.headline2),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           GroupButton<String>(
-            buttons: [
-              '3개월',
-              '6개월',
-              '일시불'
-            ],
-            options: GroupButtonOptions(
-              groupingType: GroupingType.row,
-              groupRunAlignment: GroupRunAlignment.spaceBetween
+            buttons: ['3개월', '6개월', '일시불'],
+            options: const GroupButtonOptions(
+              groupingType: GroupingType.column,
+              spacing: 5,
+              groupRunAlignment: GroupRunAlignment.spaceEvenly,
             ),
             buttonBuilder: (select, text, context) {
               return Container(
-                padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 17,
+                  horizontal: 20,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: theme.primary),
-                  color:  select ? theme.primary : Colors.white
+                  color: select ? theme.primary : Colors.white,
                 ),
-                child: Text(text, style: textStyleSet.button.copyWith(color:select ? Colors.white : theme.primary),),
+                child: Text(
+                  text,
+                  style: textStyleSet.button.copyWith(
+                    color: select ? Colors.white : theme.primary,
+                  ),
+                ),
               );
             },
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
         ],
       ),
     );

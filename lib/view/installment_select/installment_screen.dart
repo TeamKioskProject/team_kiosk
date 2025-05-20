@@ -28,7 +28,7 @@ class InstallmentScreen extends ConsumerWidget {
         child: Column(
           children: [
             const SizedBox(height: 24),
-        
+
             // 총 결제 금액
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -41,9 +41,9 @@ class InstallmentScreen extends ConsumerWidget {
                 ),
               ),
             ),
-        
+
             const SizedBox(height: 24),
-        
+
             // 할부 선택
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -52,9 +52,9 @@ class InstallmentScreen extends ConsumerWidget {
                 child: InstallmentGroup(theme: theme, textStyleSet: textStyles),
               ),
             ),
-        
+
             const SizedBox(height: 24),
-        
+
             // 서명 여부
             if (requiresSignature)
               Padding(
@@ -65,21 +65,16 @@ class InstallmentScreen extends ConsumerWidget {
                 ),
               ),
             if (!requiresSignature)
-              Expanded(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Semantics(
-                      label: '5만원 미만은 서명이 필요하지 않습니다',
-                      child: Text(
-                        "5만원 미만은 무서명입니다",
-                        style: textStyles.headline2,
-                      ),
-                    ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Semantics(
+                    label: '5만원 미만은 서명이 필요하지 않습니다',
+                    child: Text("5만원 미만은 무서명입니다", style: textStyles.headline2),
                   ),
                 ),
               ),
-        
+
             // 버튼 그룹
             Padding(
               padding: const EdgeInsets.all(24),
@@ -109,7 +104,7 @@ class InstallmentScreen extends ConsumerWidget {
                         onTapEvent: () async {
                           await Future.delayed(
                             const Duration(milliseconds: 500),
-                                () {
+                            () {
                               context.go('/payment-success');
                             },
                           );
