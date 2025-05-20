@@ -15,6 +15,7 @@ class MenuBottomSheet extends ConsumerWidget {
     final styles = ref.watch(textStyleSetProvider);
     return Container(
       height: MediaQuery.of(context).size.height / 10,
+      width: double.infinity,
       color: theme.primary,
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Center(

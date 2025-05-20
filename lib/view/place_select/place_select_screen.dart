@@ -25,8 +25,8 @@ class PlaceSelectScreen extends ConsumerWidget {
             label: '음량 버튼',
             hint: '음량을 조절할 수 있습니다',
             button: true,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16.0),
+            child: const Padding(
+              padding: EdgeInsets.only(right: 16.0),
               child: Icon(Icons.volume_up),
             ),
           ),
@@ -40,19 +40,28 @@ class PlaceSelectScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Semantics(
-                label: theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거 장소 선택' : '커피 장소 선택',
+                label:
+                    theme == KioskTheme.fromMode(KioskMode.burger)
+                        ? '햄버거 장소 선택'
+                        : '커피 장소 선택',
                 hint: '누르면 장소를 선택할 수 있습니다',
                 button: true,
                 child: KioskButton(
-                  text: theme == KioskTheme.fromMode(KioskMode.burger) ? '햄버거를 어디서 드시겠어요?' : '커피를 어디서 드시겠어요?',
+                  text:
+                      theme == KioskTheme.fromMode(KioskMode.burger)
+                          ? '햄버거를 어디서 드시겠어요?'
+                          : '커피를 어디서 드시겠어요?',
                   theme: theme,
-                  category: theme == KioskTheme.fromMode(KioskMode.burger) ? kiosk.Category.burger : kiosk.Category.cafe,
+                  category:
+                      theme == KioskTheme.fromMode(KioskMode.burger)
+                          ? kiosk.Category.burger
+                          : kiosk.Category.cafe,
                 ),
               ),
               const SizedBox(height: 20),
               Semantics(
                 label: '매장에서 먹기 선택',
-                hint: '누르면 매장에서 음식을 먹는 옵션을 선택할 수 있습니다',
+                hint: '이 버튼을 누르면 매장에서 음식을 먹는 옵션을 선택할 수 있습니다',
                 button: true,
                 child: SelectableTile(
                   theme: theme,
@@ -68,7 +77,7 @@ class PlaceSelectScreen extends ConsumerWidget {
               const SizedBox(height: 20),
               Semantics(
                 label: '포장 선택',
-                hint: '누르면 음식을 가져가는 옵션을 선택할 수 있습니다',
+                hint: '누르면 음식을 포장하는 옵션을 선택할 수 있습니다',
                 button: true,
                 child: SelectableTile(
                   theme: theme,

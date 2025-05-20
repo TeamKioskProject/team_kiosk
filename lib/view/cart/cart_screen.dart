@@ -56,9 +56,10 @@ class CartScreen extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Semantics(
-                            label: theme == KioskTheme.fromMode(KioskMode.burger)
-                                ? "버거 장바구니가 비어 있습니다"
-                                : "커피 장바구니가 비어 있습니다",
+                            label:
+                                theme == KioskTheme.fromMode(KioskMode.burger)
+                                    ? "버거 장바구니가 비어 있습니다"
+                                    : "커피 장바구니가 비어 있습니다",
                             child: Lottie.asset(
                               theme == KioskTheme.fromMode(KioskMode.burger)
                                   ? "assets/lottie/hambuger_lottie.json"
@@ -82,7 +83,6 @@ class CartScreen extends ConsumerWidget {
                 ),
               ),
 
-
             // 장바구니에 상품이 있는 경우
             if (cartState.cartItems.isNotEmpty)
               Expanded(
@@ -94,7 +94,7 @@ class CartScreen extends ConsumerWidget {
                       padding: const EdgeInsets.all(16),
                       child: Semantics(
                         label:
-                        '${item.name}, 가격 ${item.price}원, 수량 ${item.quantity}개',
+                            '${item.name}, 가격 ${item.price}원, 수량 ${item.quantity}개',
                         child: OrderSummaryBox(
                           theme: theme,
                           textStyleSet: textStyles,
@@ -130,9 +130,10 @@ class CartScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(16),
                   child: CategoryCard(
                     icon: Icons.credit_card,
-                    category: theme == KioskTheme.fromMode(KioskMode.burger)
-                        ? Category.burger
-                        : Category.cafe,
+                    category:
+                        theme == KioskTheme.fromMode(KioskMode.burger)
+                            ? Category.burger
+                            : Category.cafe,
                     theme: theme,
                     text: '결제하러가기',
                     onTap: () {
