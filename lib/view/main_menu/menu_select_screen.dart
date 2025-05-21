@@ -201,7 +201,7 @@ Widget _buildMenuGrid(
                       controller.closed.then((_) {
                         isBottomSheetOpen = false;
                       });
-                      Future.delayed(const Duration(seconds: 2), () {
+                      Future.delayed(const Duration(milliseconds: 700), () {
                         if (isBottomSheetOpen) {
                           controller.close();
                         }
