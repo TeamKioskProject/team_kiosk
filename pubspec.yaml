@@ -49,6 +49,7 @@ dependencies:
   auto_size_text: ^3.0.0
   line_icons: ^2.0.3
   cached_network_image: ^3.4.1
+  debounce_throttle: ^2.0.0
 
 dev_dependencies:
   flutter_test:

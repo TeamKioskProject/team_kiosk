@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:team_kiosk/core/constants/box_styles.dart';
 import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
-import 'package:team_kiosk/core/widgets/kiosk/category_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/payment/dialog_action_button.dart';
@@ -15,6 +14,7 @@ import 'package:team_kiosk/view/set_builder/set_builder_notification.dart';
 
 class SetSelectScreen extends ConsumerWidget {
   final MenuCard menuData;
+
   const SetSelectScreen({super.key, required this.menuData});
 
   @override
@@ -153,15 +153,15 @@ class SetSelectScreen extends ConsumerWidget {
                                     children: [
                                       setBuilderState.selectSideImage == ''
                                           ? Image.asset(
-                                        'assets/icons/set_menu.png',
-                                        width: 80,
-                                        fit: BoxFit.contain,
-                                      )
+                                            'assets/icons/set_menu.png',
+                                            width: 80,
+                                            fit: BoxFit.contain,
+                                          )
                                           : Image.network(
-                                        setBuilderState.selectSideImage,
-                                        width: 80,
-                                        fit: BoxFit.contain,
-                                      ),
+                                            setBuilderState.selectSideImage,
+                                            width: 80,
+                                            fit: BoxFit.contain,
+                                          ),
                                       Text(setBuilderState.selectSideMenu),
                                     ],
                                   ),
@@ -171,15 +171,15 @@ class SetSelectScreen extends ConsumerWidget {
                                     children: [
                                       setBuilderState.selectDrinkImage == ''
                                           ? Image.asset(
-                                        'assets/icons/set_menu.png',
-                                        width: 80,
-                                        fit: BoxFit.contain,
-                                      )
+                                            'assets/icons/set_menu.png',
+                                            width: 80,
+                                            fit: BoxFit.contain,
+                                          )
                                           : Image.network(
-                                        setBuilderState.selectDrinkImage,
-                                        width: 80,
-                                        fit: BoxFit.contain,
-                                      ),
+                                            setBuilderState.selectDrinkImage,
+                                            width: 80,
+                                            fit: BoxFit.contain,
+                                          ),
                                       Text(setBuilderState.selectDrink),
                                     ],
                                   ),

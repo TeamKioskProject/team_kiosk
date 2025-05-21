@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/menu_item.dart';
 
 class Menu {
@@ -51,24 +51,22 @@ class MenuService extends StateNotifier<AsyncValue<List<Menu>>> {
   }
 }
 
-final menuServiceProvider = StateNotifierProvider<MenuService, AsyncValue<List<Menu>>>((ref) {
-  return MenuService();
-});
+final menuServiceProvider =
+    StateNotifierProvider<MenuService, AsyncValue<List<Menu>>>((ref) {
+      return MenuService();
+    });
 
 class MenuNotifier extends StateNotifier<MenuState> {
   MenuNotifier() : super(MenuState());
 
   void selectMenuItem(MenuItem item) {
-    state = state.copyWith(
-      selectedMenuItem: item,
-      selectedOptions: [],
-    );
+    state = state.copyWith(selectedMenuItem: item, selectedOptions: []);
   }
 
   void toggleOption(MenuItemOption option) {
     final currentOptions = List<MenuItemOption>.from(state.selectedOptions);
     final index = currentOptions.indexWhere((o) => o.id == option.id);
-    
+
     if (index >= 0) {
       currentOptions.removeAt(index);
     } else {
@@ -170,4 +168,4 @@ class MenuState {
 
 final menuProvider = StateNotifierProvider<MenuNotifier, MenuState>((ref) {
   return MenuNotifier();
-}); 
+});
