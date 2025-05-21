@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -40,8 +42,8 @@ class MenuSelectScreen extends ConsumerWidget {
               label: '음량 버튼',
               hint: '음량을 조절할 수 있습니다',
               button: true,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+              child: const Padding(
+                padding: EdgeInsets.only(right: 16.0),
                 child: Icon(Icons.volume_up),
               ),
             ),
@@ -54,73 +56,76 @@ class MenuSelectScreen extends ConsumerWidget {
                 final selectedIndex = tabController?.index ?? 0;
                 return appState.mode == AppMode.burger
                     ? StepProgressBar(
-                  onTap: (int index) {
-                    viewModel.changeMode(
-                      appStateMode: appState,
-                      index: index,
-                    );
-                    tabController?.animateTo(index);
-                  },
-                  titles: ['햄버거', '사이드', '음료', '디저트'],
-                  icons: [
-                    const Icon(Icons.lunch_dining),
-                    Image.asset(
-                      'assets/icons/fries.png',
-                      width: 24,
-                      height: 24,
-                      color: selectedIndex == 1 ? theme.primary : null,
-                    ),
-                    Image.asset(
-                      'assets/icons/cola.png',
-                      width: 24,
-                      height: 30,
-                      color: selectedIndex == 2 ? theme.primary : null,
-                    ),
-                    const Icon(Icons.icecream_rounded),
-                  ],
-                  theme: theme,
-                )
+                      onTap: (int index) {
+                        viewModel.changeMode(
+                          appStateMode: appState,
+                          index: index,
+                        );
+                        tabController?.animateTo(index);
+                      },
+                      titles: ['햄버거', '사이드', '음료', '디저트'],
+                      icons: [
+                        const Icon(Icons.lunch_dining),
+                        Image.asset(
+                          'assets/icons/fries.png',
+                          width: 24,
+                          height: 24,
+                          color: selectedIndex == 1 ? theme.primary : null,
+                        ),
+                        Image.asset(
+                          'assets/icons/cola.png',
+                          width: 24,
+                          height: 30,
+                          color: selectedIndex == 2 ? theme.primary : null,
+                        ),
+                        const Icon(Icons.icecream_rounded),
+                      ],
+                      theme: theme,
+                    )
                     : StepProgressBar(
-                  onTap: (int index) {
-                    viewModel.changeMode(
-                      appStateMode: appState,
-                      index: index,
+                      onTap: (int index) {
+                        viewModel.changeMode(
+                          appStateMode: appState,
+                          index: index,
+                        );
+                        tabController?.animateTo(index);
+                      },
+                      titles: ['음료', '디저트'],
+                      icons: [
+                        Icon(
+                          Icons.coffee,
+                          color: selectedIndex == 0 ? theme.primary : null,
+                        ),
+                        Icon(
+                          Icons.bakery_dining,
+                          size: 32,
+                          color: selectedIndex == 1 ? theme.primary : null,
+                        ),
+                      ],
+                      theme: theme,
                     );
-                    tabController?.animateTo(index);
-                  },
-                  titles: ['음료', '디저트'],
-                  icons: [
-                    Icon(
-                      Icons.coffee,
-                      color: selectedIndex == 0 ? theme.primary : null,
-                    ),
-                    Icon(
-                      Icons.bakery_dining,
-                      size: 32,
-                      color: selectedIndex == 1 ? theme.primary : null,
-                    ),
-                  ],
-                  theme: theme,
-                );
               },
             ),
           ),
         ),
         body: Container(
           color: theme.background,
-          child: appState.mode == AppMode.burger
-              ? TabBarView(
-            children: List.generate(
-              4,
-                  (_) => _buildMenuGrid(state.itemList, theme, cartViewModel),
-            ),
-          )
-              : TabBarView(
-            children: List.generate(
-              2,
-                  (_) => _buildMenuGrid(state.itemList, theme, cartViewModel),
-            ),
-          ),
+          child:
+              appState.mode == AppMode.burger
+                  ? TabBarView(
+                    children: List.generate(
+                      4,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
+                  )
+                  : TabBarView(
+                    children: List.generate(
+                      2,
+                      (_) =>
+                          _buildMenuGrid(state.itemList, theme, cartViewModel),
+                    ),
+                  ),
         ),
         bottomNavigationBar: MenuBottomBar(
           theme: theme,
@@ -134,10 +139,11 @@ class MenuSelectScreen extends ConsumerWidget {
 }
 
 Widget _buildMenuGrid(
-    List<OrderItem> items,
-    KioskTheme theme,
-    CartNotifier cartViewModel,
-    ) {
+  List<OrderItem> items,
+  KioskTheme theme,
+  CartNotifier cartViewModel,
+) {
+  bool isBottomSheetOpen = false;
   return SingleChildScrollView(
     child: SafeArea(
       child: Padding(
@@ -166,9 +172,12 @@ Widget _buildMenuGrid(
                 categoryType: item.category,
                 id: item.id,
                 onTap: () {
-                  if (item.category == CategoryType.burger || item.category == CategoryType.cafeDrink) {
+                  if (item.category == CategoryType.burger ||
+                      item.category == CategoryType.cafeDrink) {
                     context.push(
-                      theme == KioskTheme.fromMode(KioskMode.burger) ? '/set-select-screen' : '/ingredient-select',
+                      theme == KioskTheme.fromMode(KioskMode.burger)
+                          ? '/set-select-screen'
+                          : '/ingredient-select',
                       extra: MenuCard(
                         image: item.imageUrl,
                         title: item.name,
@@ -180,14 +189,24 @@ Widget _buildMenuGrid(
                       ),
                     );
                   } else {
-                    final CartItem cartItem = item.toCart();
-                    cartViewModel.addItem(cartItem);
-                    final controller = Scaffold.of(context).showBottomSheet((BuildContext context) {
-                      return MenuBottomSheet(theme: theme, text: item.name);
-                    });
-                    Future.delayed(const Duration(seconds: 2), () {
-                      controller.close();
-                    });
+                    if (!isBottomSheetOpen) {
+                      isBottomSheetOpen = true;
+                      final CartItem cartItem = item.toCart();
+                      cartViewModel.addItem(cartItem);
+                      final controller = Scaffold.of(context).showBottomSheet((
+                        BuildContext context,
+                      ) {
+                        return MenuBottomSheet(theme: theme, text: item.name);
+                      });
+                      controller.closed.then((_) {
+                        isBottomSheetOpen = false;
+                      });
+                      Future.delayed(const Duration(seconds: 2), () {
+                        if (isBottomSheetOpen) {
+                          controller.close();
+                        }
+                      });
+                    }
                   }
                 },
               ),

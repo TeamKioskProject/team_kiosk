@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_kiosk/core/state/app_mode.dart';
-import 'package:team_kiosk/core/state/app_state.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/data/data_source/data_type.dart';
 import 'package:team_kiosk/data/repository/repository_provider.dart';
