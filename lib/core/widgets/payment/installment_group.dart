@@ -34,6 +34,7 @@ class InstallmentGroup extends StatelessWidget {
             ),
             buttonBuilder: (select, text, context) {
               return Container(
+                width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 10),
                 padding: const EdgeInsets.symmetric(
                   vertical: 17,
@@ -49,6 +50,7 @@ class InstallmentGroup extends StatelessWidget {
                   style: textStyleSet.button.copyWith(
                     color: select ? Colors.white : theme.primary,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               );
             },
