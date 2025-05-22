@@ -31,7 +31,6 @@ class CartNotifier extends Notifier<CartState> {
       0,
       (sum, i) => sum + (i.price * i.quantity),
     );
-
     state = state.copyWith(
       cartItems: items,
       totalQuantity: totalQuantity,
@@ -66,7 +65,6 @@ class CartNotifier extends Notifier<CartState> {
       0,
       (sum, item) => sum + (item.price * item.quantity),
     );
-
     state = state.copyWith(
       cartItems: updatedItems,
       totalAmount: updatedTotalAmount,

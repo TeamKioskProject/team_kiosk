@@ -24,23 +24,36 @@ class MenuBottomBar extends ConsumerWidget {
         children: [
           Row(
             children: [
-              Text('선택된 메뉴', style: styles.caption),
+              Semantics(
+                label: '선택된 메뉴 수',
+                hint: '현재 선택된 메뉴의 총 개수입니다',
+                child: Text('선택된 메뉴', style: styles.caption),
+              ),
               const SizedBox(width: 15),
-              Text(
-                cartState.cartItems.length.toString(),
-                style: styles.accent.copyWith(color: theme.primary),
+              Semantics(
+                label: '선택된 메뉴 개수',
+                hint: '선택된 메뉴의 총 개수는 ${cartState.totalQuantity}개 입니다',
+                child: Text(
+                  cartState.totalQuantity.toString(),
+                  style: styles.accent.copyWith(color: theme.primary),
+                ),
               ),
             ],
           ),
 
-          ElevatedButton(
-            onPressed: onTap,
-            style: ButtonStyles.categoryButton(theme.primary).copyWith(
-              padding: WidgetStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+          Semantics(
+            label: '다음 단계로 이동하는 버튼',
+            hint: '선택한 메뉴를 확인하고 다음 단계로 이동합니다',
+            button: true,
+            child: ElevatedButton(
+              onPressed: onTap,
+              style: ButtonStyles.categoryButton(theme.primary).copyWith(
+                padding: WidgetStateProperty.all(
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                ),
               ),
+              child: Text('다음으로', style: styles.button),
             ),
-            child: Text('다음으로', style: styles.button),
           ),
         ],
       ),

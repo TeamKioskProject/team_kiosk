@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:team_kiosk/core/constants/theme_provider.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/view/cart/cart_screen.dart';
 import 'package:team_kiosk/view/home_screen.dart';
@@ -10,6 +7,7 @@ import 'package:team_kiosk/view/installment_select/installment_screen.dart';
 import 'package:team_kiosk/view/kiosk_start_page/kiosk_start_page.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_screen.dart';
 import 'package:team_kiosk/view/menu_set_select/set_select_screen.dart';
+import 'package:team_kiosk/view/order_complete/order_complete_screen.dart';
 import 'package:team_kiosk/view/payment/payment_screen.dart';
 import 'package:team_kiosk/view/payment/payment_success_screen.dart';
 import 'package:team_kiosk/view/place_select/place_select_screen.dart';
@@ -44,10 +42,16 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/ingredient-select',
-      builder: (context, state) => IngredientSelector(menuCard: state.extra as MenuCard,)),
+      builder:
+          (context, state) =>
+              IngredientSelector(menuCard: state.extra as MenuCard),
+    ),
     GoRoute(
-        path: '/set-builder',
-        builder: (context, state) => SetBuilderScreen(menuCard: state.extra as MenuCard,)),
+      path: '/set-builder',
+      builder:
+          (context, state) =>
+              SetBuilderScreen(menuCard: state.extra as MenuCard),
+    ),
     GoRoute(
       path: '/installment',
       builder: (context, state) => const InstallmentScreen(),
@@ -55,6 +59,10 @@ final router = GoRouter(
     GoRoute(
       path: '/payment-success',
       builder: (context, state) => const PaymentSuccessScreen(),
+    ),
+    GoRoute(
+      path: '/order-complete-screen',
+      builder: (context, state) => const OrderCompleteScreen(),
     ),
   ],
 );

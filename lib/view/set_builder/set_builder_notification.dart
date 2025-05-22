@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_kiosk/core/state/app_mode.dart';
-import 'package:team_kiosk/core/state/app_state.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/data/data_source/data_type.dart';
 import 'package:team_kiosk/data/repository/repository_provider.dart';
@@ -17,12 +15,12 @@ class SetBuilderNotification extends Notifier<SetBuilderState> {
     return const SetBuilderState();
   }
 
-  void selectSideMenu({required String name}) {
-    state = state.copyWith(selectSideMenu: name);
+  void selectSideMenu({required String name, required String uri}) {
+    state = state.copyWith(selectSideMenu: name, selectSideImage: uri);
   }
 
-  void selectDrinkMenu({required String name}) {
-    state = state.copyWith(selectDrink: name);
+  void selectDrinkMenu({required String name, required String uri}) {
+    state = state.copyWith(selectDrink: name, selectDrinkImage: uri);
   }
 
   Future<void> _loadInitialData() async {

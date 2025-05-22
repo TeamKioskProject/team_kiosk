@@ -48,6 +48,8 @@ dependencies:
   mocktail_image_network: ^1.2.0
   auto_size_text: ^3.0.0
   line_icons: ^2.0.3
+  cached_network_image: ^3.4.1
+  debounce_throttle: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -80,12 +82,14 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/lottie/
+    - assets/ingredient/
     - lib/data/data/burger_mock_data.json
     - lib/data/data/dessert_mock_data.json
     - lib/data/data/drink_mock_data.json
     - lib/data/data/side_mock_data.json
     - lib/data/data/starbucks_desserts.json
     - lib/data/data/starbucks_drinks_trimmed.json
+    - shorebird.yaml
   fonts:
     - family: Pretendard
       fonts:

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -7,10 +9,13 @@ import 'package:team_kiosk/core/state/app_mode.dart';
 import 'package:team_kiosk/core/state/app_state_notifier.dart';
 import 'package:team_kiosk/core/widgets/kiosk/kiosk_app_bar.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_bar.dart';
+import 'package:team_kiosk/core/widgets/kiosk/menu_bottom_sheet.dart';
 import 'package:team_kiosk/core/widgets/kiosk/menu_card.dart';
 import 'package:team_kiosk/core/widgets/kiosk/step_progress_bar.dart';
+import 'package:team_kiosk/data/data_source/data_type.dart';
 import 'package:team_kiosk/data/mapper/order_to_cart_mapper.dart';
 import 'package:team_kiosk/data/model/order_item.dart';
+import 'package:team_kiosk/view/cart/cart_item.dart';
 import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/main_menu/menu_select_notifier.dart';
 
@@ -33,9 +38,14 @@ class MenuSelectScreen extends ConsumerWidget {
           title: '메뉴 선택',
           theme: theme,
           action: [
-            const Padding(
-              padding: EdgeInsets.only(right: 16.0),
-              child: Icon(Icons.volume_up),
+            Semantics(
+              label: '음량 버튼',
+              hint: '음량을 조절할 수 있습니다',
+              button: true,
+              child: const Padding(
+                padding: EdgeInsets.only(right: 16.0),
+                child: Icon(Icons.volume_up),
+              ),
             ),
           ],
           bottom: PreferredSize(
@@ -44,13 +54,6 @@ class MenuSelectScreen extends ConsumerWidget {
               builder: (context, ref, _) {
                 final tabController = DefaultTabController.of(context);
                 final selectedIndex = tabController?.index ?? 0;
-
-                final appState = ref.watch(appStateProvider);
-                final theme = ref.watch(kioskThemeProvider);
-                final viewModel = ref.watch(
-                  menuSelectNotifierProvider.notifier,
-                );
-
                 return appState.mode == AppMode.burger
                     ? StepProgressBar(
                       onTap: (int index) {
@@ -140,6 +143,7 @@ Widget _buildMenuGrid(
   KioskTheme theme,
   CartNotifier cartViewModel,
 ) {
+  bool isBottomSheetOpen = false;
   return SingleChildScrollView(
     child: SafeArea(
       child: Padding(
@@ -156,29 +160,56 @@ Widget _buildMenuGrid(
           ),
           itemBuilder: (context, index) {
             final item = items[index];
-            return MenuCard(
-              image: item.imageUrl,
-              title: item.name,
-              price: item.price,
-              theme: theme,
-              categoryType: item.category,
-              id: item.id,
-              onTap: () {
-                context.push(
-                  theme == KioskTheme.fromMode(KioskMode.burger) ? '/set-select-screen': '/ingredient-select',
-                  extra: MenuCard(
-                    image: item.imageUrl,
-                    title: item.name,
-                    price: item.price,
-                    theme: theme,
-                    categoryType: item.category,
-                    id: item.id,
-                    onTap: () {},
-                  ),
-                );
-                // final cartItem = item.toCart();
-                // cartViewModel.addItem(cartItem);
-              },
+            return Semantics(
+              label: item.name,
+              hint: '가격: ${item.price}원, 선택하려면 탭하세요',
+              button: true,
+              child: MenuCard(
+                image: item.imageUrl,
+                title: item.name,
+                price: item.price,
+                theme: theme,
+                categoryType: item.category,
+                id: item.id,
+                onTap: () {
+                  if (item.category == CategoryType.burger ||
+                      item.category == CategoryType.cafeDrink) {
+                    context.push(
+                      theme == KioskTheme.fromMode(KioskMode.burger)
+                          ? '/set-select-screen'
+                          : '/ingredient-select',
+                      extra: MenuCard(
+                        image: item.imageUrl,
+                        title: item.name,
+                        price: item.price,
+                        theme: theme,
+                        categoryType: item.category,
+                        id: item.id,
+                        onTap: () {},
+                      ),
+                    );
+                  } else {
+                    if (!isBottomSheetOpen) {
+                      isBottomSheetOpen = true;
+                      final CartItem cartItem = item.toCart();
+                      cartViewModel.addItem(cartItem);
+                      final controller = Scaffold.of(context).showBottomSheet((
+                        BuildContext context,
+                      ) {
+                        return MenuBottomSheet(theme: theme, text: item.name);
+                      });
+                      controller.closed.then((_) {
+                        isBottomSheetOpen = false;
+                      });
+                      Future.delayed(const Duration(milliseconds: 700), () {
+                        if (isBottomSheetOpen) {
+                          controller.close();
+                        }
+                      });
+                    }
+                  }
+                },
+              ),
             );
           },
         ),
