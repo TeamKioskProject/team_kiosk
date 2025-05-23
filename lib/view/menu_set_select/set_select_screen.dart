@@ -24,10 +24,22 @@ class SetSelectScreen extends ConsumerWidget {
     final appState = ref.watch(appStateProvider);
     final setSelectState = ref.watch(setSelectProvider);
     final setBuilderState = ref.watch(setBuilderProvider);
+    final setBuilderViewModel = ref.watch(setBuilderProvider.notifier);
     final viewModel = ref.watch(setSelectProvider.notifier);
 
     return Scaffold(
-      appBar: KioskAppBar(title: '세트 선택', theme: theme),
+      appBar: KioskAppBar(
+        title: '세트 선택',
+        theme: theme,
+        leading: IconButton(
+          onPressed: () {
+            setBuilderViewModel.resetState();
+            viewModel.isSetChange(change: false);
+            context.pop();
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
+      ),
       backgroundColor: theme.background,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -193,8 +205,8 @@ class SetSelectScreen extends ConsumerWidget {
                   ],
                 ),
               if (!setSelectState.isSetBool ||
-                  setBuilderState.selectDrink != '' ||
-                  setBuilderState.selectSideMenu != '')
+                  (setBuilderState.selectDrink != '' &&
+                  setBuilderState.selectSideMenu != ''))
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: DialogActionButton(
