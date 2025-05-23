@@ -5,7 +5,7 @@ class SetSelectNotifier extends Notifier<SetSelectState> {
   @override
   SetSelectState build() => const SetSelectState();
 
-  void isSetChange({required bool change}) {
+  void isSetChange({required bool? change}) {
     state = state.copyWith(isSetBool: change);
   }
 }
