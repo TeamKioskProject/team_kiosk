@@ -34,7 +34,7 @@ class SetSelectScreen extends ConsumerWidget {
         leading: IconButton(
           onPressed: () {
             setBuilderViewModel.resetState();
-            viewModel.isSetChange(change: false);
+            viewModel.isSetChange(change: null);
             context.pop();
           },
           icon: Icon(Icons.arrow_back),
@@ -134,7 +134,7 @@ class SetSelectScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              if (setSelectState.isSetBool)
+              if (setSelectState.isSetBool == true)
                 Column(
                   children: [
                     GestureDetector(
@@ -204,9 +204,10 @@ class SetSelectScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-              if (!setSelectState.isSetBool ||
-                  (setBuilderState.selectDrink != '' &&
-                  setBuilderState.selectSideMenu != ''))
+              if (setSelectState.isSetBool != null ||
+                  (setSelectState.isSetBool == true &&
+                      setBuilderState.selectDrink != '' &&
+                      setBuilderState.selectSideMenu != ''))
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: DialogActionButton(

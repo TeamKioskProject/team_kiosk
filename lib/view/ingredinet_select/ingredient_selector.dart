@@ -15,6 +15,8 @@ import 'package:team_kiosk/data/model/order_item.dart';
 import 'package:team_kiosk/view/cart/cart_item.dart';
 import 'package:team_kiosk/view/cart/cart_notifier.dart';
 import 'package:team_kiosk/view/ingredinet_select/ingredient_notifier.dart';
+import 'package:team_kiosk/view/menu_set_select/set_select_notifier.dart';
+import 'package:team_kiosk/view/set_builder/set_builder_notification.dart';
 
 class IngredientSelector extends ConsumerWidget {
   final MenuCard menuCard;
@@ -29,6 +31,9 @@ class IngredientSelector extends ConsumerWidget {
     final state = ref.watch(ingredientProvider);
     final viewModel = ref.read(ingredientProvider.notifier);
     final cartViewModel = ref.watch(cartNotifierProvider.notifier);
+    final setBuilderState = ref.watch(setBuilderProvider);
+    final setSelectViewModel = ref.watch(setSelectProvider.notifier);
+    final setBuilderViewModel = ref.watch(setBuilderProvider.notifier);
 
     return Scaffold(
       appBar: KioskAppBar(
@@ -145,6 +150,8 @@ class IngredientSelector extends ConsumerWidget {
                   imageUrl: menuCard.image,
                   price: menuCard.price,
                 );
+                setBuilderViewModel.resetState();
+                setSelectViewModel.isSetChange(change: null);
                 context.pop();
                 if (theme == KioskTheme.fromMode(KioskMode.burger)) {
                   context.pop();

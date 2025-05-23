@@ -4,9 +4,9 @@ part 'set_select_state.freezed.dart';
 
 @freezed
 class SetSelectState with _$SetSelectState {
-  final bool isSetBool;
+  final bool? isSetBool;
 
   const SetSelectState({
-    this.isSetBool = false
+    this.isSetBool = null
   });
 }
