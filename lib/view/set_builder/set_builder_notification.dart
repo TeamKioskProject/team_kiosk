@@ -23,6 +23,15 @@ class SetBuilderNotification extends Notifier<SetBuilderState> {
     state = state.copyWith(selectDrink: name, selectDrinkImage: uri);
   }
 
+  void resetState() {
+    state = state.copyWith(
+      selectDrinkImage: '',
+      selectSideImage: '',
+      selectDrink: '',
+      selectSideMenu: '',
+    );
+  }
+
   Future<void> _loadInitialData() async {
     final appState = ref.read(appStateProvider);
 
